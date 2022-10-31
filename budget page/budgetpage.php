@@ -1,36 +1,19 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <?php include '../view/header.php'; ?>
+   
     <head>
         <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
         <title>Budget Page</title>
 
         <!-- Google Font link -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
-            rel="stylesheet"
-        />
-        <!-- Stylesheet -->
-        <link rel="stylesheet" href="bp-stylesheet.css" />
+       
     </head>
 
     <body>
         <!-- Header -->
-        <div class ="header">
-            <div class="inner-header">
-                <div class="logo-container">
-                    <h1>Budget<span>Buddy</span></h1>
-                </div>
-                <ul class="navigation">
-                    <a><li>Home</li></a>
-                    <a><li>Profile</li></a>
-                    <a><li>Contact</li></a>
-                    <a><li>Logout</li></a>
-                </ul>
-            </div>
-        </div>
+        <?php include '../view/header.php'; ?>
         
         <div class="wrapper">
             <div class="container">
@@ -124,8 +107,4 @@
         <!-- Java Script -->
         <script src = "script.js"></script>
         <!-- Footer -->
-        <div class ="footer">
-            &copy; 2022 Budget Buddy. All Rights Reserved.
-        </div>
-    </body>
-</html>
+       <?php include '../view/footer.php'; ?>

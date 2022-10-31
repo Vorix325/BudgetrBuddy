@@ -1,8 +1,8 @@
 <?php
 class userInfo
 {
-function checkLogin($username)
-{
+ function checkLogin($username)
+ {
     $db = Database::getDB();
     $query = 'SELECT password FROM categories
               WHERE username = :username, ';
@@ -12,7 +12,7 @@ function checkLogin($username)
     $password = $statement->fetchAll();
     $statement->closeCursor();
     return $password; 
- }
+  }
  function getUserID($username,$password)
  {
     $db = Database::getDB();

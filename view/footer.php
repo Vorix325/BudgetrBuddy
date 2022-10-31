@@ -1,7 +1,9 @@
-<?php
+<footer>
+    <div class ="footer">
+            &copy; 2022 Budget Buddy. All Rights Reserved.
+        </div>
+ </footer>
+    </body>
+</html>
 
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
- */
 

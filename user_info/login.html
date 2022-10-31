@@ -50,8 +50,9 @@ button {
 </head>    
 <body>    
     <center> <h1> WELCOME TO "BUDGET BUDDY" </h1> </center>   
-    <form>  
-        <div class="container">   
+    <form action="index.php" method='post'>  
+        <div class="container">
+            <input type="hidden" name='action' value='login'>
             <label>Username : </label>   
             <input type="text" placeholder="Enter Username" name="username" required>  
             <label>Password : </label>   
