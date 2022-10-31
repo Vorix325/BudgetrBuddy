@@ -16,7 +16,22 @@
         <link rel="stylesheet" href="bp-stylesheet.css" />
     </head>
 
-    <body>  
+    <body>
+        <!-- Header -->
+        <div class ="header">
+            <div class="inner-header">
+                <div class="logo-container">
+                    <h1>Budget<span>Buddy</span></h1>
+                </div>
+                <ul class="navigation">
+                    <a><li>Home</li></a>
+                    <a><li>Profile</li></a>
+                    <a><li>Contact</li></a>
+                    <a><li>Logout</li></a>
+                </ul>
+            </div>
+        </div>
+        
         <div class="wrapper">
             <div class="container">
                 <!-- Welcome -->
@@ -31,7 +46,7 @@
                 <div class="month-container">
                             <h3>Monthly Budget</h3> 
                             <label for="month">Select Month & Date</label>
-                            <p class= "hide-error"
+                            <p class= "hide error"
                             id="month-error">Date is invalid
                             </p>
                             <input
@@ -49,7 +64,7 @@
                      <div class="budget-amount-container">
                         <h3>Budget</h3>
                         <label for="budget">Budget Total for the Month:</label>
-                        <p class="hide-error"
+                        <p class="hide error"
                         id="budget-error">Value cannot be empty or negative
                         </p>
                         <input type = "number"
@@ -64,7 +79,7 @@
                      <div class="expense-amount-container">
                         <h3>Budget Categories</h3>
                         <label for="bcategory">Enter Your Expenses:</label>
-                        <p class="hide-error"
+                        <p class="hide error"
                         id="expense-title-error">Values cannot be empty
                         </p>
                         <input type="text"
@@ -105,6 +120,12 @@
                      id="list">
                 </div>
             </div>
+        </div>
+        <!-- Java Script -->
+        <script src = "script.js"></script>
+        <!-- Footer -->
+        <div class ="footer">
+            &copy; 2022 Budget Buddy. All Rights Reserved.
         </div>
     </body>
 </html>
