@@ -25,7 +25,7 @@ addBudget.addEventListener("click", () => {
 }
 );
 
-//Function to Update Data (Modify Expenses..etc)   !!-INCOMPLETE-!!
+//Function to Update Data                          !!-INCOMPLETE-!!
 const updateData = (element, edit=false) => {
     //update Balance
     let currentBalance = balanceValue.innerText;
