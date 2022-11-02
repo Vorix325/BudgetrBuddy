@@ -1,67 +1,53 @@
 <!DOCTYPE html>   
 <html>   
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Login Page </title>  
-<style>   
-Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color: lightpink;  
-}  
-button {   
-       background-color: #B0C4DE
-;   
-       width: 100%;  
-        color: black;   
-        padding: 15px;   
-        margin: 10px 0px;   
-        border: none;   
-        cursor: pointer;
-        font-size: 16px;   
-         }   
- form {   
-        border: 8px solid #f1f1f1;   
-    }   
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 6px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid green;   
-        box-sizing: border-box;  
-        font-size: 16px; 
-    }  
- button:hover {   
-        opacity: 0.7;   
-    }   
-  .cancelbtn {   
-        width: auto;   
-        padding: 10px 18px;  
-        margin: 10px 5px;
-        font-size:16px;  
-    }   
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>  
+        <title> Login Page </title>  
+    
+        <!-- Google Font link -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="bp-stylesheet.css" />
+    </head>    
+  
+    <body>
+        <form action="index.php" method='post'>
+
+        <!-- Header -->
+        <?php include '../view/header.php'; ?>
+
+        <div class="wrapper">
+            <div class="container">
+                <!-- Welcome -->
+                <div class="welcome">
+                    <h3>Welcome to Budget Buddy! Let's get started on that budget</h3>
+                </div>
+            </div>
+          
+            <!-- Login -->      
+            <div class="login-container">
+                <input type="hidden" name='action' value='login'>
+                <label>Username : </label>   
+                <input type="text" placeholder="Enter Username" name="username" required/>  
+                <label>Password : </label>   
+                <input type="password" placeholder="Enter Password" name="password" required/>  
+                <button class="submit">Login</button>   
+                &nbsp;
+                <input type="checkbox" checked="checked" class="checkbox"> Remember me  
+                &nbsp;
+                Forgot <a href="#"> password? </a> 
+                &nbsp; <br> <br>
+                <p>Are you a new Buddy?</p>
+                <button type="button" class="submit">Create New Account</button>  
+            </div>   
+        </div>
         
-     
- .container {   
-        padding: 50px;   
-        background-color: whitesmoke;
-    }   
-</style>   
-</head>    
-<body>    
-    <center> <h1> WELCOME TO "BUDGET BUDDY" </h1> </center>   
-    <form action="index.php" method='post'>  
-        <div class="container">
-            <input type="hidden" name='action' value='login'>
-            <label>Username : </label>   
-            <input type="text" placeholder="Enter Username" name="username" required>  
-            <label>Password : </label>   
-            <input type="password" placeholder="Enter Password" name="password" required>  
-            <button type="submit">Login</button>   
-            <input type="checkbox" checked="checked"> Remember me   
-            <button type="button" class="cancelbtn"> Cancel</button>   
-            Forgot <a href="#"> password? </a>   
-        </div>   
-    </form>     
-</body>     
+        <!-- Footer -->
+        <?php include '../view/footer.php'; ?>
+          
+        </form>     
+    </body>     
 </html>  
