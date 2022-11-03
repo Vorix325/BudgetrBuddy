@@ -77,21 +77,15 @@ body{
 .container {
     width: 100%
 }
-.welcome {
+.welcome,
+.month-container,
+.login-container {
     background-color: #ffffff;
     padding: 1.8em 1.2em;
     box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
     border-radius: 0.6em;
     margin: 2em 0;
 }
-.month-container{
-    background-color: #ffffff;
-    padding: 0.6em 1.2em;
-    box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
-    border-radius: 0.6em;
-    margin: 2em 0;
-}
-
 .budget-container{
     width: 100%;
     display: grid;
@@ -177,4 +171,16 @@ body{
 }
 button:hover {
     background-color: #046be0;
+}
+.checkbox {
+    padding: 0.6em 1.2em;
+    cursor: pointer;
+}
+input[type=text], input[type=password] {   
+    width: 100%;   
+    background-color: #ffffff;
+    padding: 0.6em 0.3em;
+    border-radius: 0.3em;
+    color: #414a67;
+    margin-bottom: 0.8em;
 }

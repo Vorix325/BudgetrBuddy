@@ -18,11 +18,8 @@
         <div class="wrapper">
             <div class="container">
                 <!-- Welcome -->
-                <div class="welcome">
+                <div class="welcome" id="welcome">
                     <h3>Hey Buddy! Let's work on that Budget</h3>
-                    <div class="welcome-container"
-                     id="welcome">
-                    </div>
                 </div>    
 
                 <!-- Select Month -->
