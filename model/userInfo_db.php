@@ -1,5 +1,5 @@
 <?php
-class userInfo
+class userInfo_db
 {
  function checkLogin($username)
  {

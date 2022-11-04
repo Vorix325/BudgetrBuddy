@@ -1,7 +1,7 @@
 
 CREATE TABLE IF NOT EXISTS public."Userss"
 (
-    user_id integer NOT NULL,
+    user_id integer NOT NULL AUTO_INCREMENT,
     user_name character varying(30) COLLATE pg_catalog."default",
     first_name character varying(30) COLLATE pg_catalog."default",
     last_name character varying(30) COLLATE pg_catalog."default",
