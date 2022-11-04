@@ -79,7 +79,9 @@ body{
 }
 .welcome,
 .month-container,
-.login-container {
+.login-container,
+.contact-container,
+.message {
     background-color: #ffffff;
     padding: 1.8em 1.2em;
     box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
