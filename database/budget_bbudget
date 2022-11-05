@@ -1,0 +1,26 @@
+CREATE TABLE IF NOT EXISTS public."Budget_Bbudget"
+(
+    budget_id integer NOT NULL DEFAULT nextval('"Budget_Bbudget_budget_id_seq"'::regclass),
+    amount money,
+    category_id integer,
+    date date,
+    month character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT "Budget_Bbudget_pkey" PRIMARY KEY (budget_id),
+    CONSTRAINT "Budget_Bbudget" FOREIGN KEY (category_id)
+        REFERENCES public."Category_BBudget" (category_id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Budget_Bbudget"
+    OWNER to "Super User";
+-- Index: fki_Budget_Bbudget
+
+-- DROP INDEX IF EXISTS public."fki_Budget_Bbudget";
+
+CREATE INDEX IF NOT EXISTS "fki_Budget_Bbudget"
+    ON public."Budget_Bbudget" USING btree
+    (category_id ASC NULLS LAST)
+    TABLESPACE pg_default;

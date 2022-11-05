@@ -1,0 +1,38 @@
+CREATE TABLE IF NOT EXISTS public."Spending_Bbudget"
+(
+    spending_id integer NOT NULL DEFAULT nextval('"Spending_Bbudget_spending_id_seq"'::regclass),
+    user_id integer,
+    category_id integer,
+    amount money,
+    month character varying(15) COLLATE pg_catalog."default",
+    CONSTRAINT "Spending_Bbudget_pkey" PRIMARY KEY (spending_id),
+    CONSTRAINT "Category_BBudget_FKEY2" FOREIGN KEY (category_id)
+        REFERENCES public."Category_BBudget" (category_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "Category_BBudget_fkey1" FOREIGN KEY (user_id)
+        REFERENCES public."Users_Bbudget" (user_id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Spending_Bbudget"
+    OWNER to "Super User";
+-- Index: fki_Category_BBudget_FKEY2
+
+-- DROP INDEX IF EXISTS public."fki_Category_BBudget_FKEY2";
+
+CREATE INDEX IF NOT EXISTS "fki_Category_BBudget_FKEY2"
+    ON public."Spending_Bbudget" USING btree
+    (category_id ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: fki_Category_BBudget_fkey1
+
+-- DROP INDEX IF EXISTS public."fki_Category_BBudget_fkey1";
+
+CREATE INDEX IF NOT EXISTS "fki_Category_BBudget_fkey1"
+    ON public."Spending_Bbudget" USING btree
+    (user_id ASC NULLS LAST)
+    TABLESPACE pg_default;

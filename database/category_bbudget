@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS public."Category_BBudget"
+(
+    category_name character varying(30) COLLATE pg_catalog."default",
+    category_id integer NOT NULL DEFAULT nextval('"Category_BBudget_category_id_seq"'::regclass),
+    user_id integer NOT NULL DEFAULT nextval('"Category_BBudget_user_id_seq"'::regclass),
+    CONSTRAINT "Category_BBudget_pkey" PRIMARY KEY (category_id),
+    CONSTRAINT "Category_BBudget_FKEY" FOREIGN KEY (user_id)
+        REFERENCES public."Users_Bbudget" (user_id) MATCH FULL
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Category_BBudget"
+    OWNER to "Super User";
+-- Index: fki_Category_BBudget_FKEY
+
+-- DROP INDEX IF EXISTS public."fki_Category_BBudget_FKEY";
+
+CREATE INDEX IF NOT EXISTS "fki_Category_BBudget_FKEY"
+    ON public."Category_BBudget" USING btree
+    (user_id ASC NULLS LAST)
+    TABLESPACE pg_default;
