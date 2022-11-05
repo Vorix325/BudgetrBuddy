@@ -1,7 +1,6 @@
 
 CREATE TABLE IF NOT EXISTS public."Users_Bbudget"
 (
-    user_id integer NOT NULL AUTO_INCREMENT,
     user_name character varying(30) COLLATE pg_catalog."default",
     first_name character varying(30) COLLATE pg_catalog."default",
     last_name character varying(30) COLLATE pg_catalog."default",
@@ -10,6 +9,7 @@ CREATE TABLE IF NOT EXISTS public."Users_Bbudget"
     nick_name character varying(30) COLLATE pg_catalog."default",
     typeof_user character varying(30) COLLATE pg_catalog."default",
     password character varying(30) COLLATE pg_catalog."default",
+    user_id integer NOT NULL DEFAULT nextval('"Users_Bbudget_user_id_seq"'::regclass),
     CONSTRAINT "Users_Bbudget_pkey" PRIMARY KEY (user_id)
 )
 
