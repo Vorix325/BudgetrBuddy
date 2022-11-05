@@ -27,9 +27,9 @@ class userInfo_db
     $userID = $statement->fetchAll();
     $statement->closeCursor();
     return $userID; 
- }
- function getUserInfo($userID)
- {
+  }
+  function getUserInfo($userID)
+  {
     $db = Database::getDB();
     $query = 'SELECT * FROM categories
               WHERE userID = :userid'
@@ -41,9 +41,9 @@ class userInfo_db
     $user = $statement->fetchAll();
     $statement->closeCursor();
     return $user; 
- }
- function addUser($username,$password,$fname,$lname,$email,$phone)
- {
+  }
+  function addUser($username,$password,$fname,$lname,$email,$phone)
+  {
      $db = Database::getDB();
     $query = 'INSERT INTO user
                 (user_name, password, first_name, last_name, email, phone_number)
@@ -59,7 +59,23 @@ class userInfo_db
     $statement->bindValue(':phone',$phone);
     $statement->execute();
     $statement->closeCursor(); 
- }
-         
+  }
+   function updateUser($username,$password,$fname,$lname,$email,$phone)
+   {
+       global $db;
+    $query = 'UPDATE user
+              SET productCode = :productCode, productName = :productName, listPrice = :Price, categoryID = :categoryId
+              WHERE productID = :product_id'
+               ;
+    $statement = $db->prepare($query);
+    $statement->bindValue(":productCode", $code);
+    $statement->bindValue(":productName", $name);
+    $statement->bindValue(":Price", $price);
+    $statement->bindValue(":categoryId",$categoryID);
+    $statement->bindValue(':product_id', $product_id);
+    $statement->execute();
+    $statement->closeCursor();
+   }
+      
  }
 

@@ -2,11 +2,17 @@
 class user
 {
     private int $id;
-    private string $name;
+    private string $fname;
+    private string $lname;
+    private string $password;
+    private string $email;
+    private int $phone;
+    private string $typeUser;
+    
 
     public function __construct() {
         $this->id = 0;
-        $this->name = '';
+        $this->fname = '';
     }
 
     public function getID() {
@@ -17,12 +23,27 @@ class user
         $this->id = $value;
     }
 
-    public function getName() {
-        return $this->name;
+    public function getFname() {
+        return $this->fname;
     }
 
-    public function setName(string $value) {
-        $this->name = $value;
+    public function setFname(string $fname) {
+        $this->fname = $fname;
+    }
+     public function getLname() {
+        return $this->lname;
+    }
+
+    public function setLname(string $lname) {
+        $this->lname = $lname;
+    }
+    
+    public function getPass() {
+        return $this->password;
+    }
+
+    public function setPass(string $pass) {
+        $this->password = $pass;
     }
 }
 

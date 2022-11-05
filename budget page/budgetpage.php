@@ -26,16 +26,9 @@
                 <div class="month-container">
                             <h3>Monthly Budget</h3> 
                             <label for="month">Select Month & Date</label>
-                            <p class= "hide error"
-                            id="month-error">Date is invalid
-                            </p>
-                            <input
-                            type="date"
-                            class="month-date"
-                            id="month-date"
-                            />
-                            <button class = "submit"
-                            id="set-month-button">Set Month
+                            <p class= "hide error" id="month-error">Date is invalid</p>
+                            <input type="date" class="month-date" id="month-date"/>
+                            <button class = "submit" id="set-month-button">Set Month
                             </button>
                         </div>
 
@@ -44,16 +37,9 @@
                      <div class="budget-amount-container">
                         <h3>Budget</h3>
                         <label for="budget">Budget Total for the Month:</label>
-                        <p class="hide error"
-                        id="budget-error">Value cannot be empty or negative
-                        </p>
-                        <input type = "number"
-                               id="budget-amount"
-                               placeholder="Enter Your Budget"
-                        />
-                        <button class = "submit"
-                        id="budget-amount-button">Set Budget
-                        </button>    
+                        <p class="hide error" id="budget-error">Value cannot be empty or negative</p>
+                        <input type = "number" id="budget-amount" placeholder="Enter Your Budget"/>
+                        <button class = "submit" id="budget-amount-button">Set Budget</button>    
                      </div>
                      <!-- Expenses -->
                      <div class="expense-amount-container">
