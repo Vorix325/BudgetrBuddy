@@ -1,7 +1,5 @@
 <?php
-class spending_db
-{
-    public function getSpend($userId,$categoryId)
+    function getSpend($userId,$categoryId)
     {
      $db = Database::getDB();
      $query = 'SELECT spending_id, amount FROM Spending
@@ -14,7 +12,7 @@ class spending_db
      $statement->closeCursor();
      return $spending; 
     }
-    public function addSpend($userId,$categoryId,$amount)
+    function addSpend($userId,$categoryId,$amount)
     {
      $db = Database::getDB();
      $query = 'INSERT INTO Spending
@@ -29,7 +27,7 @@ class spending_db
      $statement->execute();
      $statement->closeCursor(); 
     }
-    public function updateSpend($spendId,$categoryId,$amount)
+    function updateSpend($spendId,$categoryId,$amount)
     {
      $db = Database::getDB(); 
      $query = 'UPDATE Spending
@@ -46,5 +44,5 @@ class spending_db
      $statement->execute();
      $statement->closeCursor();
     }
-}
+
 
