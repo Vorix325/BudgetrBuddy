@@ -25,7 +25,8 @@ switch($action)
         }
         else
         {
-            include('../');
+            $errorMessage = "Please enter correct login info";
+            include('../user_info/login.php');
         }
     case 'register' :
         $username = filter_input(INPUT_POST, 'username');
@@ -37,7 +38,7 @@ switch($action)
         if($email == FALSE)
         {
             $errorEmail = 'Please enter a valid email';
-            include('../user_info/login.php');
+            include('../user_info/register.php');
         }
         else
         {
