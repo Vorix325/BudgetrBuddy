@@ -17,7 +17,13 @@
         <form action="index.php" method='post'>
 
         <!-- Header -->
-        <?php include '../view/header.php'; ?>
+        <div class ="header">
+            <div class="inner-header">
+                <div class="logo-container">
+                    <h1>Budget<span>Buddy</span></h1>
+                </div>
+            </div>
+        </div>
 
         <div class="wrapper">
             <div class="container">
@@ -30,8 +36,8 @@
             <!-- Login -->      
             <div class="login-container">
                 <input type="hidden" name='action' value='login'>
-                <label>Username : </label>   
-                <input type="text" placeholder="Enter Username" name="username" required/>  
+                <label>Email : </label>   
+                <input type="email" placeholder="Enter Username" name="username" required/>  
                 <label>Password : </label>   
                 <input type="password" placeholder="Enter Password" name="password" required/>  
                 <button class="submit">Login</button>   
