@@ -11,7 +11,7 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
-        $action = 'showSpend';
+        $action = 'showBudget';
     }
 }  
 
@@ -19,7 +19,15 @@ switch($action)
 {
     case 'showBudget':
         $userId = $userInfo->getCurrent();
+        $errorMessage = "";
+        $errorB = '';
         $categories = $categoryDB->getCategories($userId);
+        if($categories == null)
+        {
+               $categories= $categoryDB->getCategories(0);
+            
+        }
+        include('../budget_page/budgepage.php');
         
     case 'checkValue' :
         $date = filter_input(INPUT_POST, 'date');

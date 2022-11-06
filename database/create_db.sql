@@ -2,20 +2,18 @@ DROP DATABASE IF EXISTS BBDataBase;
 CREATE DATABASE BBDataBase;
 USE BBDataBase;
 
-TABLESPACE pg_default;
-
 -- create the tables
 CREATE TABLE Users_Bbudget
 (
-    user_name    character varying(30) COLLATE pg_catalog."default",
-    first_name   character varying(30) COLLATE pg_catalog."default",
-    last_name    character varying(30) COLLATE pg_catalog."default",
-    email        character varying(30) COLLATE pg_catalog."default",
-    phone_number character varying(30) COLLATE pg_catalog."default",
-    nick_name    character varying(30) COLLATE pg_catalog."default",
-    typeof_user  character varying(30) COLLATE pg_catalog."default",
-    password     character varying(30) COLLATE pg_catalog."default",
-    user_id      integer NOT NULL DEFAULT nextval('"Users_Bbudget_user_id_seq"'::regclass),
+    user_name    VARCHAR(30),
+    first_name   VARCHAR(30)
+    last_name    VARCHAR(30)
+    email        VARCHAR(30)
+    phone_number VARCHAR(30)
+    nick_name    VARCHAR(30)
+    typeof_user  VARCHAR(30)
+    password     VARCHAR(30)
+    user_id      INT         NOT NULL DEFAULT,
     CONSTRAINT "Users_Bbudget_pkey" 
     PRIMARY KEY (user_id)
 )
@@ -32,7 +30,7 @@ CREATE TABLE Budget_Bbudget
     budget_id integer NOT NULL DEFAULT nextval('"Budget_Bbudget_budget_id_seq"'::regclass),
     amount money,
     category_id integer,
-    date date,
+    Sdate date,
     month character varying(15) COLLATE pg_catalog."default",
     CONSTRAINT "Budget_Bbudget_pkey" PRIMARY KEY (budget_id),
     CONSTRAINT "Budget_Bbudget" FOREIGN KEY (category_id)
@@ -75,6 +73,11 @@ CREATE TABLE Spending_Bbudget
 INSERT INTO currentQ VALUES
 (1, 0);
 
+INSERT INTO Category_BBudget VALUES
+(groceries,      0, 0, 0),
+(utility,        1, 0, 0),
+(medical,        2, 0, 0),
+(transportation, 3, 0, 0);
 -- create the users
 CREATE USER IF NOT EXISTS mgs_user@localhost 
 IDENTIFIED BY 'pa55word';
