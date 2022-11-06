@@ -9,18 +9,23 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
-        $action = 'list_products';
+        $action = 'show_login';
     }
 }  
 
 switch($action)
 {
+    case 'show_login':
+        $errorMessage = "";
+        include('../user_info/login.php');
     case 'login':
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
         $check = $userInfo->checkLogin($username);
         if($check === $password)
         {
+            $userId = $userInfo->getUserID($username, $password);
+            $userInfo->updateCurrent($userId);
             include('../budget_page/budgetpage.php');
         }
         else
@@ -28,6 +33,14 @@ switch($action)
             $errorMessage = "Please enter correct login info";
             include('../user_info/login.php');
         }
+    case 'logout' :
+        $userInfo->updateCurrent(0);
+        include('../user_info/logout.php');
+        
+    case 'show_reg':
+        
+      $errorMessage = '';
+      include('../user_info/register.php');
     case 'register' :
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
@@ -35,24 +48,17 @@ switch($action)
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
         $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
-        if($email == FALSE)
+        $confirm = filter_input(INPUT_POST, 'confirm');
+        
+        if($password == $confirm)
         {
-            $errorEmail = 'Please enter a valid email';
-            include('../user_info/register.php');
+            $userInfo->addUser($username, $password, $fname, $lname, $email, $phone);
+            include('../user_info/login.php');
         }
         else
         {
+            $errorMessage = 'Please match the password';
+            include('../user_info/register.php');
             
         }
-        if($phone == FALSE)
-        {
-            $errorPhone = 'Please enter a valid phone';
-            include('../user_info/login.php');
-        }
-        if($username == null || $password == null || $email == null || $fname == null || $lname == null || $phone == null)
-        {
-            $errorEmpty = "Please enter fill out everything";
-            include('../user_info/login.php');
-        }
-        
 }

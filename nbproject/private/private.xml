@@ -3,29 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/Database.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/category_db.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/user.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/email-confirmation.html</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/category_bbudget</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/register.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/budgetpage.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/userInfo_db.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/view/header.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/logout.html</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/view/footer.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user.html</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/create_db.sql</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/spending_db.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/login.html</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/index.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/category.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/budget_bbudget</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/budgetpage.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/login.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/pages.css</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/bp-stylesheet.css</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/spending_bbudget</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/spending.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/logout.php</file>
         </group>
     </open-files>
 </project-private>

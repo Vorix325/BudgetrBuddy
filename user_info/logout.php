@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="bp-stylesheet.css" />
     </head>    
     <body>
-        <form action="index.php" method='post'>
+        
 
         <!-- Header -->
         <div class ="header">
@@ -29,7 +29,7 @@
                 <!-- Welcome -->
                 <div class="welcome">
                     <h3>You've been logged out. Until next time Buddy!</h3><br>
-                    <p>To go back to budget <a href="#">Login</a></p>
+                    <p>To go back to budget <a href="/ex_starts/BudgetBuddy/BudgetBuddy/user_info">Login</a></p>
                 </div>
             </div>    
         </div>
@@ -37,5 +37,5 @@
         <!-- Footer -->
         <?php include '../view/footer.php'; ?>
 
-        </form>
+        
     </body>

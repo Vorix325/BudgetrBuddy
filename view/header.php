@@ -18,10 +18,14 @@
                     <h1>Budget<span>Buddy</span></h1>
                 </div>
                 <ul class="navigation">
-                    <a><li>Home</li></a>
-                    <a><li>Profile</li></a>
-                    <a><li>Contact</li></a>
-                    <a><li>Logout</li></a>
+                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Home</li></a>
+                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Profile</li></a>
+                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Contact</li></a>
+                    <a href = '/ex_starts/BudgetBuddy/BudgetBuddy/user_info'><li>Login In</li>
+                    <form action='../user_info/index.php'>
+                        <input type="hidden" name='action' value='logout'>
+                        <input type="submit" value="Logout" class="button" />
+                    </form>
                 </ul>
             </div>
 </div>

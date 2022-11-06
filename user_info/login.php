@@ -14,7 +14,7 @@
     </head>    
   
     <body>
-        <form action="index.php" method='post'>
+        
 
         <!-- Header -->
         <div class ="header">
@@ -35,12 +35,14 @@
           
             <!-- Login -->      
             <div class="login-container">
+               <form action="index.php" method='post'>
                 <input type="hidden" name='action' value='login'>
-                <label>Email : </label>   
-                <input type="email" placeholder="Enter Username" name="username" required/>  
+                <label>Username : </label>   
+                <input type="text" placeholder="Enter Username" name="username" required/>  
                 <label>Password : </label>   
                 <input type="password" placeholder="Enter Password" name="password" required/>  
-                <button class="submit">Login</button>   
+                <button class="submit">Login</button> 
+               </form> 
                 &nbsp;
                 <input type="checkbox" checked="checked" class="checkbox"> Remember me  
                 &nbsp;
@@ -54,6 +56,6 @@
         <!-- Footer -->
         <?php include '../view/footer.php'; ?>
           
-        </form>     
+            
     </body>     
 </html>  
