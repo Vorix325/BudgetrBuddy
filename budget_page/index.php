@@ -26,6 +26,8 @@ switch($action)
         {
             include('../');
         }
-    case 'updateSpend' :
+    case 'addSpend' :
         
         
+        
+}
