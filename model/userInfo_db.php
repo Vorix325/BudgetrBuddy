@@ -12,7 +12,33 @@ class userInfo_db
     $password = $statement->fetchAll();
     $statement->closeCursor();
     return $password; 
-  }
+ }
+ function updateCurrent($userId)
+ {
+    $db = Database::getDB();
+    $query = 'UPDATE currentQ
+              SET user_id = :userId
+              WHERE queue = 1;'
+               ;
+    $statement = $db->prepare($query);
+    $statement->bindValue(":userId", $userId);
+    $statement->execute();
+    $statement->closeCursor();
+ }
+ 
+ function getCurrent()
+ {
+    $db = Database::getDB();
+    $query = 'SELECT userID FROM currentQ
+              WHERE queue = 1'
+ 
+              ;
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $userID = $statement->fetchAll();
+    $statement->closeCursor();
+    return $userID;
+ }
  function getUserID($username,$password)
  {
     $db = Database::getDB();
@@ -44,7 +70,7 @@ class userInfo_db
   }
   function addUser($username,$password,$fname,$lname,$email,$phone)
   {
-     $db = Database::getDB();
+    $db = Database::getDB();
     $query = 'INSERT INTO user
                 (user_name, password, first_name, last_name, email, phone_number)
                VALUES
@@ -62,7 +88,7 @@ class userInfo_db
   }
    function updateUser($username,$password,$fname,$lname,$email,$phone)
    {
-       global $db;
+    $db = Database::getDB();
     $query = 'UPDATE user
               SET productCode = :productCode, productName = :productName, listPrice = :Price, categoryID = :categoryId
               WHERE productID = :product_id'

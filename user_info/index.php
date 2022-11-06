@@ -3,7 +3,7 @@ require('../model/database.php');
 require('../model/user.php');
 require('../model/userInfo_db.php');
 
-$userInfo = new userInfo();
+$userInfo = new userInfo_db();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -17,11 +17,11 @@ switch($action)
 {
     case 'login':
         $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(IINPUT_POST, 'password');
+        $password = filter_input(INPUT_POST, 'password');
         $check = $userInfo->checkLogin($username);
         if($check === $password)
         {
-            include('../user_info/login.php');
+            include('../budget_page/budgetpage.php');
         }
         else
         {
