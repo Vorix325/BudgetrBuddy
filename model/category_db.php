@@ -10,7 +10,15 @@ class category_db
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->execute();
-    $category = $statement->fetchAll();
+    $datas = $statement->fetchAll();
+    foreach ($datas as $data) {
+     $category = new Category();
+     $category->setUserID($data['user_id']);
+     $category->setCaID($data['category_id']);
+     $category->setCaName($data['category_name']);
+     $category->setTotal($data['total']);
+     $category[] = $category;
+    }
     $statement->closeCursor();
     return $category; 
   }

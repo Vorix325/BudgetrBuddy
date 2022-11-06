@@ -64,7 +64,11 @@ class userInfo_db
     $statement = $db->prepare($query);
     $statement->bindValue(':userid',$userID);
     $statement->execute();
-    $user = $statement->fetchAll();
+    $data = $statement->fetchAll();
+    $user = new User();
+    $user->setID($data['categoryID']);
+    $user->setName($data['categoryName']);
+        
     $statement->closeCursor();
     return $user; 
   }

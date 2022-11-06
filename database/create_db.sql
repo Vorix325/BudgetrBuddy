@@ -46,6 +46,7 @@ CREATE TABLE Category_BBudget
     category_name character varying(30) COLLATE pg_catalog."default",
     category_id   integer NOT NULL DEFAULT nextval('"Category_BBudget_category_id_seq"'::regclass),
     user_id       integer NOT NULL DEFAULT nextval('"Category_BBudget_user_id_seq"'::regclass),
+    total         float,
     CONSTRAINT "Category_BBudget_pkey" PRIMARY KEY (category_id),
     CONSTRAINT "Category_BBudget_FKEY" FOREIGN KEY (user_id)
         REFERENCES public."Users_Bbudget" (user_id) MATCH FULL

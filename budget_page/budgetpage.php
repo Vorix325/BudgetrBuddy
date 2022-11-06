@@ -78,7 +78,7 @@
                      <!-- Display all category name loop -->
                      <?php foreach ($categories as $category) : ?>
                       <tr>
-                          <td><?php echo $categoryName;?></td>
+                          <td><?php echo $category->getCaName();?></td>
                       </tr>
                      <?php endforeach; ?>
                     </table>
