@@ -42,6 +42,7 @@ switch($action)
            $errorMessage ='';
            include('../budget_page/budgepage.php');
         }
+
         $budget = filter_input(INPUT_POST, 'budget',FILTER_VALIDATE_FLOAT);
         if($budget <= 0)
         {
@@ -64,3 +65,7 @@ function validateDate($date, $format = 'Y-m-d'){
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($format) === $date;
 }
+
+        
+        
+
