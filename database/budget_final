@@ -1,8 +1,8 @@
-CREATE TABLE budget
+CREATE TABLE budget_db
 (
     budget_id serial NOT NULL PRIMARY KEY,
     amount money,
     date date,
     month VARCHAR (15),
 	category_id int,
-	 CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category (category_id));
+	 CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category_db (category_id));
