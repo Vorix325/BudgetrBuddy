@@ -1,0 +1,10 @@
+CREATE TABLE spending
+(
+    spending_id serial not null PRIMARY KEY,
+    amount money,
+    month VARCHAR (15),
+	date date,
+    user_id integer,
+	 CONSTRAINT fk_users FOREIGN KEY (user_id) REFERENCES users (user_id),
+    category_id integer,
+	 CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category (category_id));
