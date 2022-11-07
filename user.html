@@ -6,21 +6,25 @@
 	<link rel="stylesheet" type="text/css" href="pages.css">
 </head>
 <body>
-	<nav>
-
-	<ul>
-
-	<li><a href="">Users</a> </li>
-	<li><a href="">SuperUser</a></li>
-	<li><a href="">Contact</a>  </li>
-	<li><a href="">About</a>   </li>
-
-    </ul>
-
-	<h2 class="tittle">Regular User</h2>
+<div class ="header">
+    <div class="inner-header">
+        <div class="logo-container">
+            <h1>Budget<span>Buddy</span></h1>
+                </div>
+                <ul class="navigation">
+                    <a><li>Home</li></a>
+                    <a><li>Profile</li></a>
+                    <a><li>Contact</li></a>
+                    <a><li>Logout</li></a>
+                </ul>
+               </div>
+        </div>
+     <br>
+	
 	<br>
-	<h4>User Info</h4>
-	<table border="1" bgcolor="lightcyan">
+	<div class="info-container">
+	<h3>User Info</h3>
+	<table border="1" bgcolor="lightcyan" id="message" class="message">
 		<tr>
 			<th>Name</th>
 			<th>Email</th>
@@ -34,34 +38,14 @@
 			<td>User</td>
 		</tr>
 	</table>
-
+</div>
 	<br>
-	<h4>Monthly Budget</h4>
-	<table border="1" bgcolor="lightcyan">
-		<tr>
-			<th>Food</th>
-			<th>Cloth</th>
-			<th>Utility</th>
-			<th>Transportation</th>
-			<th>Medical</th>
-			<th>Entertainment</th>
-		</tr>
-		<tr>
-			<td>$1000</td>
-			<td>$2000</td>
-			<td>$3000</td>
-			<td>$4000</td>
-			<td>$5000</td>
-			<td>$6000</td>
-		</tr>
-	</table>
-	<br>
-	<p>As a regular user you can edit some information</p>
-	<p>To do that please click on the edit button below.</p>
-	<br>
-	<button>Edit</button>
 
+	
 
+<div class ="footer">
+ &copy; 2022 Budget Buddy. All Rights Reserved.
+  </div>
 
 </body>
 </html>

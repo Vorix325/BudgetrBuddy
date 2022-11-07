@@ -1,0 +1,6 @@
+CREATE TABLE Category
+(
+    category_id SERIAL NOT NULL PRIMARY KEY,
+	category_name VARCHAR (30),
+	user_id int,
+   CONSTRAINT fk_users FOREIGN KEY (user_id) REFERENCES users (user_id));
