@@ -70,6 +70,21 @@
                         id="check-amount">Check Amount
                         </button>   
                      </div>
+                       <!-- Output -->
+                 <div class="output-container flex-space">
+                    <div>
+                        <p>Total Budget</p>
+                        <span id="amount">0</span>
+                    </div>
+                    <div>
+                        <p>Expenses</p>
+                        <span id="expense-value">0</span>
+                    </div>
+                    <div>
+                        <p>Balance</p>
+                        <span id="balance-amount">0</span>
+                    </div>
+                  </div>
                 </div>
         </div>
                 
