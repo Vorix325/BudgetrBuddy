@@ -69,4 +69,9 @@ switch($action)
             
         }
         break;
+    case 'show_profile' :
+        $id = $userInfo->getCurrent();
+        $info = $userInfo->getUserInfo($id);
+        $fname = $info['fName'];
+        
 }
