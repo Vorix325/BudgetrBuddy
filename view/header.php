@@ -21,11 +21,10 @@
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Home</li></a>
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Profile</li></a>
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Contact</li></a>
-                    <a href = '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php'><li>Login In</li>
+                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php'><li>Login In</li></a>
                     <form action='../user_info/index.php'>
                         <input type="hidden" name='action' value='logout'>
-                        <input type="submit" value="Logout" class="button" />
-                    </form>
+                        <li><input type="button" value="Logout"></li>
                 </ul>
             </div>
 </div>

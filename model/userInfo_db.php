@@ -4,8 +4,8 @@ class userInfo_db
  function checkLogin($username)
  {
     $db = database::getDB();
-    $query = 'SELECT password FROM categories
-              WHERE username = :username, ';
+    $query = 'SELECT password FROM users_bbudget
+              WHERE user_name = :username';
     $statement = $db->prepare($query);
     $statement->bindValue(':username',$username);
     $statement->execute();
@@ -30,7 +30,7 @@ class userInfo_db
  {
     $db = database::getDB();
     $query = 'SELECT user_id FROM currentq
-              WHERE queue = 1'
+              WHERE queue = 1 limit 1'
               ;
     $statement = $db->prepare($query);
     $statement->execute();
@@ -38,18 +38,17 @@ class userInfo_db
     $statement->closeCursor();
     return $userID;
  }
- function getUserID($username,$password)
+ function getUserID($username)
  {
-    $db = Database::getDB();
-    $query = 'SELECT userID FROM categories
-              WHERE username = :username, password = :password'
+    $db = database::getDB();
+    $query = 'SELECT user_id FROM users_bbudget
+              WHERE user_name = :username'
  
               ;
     $statement = $db->prepare($query);
     $statement->bindValue(':username',$username);
-    $statement->bindValue(':password',$password);
     $statement->execute();
-    $userID = $statement->fetchAll();
+    $userID = $statement->fetch();
     $statement->closeCursor();
     return $userID; 
   }

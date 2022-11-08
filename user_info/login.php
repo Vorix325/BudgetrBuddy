@@ -10,7 +10,7 @@
         rel="stylesheet" />
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
     </head>    
   
     <body>
@@ -30,9 +30,11 @@
                 <!-- Welcome -->
                 <div class="welcome">
                     <h3>Welcome to Budget Buddy! Let's get started on that budget</h3>
+                    <p><?php echo $errorMessage; ?></P>
+                   
                 </div>
             </div>
-          
+             
             <!-- Login -->      
             <div class="login-container">
                <form action="index.php" method='post'>
@@ -44,9 +46,9 @@
                 <button class="submit">Login</button> 
                </form> 
                 &nbsp;
-                <input type="checkbox" checked="checked" class="checkbox"> Remember me  
+                <Br><input type="checkbox" checked="checked" class="checkbox"> Remember me  
                 &nbsp;
-                Forgot <a href="#"> password? </a> 
+                 <br><a href="#"> Forgot password? </a> 
                 &nbsp; <br> <br>
                 <p>Are you a new Buddy?</p>
                 <button type="button" class="submit">Create New Account</button>  

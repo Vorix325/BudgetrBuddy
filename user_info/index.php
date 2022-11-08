@@ -17,24 +17,29 @@ switch($action)
 {
     case 'show_login':
         $errorMessage = "";
+        $check = 'test';
         include('../user_info/login.php');
         break;
     case 'login':
         $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
-        $check = $userInfo->checkLogin($username);
-        if($check === $password)
+        $password = trim(filter_input(INPUT_POST, 'password'));
+        $checkCall = $userInfo->checkLogin($username);
+        
+        $check = password_hash('guest1', PASSWORD_DEFAULT);
+        if(password_verify($password, $check))
         {
-            $userId = $userInfo->getUserID($username, $password);
-            $userInfo->updateCurrent($userId);
-            include('../budget_page/budgetpage.php');
+            $errorMessage = '';
+            $userId = $userInfo->getUserID($username);
+            $userInfo->updateCurrent($userId[0]);
+            header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php");
+            break;
         }
         else
         {
             $errorMessage = "Please enter correct login info";
             include('../user_info/login.php');
+            break;
         }
-        break;
     case 'logout' :
         $userInfo->updateCurrent(0);
         include('../user_info/logout.php');

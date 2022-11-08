@@ -71,7 +71,7 @@ INSERT INTO currentq VALUES
 (1, 0);
 
 INSERT INTO Users_BBudget VALUES
-('guest','guest','guest','guest','guest','guest','reg','guest',0);
+('guest','guest','guest','guest','guest','guest','reg','guest1',0);
 INSERT INTO Category_BBudget VALUES
 ('groceries',      0, 0, 0),
 ('utility',        1, 0, 0),
@@ -83,6 +83,5 @@ CREATE USER IF NOT EXISTS mgs_user@localhost
 IDENTIFIED BY 'pa55word';
 
 -- grant privleges to the users
-GRANT SELECT, INSERT, DELETE, UPDATE
-ON * 
-TO mgs_user@localhost;
+GRANT ALL PRIVILEGES ON bbdatabase TO mgs_user@localhost;
+FLUSH PRIVILEGES;

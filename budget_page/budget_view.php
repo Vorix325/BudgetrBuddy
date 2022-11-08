@@ -4,9 +4,7 @@
 <body>
 <p>test</p>
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-<?php foreach($caNames as $ca) : ?>
-<p><?php echo $ca; ?></p><!-- comment -->
-<?php endforeach; ?>
+<?php print_r($userId) ?>
 <script>
 var xValues = <?php echo $caName; ?>;
 var yValues = <?php echo $caTotal; ?>;
