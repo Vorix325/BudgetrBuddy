@@ -28,7 +28,8 @@ switch($action)
             
         }
         include('../budget_page/budgepage.php');
-        
+    case 'addBudget':
+    case 'editBudget':
     case 'checkValue' :
         $date = filter_input(INPUT_POST, 'date');
         $checkD = var_dump(validateDate($date)); 
