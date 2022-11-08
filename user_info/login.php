@@ -10,7 +10,10 @@
         rel="stylesheet" />
 
         <!-- Stylesheet -->
+
         <link rel="stylesheet" href="../bp-stylesheet.css" />
+
+       
     </head>    
   
     <body>
