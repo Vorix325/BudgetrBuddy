@@ -27,7 +27,7 @@ switch($action)
                $categories= $categoryDB->getCategories(0);
             
         }
-        include('../budget_page/budgepage.php');
+        include('../budget_page/budget_view.php');
     case 'addBudget':
     case 'editBudget':
     case 'checkValue' :
