@@ -1,11 +1,13 @@
 <?php
 require('../model/database.php');
 require('../model/spending.php');
+require('../model/category.php');
 require('../model/category_db.php');
-require('../model/spending_db');
-require('../model/userInfo_db');
+require('../model/spending_db.php');
+require('../model/userInfo_db.php');
 
 $userInfo = new userInfo_db();
+$categoryDB = new category_db();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -18,16 +20,34 @@ if ($action == NULL) {
 switch($action)
 {
     case 'showBudget':
+       
+        
         $userId = $userInfo->getCurrent();
         $errorMessage = "";
         $errorB = '';
-        $categories = $categoryDB->getCategories($userId);
+        $categories = $categoryDB->getCategory(0);
         if($categories == null)
         {
-               $categories= $categoryDB->getCategories(0);
+            $error = "Please select 2 exactly product for compare";
+            include('../errors/error.php');
             
         }
-        include('../budget_page/budget_view.php');
+        else 
+        {
+           
+            $caNames = [];
+            $caTotals = [];
+            foreach($categories as $ca)
+            {
+                $caNames[] = $ca->getCaName();
+                $caTotals[] = $ca->getTotal();
+            }
+            $caName = json_encode($caNames);
+            $caTotal = json_encode($caTotals);
+            include('../budget_page/budget_view.php');
+        }
+        
+        
     case 'addBudget':
     case 'editBudget':
     case 'checkValue' :
@@ -36,24 +56,24 @@ switch($action)
         if($checkD == false || $date == null)
         {
             $errorMessage = "Date is invalid";
-            include('../budget_page/budgepage.php');
+           // include('../budget_page/budgepage.php');
         }
         else
         {
            $errorMessage ='';
-           include('../budget_page/budgepage.php');
+          // include('../budget_page/budgepage.php');
         }
 
         $budget = filter_input(INPUT_POST, 'budget',FILTER_VALIDATE_FLOAT);
         if($budget <= 0)
         {
             $errorB = 'Values cannot be empty';
-            include('../budget_page/budgepage.php');
+           // include('../budget_page/budgepage.php');
         }
         else
         {
             $errorB = '';
-            include('../budget_page/budgepage.php');
+           // include('../budget_page/budgepage.php');
         }
         $title = filter_input(INPUT_POST, 'title');
         $expen = filter_input(INPUT_POST,'expen',FILTER_VALIDATE_FLOAT);

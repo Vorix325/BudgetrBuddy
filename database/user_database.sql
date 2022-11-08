@@ -17,7 +17,7 @@ CREATE TABLE Users_Bbudget
     PRIMARY KEY (user_id)
 );
 
-CREATE TABLE currentQ
+CREATE TABLE currentq
 (
     queue   INT NOT NULL,
     user_id INT,
@@ -67,7 +67,7 @@ CREATE TABLE Spending_Bbudget
         ON DELETE CASCADE
 );
 -- INSERT Current User
-INSERT INTO currentQ VALUES
+INSERT INTO currentq VALUES
 (1, 0);
 
 INSERT INTO Users_BBudget VALUES
@@ -77,6 +77,7 @@ INSERT INTO Category_BBudget VALUES
 ('utility',        1, 0, 0),
 ('medical',        2, 0, 0),
 ('transportation', 3, 0, 0);
+
 -- create the users
 CREATE USER IF NOT EXISTS mgs_user@localhost 
 IDENTIFIED BY 'pa55word';

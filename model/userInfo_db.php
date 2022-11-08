@@ -3,7 +3,7 @@ class userInfo_db
 {
  function checkLogin($username)
  {
-    $db = Database::getDB();
+    $db = database::getDB();
     $query = 'SELECT password FROM categories
               WHERE username = :username, ';
     $statement = $db->prepare($query);
@@ -15,7 +15,7 @@ class userInfo_db
  }
  function updateCurrent($userId)
  {
-    $db = Database::getDB();
+    $db = database::getDB();
     $query = 'UPDATE currentQ
               SET user_id = :userId
               WHERE queue = 1;'
@@ -28,14 +28,13 @@ class userInfo_db
  
  function getCurrent()
  {
-    $db = Database::getDB();
-    $query = 'SELECT userID FROM currentQ
+    $db = database::getDB();
+    $query = 'SELECT user_id FROM currentq
               WHERE queue = 1'
- 
               ;
     $statement = $db->prepare($query);
     $statement->execute();
-    $userID = $statement->fetchAll();
+    $userID = $statement->fetch();
     $statement->closeCursor();
     return $userID;
  }

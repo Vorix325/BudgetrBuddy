@@ -2,25 +2,26 @@
 
 class category_db
 {
-    function getCateogry($userId)
+  function getCategory($userId)
  {
-    $db = Database::getDB();
-    $query = 'SELECT * FROM categories
+    $db = database::getDB();
+    $query = 'SELECT * FROM Category_BBudget
               WHERE user_id = :userId ';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->execute();
     $datas = $statement->fetchAll();
+    $categories = [];
     foreach ($datas as $data) {
-     $category = new Category();
+     $category = new category();
      $category->setUserID($data['user_id']);
      $category->setCaID($data['category_id']);
      $category->setCaName($data['category_name']);
      $category->setTotal($data['total']);
-     $category[] = $category;
+     $categories[] = $category;
     }
     $statement->closeCursor();
-    return $category; 
+    return $categories; 
   }
   
   function addCategory($userId,$categoryName)

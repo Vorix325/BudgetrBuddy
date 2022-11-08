@@ -1,7 +1,7 @@
 
  <?php
-class Database {
-    private static $dsn = 'mysql:host=localhost;dbname=BBDataBase';
+class database {
+    private static $dsn = 'mysql:host=localhost;dbname=bbdatabase';
     private static $username = 'mgs_user';
     private static $password = 'pa55word';
     private static $db;
@@ -15,6 +15,7 @@ class Database {
                                      self::$username,
                                      self::$password);
             } catch (PDOException $e) {
+                
                 $error_message = $e->getMessage();
                 include('../errors/database_error.php');
                 exit();

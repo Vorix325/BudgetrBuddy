@@ -2,13 +2,16 @@
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <body>
-
+<p>test</p>
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
+<?php foreach($caNames as $ca) : ?>
+<p><?php echo $ca; ?></p><!-- comment -->
+<?php endforeach; ?>
 <script>
-var xValues = <?php echo $categories->getCaName(); ?>;
-var yValues = <?php echo $categories->getTotal(); ?>;
-var barColors = ["red", "green","blue","orange","brown"];
+var xValues = <?php echo $caName; ?>;
+var yValues = <?php echo $caTotal; ?>;
+
+var barColors = ["red", "green","blue","orange"];
 
 new Chart("myChart", {
   type: "bar",
