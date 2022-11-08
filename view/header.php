@@ -8,7 +8,7 @@
             rel="stylesheet"
         />
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="bp-stylesheet.css" />
+        <link rel="stylesheet" href="BudgetrBuddy/bp-stylesheet.css" />
 </head>   
 <body>
 <header><h1>Budge Buddy</h1></header>
