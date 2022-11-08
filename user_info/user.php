@@ -6,19 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="pages.css">
 </head>
 <body>
-<div class ="header">
-    <div class="inner-header">
-        <div class="logo-container">
-            <h1>Budget<span>Buddy</span></h1>
-                </div>
-                <ul class="navigation">
-                    <a><li>Home</li></a>
-                    <a><li>Profile</li></a>
-                    <a><li>Contact</li></a>
-                    <a><li>Logout</li></a>
-                </ul>
-               </div>
-        </div>
+     <?php include 'view/header.php'; ?>
      <br>
 	
 	<br>
@@ -32,7 +20,7 @@
 			<th>Nick Name</th>
 		</tr>
 		<tr>
-			<td> Username</td>
+			<td></td>
 			<td>username@email.com</td>
 			<td>123-456-7890</td>
 			<td>User</td>
@@ -43,9 +31,6 @@
 
 	
 
-<div class ="footer">
- &copy; 2022 Budget Buddy. All Rights Reserved.
-  </div>
+  <?php include 'view/footer.php'; ?>
 
-</body>
-</html>
+
