@@ -4,7 +4,7 @@
 <body>
 <p>test</p>
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-<?php print_r($userId) ?>
+
 <script>
 var xValues = <?php echo $caName; ?>;
 var yValues = <?php echo $caTotal; ?>;
@@ -30,5 +30,28 @@ new Chart("myChart", {
 });
 </script>
 
+ <nav>
+        <ul>
+            <?php foreach($caNames as $ca) : ?>
+            <form action="./index.php" method ="post">
+              <a href=""> <li><?php echo $ca; ?></li></a>
+            </form>
+            <?php endforeach; ?>
+        </ul><!-- comment -->
+        <Table>
+            <tr>
+                <th>Spend Id</th><!-- comment -->
+                <th>Cost name</th><!-- comment -->
+                <th>Amount</th>
+            </tr>
+            <tr>
+        <?php foreach ($allSpend as $spend) : ?>
+            <td><?php echo $spend['spending_id']; ?></td>
+            <td><?php echo $spend['costName']; ?></td><!-- comment -->
+            <td><?php echo $spend['Sname']; ?></td>
+        <?php endforeach; ?>
+            </tr>
+        </table>
+</nav>
 </body>
 </html>

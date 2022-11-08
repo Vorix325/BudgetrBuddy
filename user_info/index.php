@@ -45,7 +45,6 @@ switch($action)
         include('../user_info/logout.php');
         break;
     case 'show_reg':
-        
       $errorMessage = '';
       include('../user_info/register.php');
       break;

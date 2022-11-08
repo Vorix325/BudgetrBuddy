@@ -41,7 +41,6 @@ CREATE TABLE Budget_Bbudget
     amount      FLOAT,
     category_id INT NOT NULL,
     Sdate       DATE,
-    Smonth      VARCHAR(15),
     PRIMARY KEY (budget_id),
     FOREIGN KEY (category_id)
         REFERENCES Category_BBudget(category_id)
@@ -53,6 +52,7 @@ CREATE TABLE Spending_Bbudget
 (
     spending_id    INT              NOT NULL,
     user_id        INT,
+    costName       VARCHAR(30),
     category_id    INT,
     Samount        FLOAT,
     smonth         VARCHAR(15),

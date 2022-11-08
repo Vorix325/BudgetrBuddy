@@ -1,12 +1,13 @@
 <?php
-    function getSpend($userId,$categoryId)
+class spending_db
+{
+    function getSpend($categoryId)
     {
-     $db = Database::getDB();
-     $query = 'SELECT spending_id, amount FROM Spending
-              WHERE user_id = :userId, category_id = :categoryId ';
+     $db = database::getDB();
+     $query = 'SELECT spending_id, Samount , costName FROM spending_bbudget
+              WHERE category_id = :categoryId ';
      $statement = $db->prepare($query);
-     $statement->bindValue(':userId',$userId);
-     $statement->bindVanlue('category_id',$categoryId);
+     $statement->bindValue(':category_id',$categoryId);
      $statement->execute();
      $spending = $statement->fetchAll();
      $statement->closeCursor();
@@ -44,5 +45,5 @@
      $statement->execute();
      $statement->closeCursor();
     }
-
+}
 

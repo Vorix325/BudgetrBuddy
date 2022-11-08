@@ -10,7 +10,7 @@
         rel="stylesheet" />
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="BudgetrBuddy/bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
     </head>    
     <body>
         
@@ -33,9 +33,6 @@
                     <input type="password" placeholder="" id="password" name='password' required>
                     <label>Confirm Password</label>
                     <input type="password" placeholder="" id="confirm-password" name='confirm' required>
-                    <?php if( get_field($errorMessage) ): ?>
-                    <p>My field value: <?php the_field($errorMessage); ?></p>
-                    <?php endif; ?>
                     <br>
                     <button type="submit"class="submit" style="display: block; margin: 0 auto;"">Submit</button>
                    </form>

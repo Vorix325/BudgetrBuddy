@@ -53,8 +53,11 @@
                 &nbsp;
                  <br><a href="#"> Forgot password? </a> 
                 &nbsp; <br> <br>
-                <p>Are you a new Buddy?</p>
-                <button type="button" class="submit">Create New Account</button>  
+                <form action="index.php" method='post'>
+                <input type="hidden" name='action' value='show_reg'>
+                  <p>Are you a new Buddy?</p>
+                  <button class="submit">Create New Account</button>  
+                </form>
             </div>   
         </div>
         

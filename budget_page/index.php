@@ -7,7 +7,7 @@ require('../model/spending_db.php');
 require('../model/userInfo_db.php');
 $userInfo = new userInfo_db();
 $categoryDB = new category_db();
-
+$spendingDB = new spending_db();
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_POST, 'action');
@@ -32,17 +32,31 @@ switch($action)
         }
         else 
         {
-           
+            /* Send data to graph */
             $caNames = [];
             $caTotals = [];
+            $caId = [];
             foreach($categories as $ca)
             {
                 $caNames[] = $ca->getCaName();
                 $caTotals[] = $ca->getTotal();
+               
             }
             $caName = json_encode($caNames);
             $caTotal = json_encode($caTotals);
-            include('../budget_page/budget_view.php');
+            
+            /*Generate data for category */
+            $current = filter_input(INPUT_POST, 'current');
+            $currentShow = $categoryDB->getId($current);
+            $allSpend = $spendingDB->getSpend($currentShow);
+            if($allSpend == null || $allSpend == false)
+            {
+                
+            }
+            else {
+               include('../budget_page/budget_view.php');
+            }
+            
         }   
         break;
     

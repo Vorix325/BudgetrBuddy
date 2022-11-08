@@ -38,5 +38,20 @@ class category_db
     $statement->execute();
     $statement->closeCursor(); 
   }
+  
+  function getId($categoryName)
+  {
+    $db = database::getDB();
+    $query = 'SELECT category_name FROM category_bbudget
+              WHERE category_name = :categoryName';
+             
+    $statement = $db->prepare($query);
+    $statement->bindValue(':categoryName',$categoryName);
+    $statement->execute();
+    $id = $statement->fetch();
+    $statement->closeCursor();
+     return $id;    
+    
+  }
 }
 
