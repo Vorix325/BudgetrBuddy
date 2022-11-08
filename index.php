@@ -1,16 +1,50 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edit this template
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
+<!DOCTYPE html>   
+<html>   
+    <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>  
+        <title> Home Page </title>  
+    
+        <!-- Google Font link -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="bp-stylesheet.css" />
+    </head>    
     <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+        <form action="index.php" method='post'>
+
+        <!-- Header -->
+        <?php include 'view/header.php'; ?>
+
+        <div class="wrapper">
+            <div class="container">
+                <!-- Welcome -->
+                <div class="welcome">
+                    <h3>Welcome to Budget Buddy! Let us help you get started on that budget</h3>
+                </div>
+            </div>
+            <!-- About Us -->    
+            <div class="about-container">
+                <h3><b>About Us</b></h3>
+                <h3>Budget Buddy is dedicated to help you manage your finances simply and effectively.
+                    Our goal is to help give you a life that is cost-effective and free of financial stress.
+                </h3>
+            </div>
+            <!-- Manage Profile -->
+            <div class = "profile-container">
+                <h3><b>Manage Profile</b></h3>
+                <h3>We're buddies aren't we? Check your profile and let's make sure to get the details right.</h3>
+                <button type=button class="submit">Profile</button>
+            </div>
+            <!-- Start Budget -->
+            <div class = "start-container">
+                <h3><b>Manage Budget</b></h3>
+                <h3>Would you like to manage your budget now? Let's get to it!</h3>
+                <button type=button class="submit">Budget</button>
+            </div>
+        </div>   
+        <!-- Footer -->
+        <?php include 'view/footer.php'; ?>
+   

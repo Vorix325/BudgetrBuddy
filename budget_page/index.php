@@ -20,8 +20,6 @@ if ($action == NULL) {
 switch($action)
 {
     case 'showBudget':
-       
-        
         $userId = $userInfo->getCurrent();
         $errorMessage = "";
         $errorB = '';
@@ -45,12 +43,9 @@ switch($action)
             $caName = json_encode($caNames);
             $caTotal = json_encode($caTotals);
             include('../budget_page/budget_view.php');
-        }
-        
-        
-    case 'addBudget':
-    case 'editBudget':
-    case 'checkValue' :
+        }   
+        break;
+    case 'checkValue':
         $date = filter_input(INPUT_POST, 'date');
         $checkD = var_dump(validateDate($date)); 
         if($checkD == false || $date == null)

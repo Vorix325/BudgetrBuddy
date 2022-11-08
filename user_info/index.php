@@ -18,6 +18,7 @@ switch($action)
     case 'show_login':
         $errorMessage = "";
         include('../user_info/login.php');
+        break;
     case 'login':
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
@@ -33,14 +34,16 @@ switch($action)
             $errorMessage = "Please enter correct login info";
             include('../user_info/login.php');
         }
+        break;
     case 'logout' :
         $userInfo->updateCurrent(0);
         include('../user_info/logout.php');
-        
+        break;
     case 'show_reg':
         
       $errorMessage = '';
       include('../user_info/register.php');
+      break;
     case 'register' :
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
@@ -61,4 +64,5 @@ switch($action)
             include('../user_info/register.php');
             
         }
+        break;
 }
