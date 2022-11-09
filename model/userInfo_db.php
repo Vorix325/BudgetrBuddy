@@ -33,12 +33,7 @@ class userInfo_db
     $statement = $db->prepare($sql);
     $statement->execute();
     $userId = $statement->fetch();
-     if($userId == null)
-        {
-            $error = "Please select 2 exactly product for compare";
-            include('../errors/error.php');
-            
-        }
+     
     $statement->closeCursor();
     return $userId;
  }
@@ -59,20 +54,33 @@ class userInfo_db
   function getUserInfo($userID)
   {
     $db = database::getDB();
-    $query = 'SELECT * FROM categories
-              WHERE userID = :userid'
+    $query = 'SELECT * FROM users_bbudget
+              WHERE user_id = :userid'
  
               ;
     $statement = $db->prepare($query);
     $statement->bindValue(':userid',$userID);
     $statement->execute();
-    $data = $statement->fetchAll();
+    $data = $statement->fetch();
     $user = new User();
-    $user->setFname($data['first_name']);
-    $user->setLname($data['last_name']);
-    $user->setUser($data['user_name']);
-    $user->setPhone($data['phone']);
-    $user->setEmail($data['email']);
+    if($data == null)
+        {
+            $error = "Please select 2 exactly product for compare";
+            include('../errors/error.php');
+            
+        }
+     else 
+    {
+      
+      $user->setFname($data[1]);
+      $user->setLname($data[2]);
+      $user->setUser($data[0]);
+      $user->setPhone($data[4]);
+      $user->setEmail($data[3]);
+      $user->setNick($data[5]);
+     
+    }
+   
         
     $statement->closeCursor();
     return $user; 

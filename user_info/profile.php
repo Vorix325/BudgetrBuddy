@@ -12,7 +12,7 @@
 	<br>
 	<div class="info-container">
 	<h3>User Info</h3>
-        <p><?php print_r($id); ?> test</p>
+        <p><?php print_r($info); ?> test</p>
 	<table border="1" bgcolor="lightcyan" id="message" class="message">
 		<tr>
                         <th>Username</th>
@@ -22,6 +22,7 @@
 			<th>Nick Name</th>
 		</tr>
 		<tr>
+                    
 			<td><?php echo $info->getUser(); ?></td>
 			<td><?php echo $info->getFname()." ". $info->getLname(); ?></td>
 			<td><?php echo $info->getEmail(); ?></td>

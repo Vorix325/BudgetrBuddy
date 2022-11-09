@@ -8,12 +8,18 @@ class user
     private string $password;
     private string $email;
     private int $phone;
+    private string $nick;
     private string $typeUser;
     
 
     public function __construct() {
         $this->id = 0;
         $this->fname = '';
+        $this->lname = '';
+        $this->password= "";
+        $this->email = '';
+        $this->phone= 0;
+        $this->typeUser = '';
     }
 
     public function getID() {
@@ -65,8 +71,15 @@ class user
         return $this->phone;
     }
 
-    public function setPhone(string $phone) {
+    public function setPhone(int $phone) {
         $this->phone= $phone;
+    }
+     public function getNick() {
+        return $this->nick;
+    }
+
+    public function setNick(string $nick) {
+        $this->nick = $nick;
     }
 }
 

@@ -71,7 +71,11 @@ switch($action)
         break;
     case 'show_profile' :
         $id = $userInfo->getCurrent();
-        $info = $userInfo->getUserInfo($id['user_id']);
+        $info = $userInfo->getUserInfo($id[0]);
+        if($info == null || $info == false)
+        {
+            $info = new user();
+        }
         include('../user_info/profile.php');
         
 }
