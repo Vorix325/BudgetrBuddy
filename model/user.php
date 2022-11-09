@@ -2,6 +2,7 @@
 class user
 {
     private int $id;
+    private string $username;
     private string $fname;
     private string $lname;
     private string $password;
@@ -23,6 +24,14 @@ class user
         $this->id = $value;
     }
 
+    public function getUser()
+    {
+        return $this->username;
+    }
+    public function setUser($username)
+    {
+        $this->username = $username;
+    }
     public function getFname() {
         return $this->fname;
     }
@@ -44,6 +53,20 @@ class user
 
     public function setPass(string $pass) {
         $this->password = $pass;
+    }
+     public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail(string $email) {
+        $this->email = $email;
+    }
+     public function getPhone() {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone) {
+        $this->phone= $phone;
     }
 }
 

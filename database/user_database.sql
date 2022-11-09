@@ -84,4 +84,4 @@ IDENTIFIED BY 'pa55word';
 
 -- grant privleges to the users
 GRANT ALL PRIVILEGES ON bbdatabase TO mgs_user@localhost;
-FLUSH PRIVILEGES;
+

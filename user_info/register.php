@@ -34,6 +34,9 @@
                     <label>Confirm Password</label>
                     <input type="password" placeholder="" id="confirm-password" name='confirm' required>
                     <br>
+                    <?php if( get_field($errorMessage) ): ?>
+                    <p>My field value: <?php the_field($errorMessage); ?></p>
+                    <?php endif; ?>
                     <button type="submit"class="submit" style="display: block; margin: 0 auto;"">Submit</button>
                    </form>
                     <p>By signing up, you agree to our <br>

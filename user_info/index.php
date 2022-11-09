@@ -17,7 +17,7 @@ switch($action)
 {
     case 'show_login':
         $errorMessage = "";
-        $check = 'test';
+        $as = $userInfo->getCurrent();
         include('../user_info/login.php');
         break;
     case 'login':
@@ -71,7 +71,7 @@ switch($action)
         break;
     case 'show_profile' :
         $id = $userInfo->getCurrent();
-        $info = $userInfo->getUserInfo($id);
-        $fname = $info['fName'];
+        $info = $userInfo->getUserInfo($id['user_id']);
+        include('../user_info/profile.php');
         
 }

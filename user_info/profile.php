@@ -6,24 +6,27 @@
 	<link rel="stylesheet" type="text/css" href="pages.css">
 </head>
 <body>
-     <?php include 'view/header.php'; ?>
+     <?php include '../view/header.php'; ?>
      <br>
 	
 	<br>
 	<div class="info-container">
 	<h3>User Info</h3>
+        <p><?php print_r($id); ?> test</p>
 	<table border="1" bgcolor="lightcyan" id="message" class="message">
 		<tr>
+                        <th>Username</th>
 			<th>Name</th>
 			<th>Email</th>
 			<th>Phone Number</th>
 			<th>Nick Name</th>
 		</tr>
 		<tr>
-			<td></td>
-			<td>username@email.com</td>
-			<td>123-456-7890</td>
-			<td>User</td>
+			<td><?php echo $info->getUser(); ?></td>
+			<td><?php echo $info->getFname()." ". $info->getLname(); ?></td>
+			<td><?php echo $info->getEmail(); ?></td>
+			<td><?php echo $info->getPhone(); ?></td>
+                        <td><?php ?></td>
 		</tr>
 	</table>
 </div>
@@ -31,6 +34,6 @@
 
 	
 
-  <?php include 'view/footer.php'; ?>
+  <?php include '../view/footer.php'; ?>
 
 

@@ -33,7 +33,7 @@
                 <!-- Welcome -->
                 <div class="welcome">
                     <h3>Welcome to Budget Buddy! Let's get started on that budget</h3>
-                    <p><?php echo $errorMessage; ?></P>
+                    <p><?php print_r($as); ?></P>
                    
                 </div>
             </div>
@@ -41,7 +41,7 @@
             <!-- Login -->      
             <div class="login-container">
                <form action="index.php" method='post'>
-                <input type="hidden" name='action' value='login'>
+                <input type="hidden" name='action' value='show_profile'>
                 <label>Username : </label>   
                 <input type="text" placeholder="Enter Username" name="username" required/>  
                 <label>Password : </label>   

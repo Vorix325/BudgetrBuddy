@@ -23,7 +23,7 @@ switch($action)
         
         $errorMessage = "";
         $errorB = '';
-        $categories = $categoryDB->getCategory($userId[0]);
+        $categories = $categoryDB->getCategory($userId);
         if($categories == null)
         {
             $error = "Please select 2 exactly product for compare";

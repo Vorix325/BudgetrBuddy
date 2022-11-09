@@ -29,14 +29,18 @@ class userInfo_db
  function getCurrent()
  {
     $db = database::getDB();
-    $query = 'SELECT user_id FROM currentq
-              WHERE queue = 1 limit 1'
-              ;
-    $statement = $db->prepare($query);
+    $sql = "SELECT user_id FROM currentq WHERE queue = 1;";  
+    $statement = $db->prepare($sql);
     $statement->execute();
-    $userID = $statement->fetch();
+    $userId = $statement->fetch();
+     if($userId == null)
+        {
+            $error = "Please select 2 exactly product for compare";
+            include('../errors/error.php');
+            
+        }
     $statement->closeCursor();
-    return $userID;
+    return $userId;
  }
  function getUserID($username)
  {
@@ -54,7 +58,7 @@ class userInfo_db
   }
   function getUserInfo($userID)
   {
-    $db = Database::getDB();
+    $db = database::getDB();
     $query = 'SELECT * FROM categories
               WHERE userID = :userid'
  
@@ -64,8 +68,11 @@ class userInfo_db
     $statement->execute();
     $data = $statement->fetchAll();
     $user = new User();
-    $user->setID($data['categoryID']);
-    $user->setName($data['categoryName']);
+    $user->setFname($data['first_name']);
+    $user->setLname($data['last_name']);
+    $user->setUser($data['user_name']);
+    $user->setPhone($data['phone']);
+    $user->setEmail($data['email']);
         
     $statement->closeCursor();
     return $user; 
