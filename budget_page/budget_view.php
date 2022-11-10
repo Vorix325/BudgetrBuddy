@@ -38,10 +38,10 @@ new Chart("myChart", {
             </form>
             <?php endforeach; ?>
         </ul><!-- comment -->
-        <Table>
+        <table>
             <tr>
                 <th>Spend Id</th><!-- comment -->
-                <th>Cost name</th><!-- comment -->
+                <th>Cost Name</th><!-- comment -->
                 <th>Amount</th>
             </tr>
             <tr>

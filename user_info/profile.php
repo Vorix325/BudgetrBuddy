@@ -27,7 +27,7 @@
 			<td><?php echo $info->getFname()." ". $info->getLname(); ?></td>
 			<td><?php echo $info->getEmail(); ?></td>
 			<td><?php echo $info->getPhone(); ?></td>
-                        <td><?php ?></td>
+                        <td><?php echo $info->getNick(); ?></td>
 		</tr>
 	</table>
 </div>

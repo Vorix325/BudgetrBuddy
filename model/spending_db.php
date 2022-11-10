@@ -5,32 +5,35 @@ class spending_db
     {
      $db = database::getDB();
      $query = 'SELECT spending_id, Samount , costName FROM spending_bbudget
-              WHERE category_id = :categoryId ';
+              WHERE category_id = :categoryId';
      $statement = $db->prepare($query);
-     $statement->bindValue(':category_id',$categoryId);
+     $statement->bindValue(':categoryId',$categoryId);
      $statement->execute();
      $spending = $statement->fetchAll();
      $statement->closeCursor();
      return $spending; 
     }
-    function addSpend($userId,$categoryId,$amount)
+    function addSpend($userId,$categoryId,$amount, $name, $id , $date)
     {
-     $db = Database::getDB();
+     $db = database::getDB();
      $query = 'INSERT INTO Spending
-               (user_id, category_id,$amount)
+               (user_id, category_id,Samount, costName, SDate)
               VALUE
-               (:userId, :categoryId, :amount)';
+               (:userId, :categoryId, :amount, :name, :date)';
              
      $statement = $db->prepare($query);
      $statement->bindValue(':userId',$userId);
      $statement->bindValue(':categoryId',$categoryId);
      $statement-> bindValue(':amount', $amount);
+     $statement->bindValue(':name', $name);
+     $statement->bindValue(':id',$id);
+     $statement->bindValue(':date',$date);
      $statement->execute();
      $statement->closeCursor(); 
     }
     function updateSpend($spendId,$categoryId,$amount)
     {
-     $db = Database::getDB(); 
+     $db = database::getDB(); 
      $query = 'UPDATE Spending
               SET
                 (category_id,amount)

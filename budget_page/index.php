@@ -23,7 +23,7 @@ switch($action)
         
         $errorMessage = "";
         $errorB = '';
-        $categories = $categoryDB->getCategory($userId);
+        $categories = $categoryDB->getCategory($userId[0]);
         if($categories == null)
         {
             $error = "Please select 2 exactly product for compare";
@@ -49,17 +49,23 @@ switch($action)
             $current = filter_input(INPUT_POST, 'current');
             $currentShow = $categoryDB->getId($current);
             $allSpend = $spendingDB->getSpend($currentShow);
-            if($allSpend == null || $allSpend == false)
-            {
-                
-            }
-            else {
-               include('../budget_page/budget_view.php');
-            }
+            include('../budget_page/budget_view.php');
+            
             
         }   
         break;
-    
+    case 'addSpending':
+        $spendName = filter_input(INPUT_POST, 'spendName');
+        $userId = $userInfo->getCurrent();
+        $costName = filter_input(INPUT_POST,'costName');
+        $categoryId = filter_input(INPUT_POST,'categoryId');
+        $time = strtotime($_POST['dateFrom']);
+        $date = date('d',$time);
+        $month = date('m', $time);
+        $year = date('Y', $time);
+        $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
+        $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $id);
+        break;
                 
 }
 function validateDate($date, $format = 'Y-m-d'){

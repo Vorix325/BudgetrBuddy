@@ -21,7 +21,10 @@ CREATE TABLE currentq
 (
     queue   INT NOT NULL,
     user_id INT,
+    typeof_user VARCHAR(30),
     PRIMARY KEY (queue)
+    FOREIGN KEY(typeof_user) REFERENCES Users_Bbudget(typeof_user)
+
 );
 
 CREATE TABLE Category_BBudget

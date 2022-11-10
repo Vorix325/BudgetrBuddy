@@ -90,22 +90,6 @@
                 
                 
             <!-- Budget Category List -->
-            <div class="list">
-                <h3>Budget Category List:</h3>
-                <div class="expense-list-container" id="list">
-                    <table>
-                     <!-- Display all category name loop -->
-                     <?php foreach ($categories as $category) : ?>
-                      
-                          <td><?php echo $category->getCaName();?></td>
-                      
-                     <?php endforeach; ?>
-                    </table>
-                <div class="expense-list-container"
-                     id="list">
-                </div>
-            </div>
-        </div>
         <!-- Java Script -->
         <script src = "script.js"></script>
         <!-- Footer -->
