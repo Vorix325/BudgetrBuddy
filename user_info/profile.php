@@ -29,7 +29,6 @@
                     <p><?php print_r($info); ?> test</p>
                     <table border="1" id="user-info" class="user-info" style="display: block; margin: 0 auto;">
                         <tr>
-                                        <th>Username</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
@@ -37,8 +36,6 @@
                             <th>Modify</th>
                         </tr>
                         <tr>
-                                    
-                            <td><?php echo $info->getUser(); ?></td>
                             <td><?php echo $info->getFname()." ". $info->getLname(); ?></td>
                             <td><?php echo $info->getEmail(); ?></td>
                             <td><?php echo $info->getPhone(); ?></td>
