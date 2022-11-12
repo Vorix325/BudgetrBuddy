@@ -131,7 +131,6 @@ body{
     padding: 1.25em 0.9em;
     border-radius: 0.3em;
     box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
-
 } 
 .output-container {
     background-color: #1E90FF;
@@ -174,7 +173,7 @@ body{
 .error {
     color: #ff465a;
 }
-button:hover {
+button.submit:hover {
     background-color: #046be0;
 }
 .checkbox {
@@ -211,4 +210,45 @@ input[type=email] {
     text-align: center;
     font-size: 80%;
     padding: 7px;
+}
+.super-welcome, .info-container {
+    background-color: #1E90FF;
+    padding: 1.8em 1.2em;
+    box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
+    border-radius: 0.6em;
+    margin: 2em 0;
+}
+.super-welcome h3, .info-container h3 {
+	color: #ffffff;
+    text-align: center;
+    font-weight: 200;
+}
+.super-info,
+.user-info {
+    width: 100%;
+	text-align: center;
+    background-color:  #ffffff;
+    padding: 1.5em 1.2em;
+    box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
+    border-radius: 0.6em;
+    height: auto;
+}
+button.user-edit:hover {
+    opacity: 0.7;
+    background-color: none;
+    cursor: pointer;
+}
+.profile-submit {
+    font-size: 1em;
+    margin-top: 0.8em;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    color: #1E90FF;
+    padding: 0.6em 1.2em;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+button.profile-submit:hover {
+   opacity: 0.7;
 }
