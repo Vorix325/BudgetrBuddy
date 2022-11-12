@@ -31,12 +31,12 @@ class spending_db
      $statement->execute();
      $statement->closeCursor(); 
     }
-    function updateSpend($spendId,$categoryId,$amount)
+    function updateSpend($spendId,$categoryId,$amount, $name, $date)
     {
      $db = database::getDB(); 
      $query = 'UPDATE Spending
               SET
-                (category_id,amount)
+                (category_id,name, amount)
               VALUE
                  (:categoryId, :amount)
               WHERE spending_id = :spendId'

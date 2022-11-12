@@ -24,8 +24,7 @@
     <script>
     var xValues = <?php echo $caName; ?>;
     var yValues = <?php echo $caTotal; ?>;
-
-    var barColors = ["red", "green","blue","orange"];
+    var barColors = <?php echo $color; ?>;
 
     new Chart("myChart", {
     type: "bar",

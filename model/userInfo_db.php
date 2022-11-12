@@ -103,12 +103,12 @@ class userInfo_db
     $statement->execute();
     $statement->closeCursor(); 
   }
-   function updateUser($username,$password,$fname,$lname,$email,$phone)
+   function updateUser($id, $username,$password,$fname,$lname,$email,$phone)
    {
     $db = Database::getDB();
     $query = 'UPDATE user
-              SET productCode = :productCode, productName = :productName, listPrice = :Price, categoryID = :categoryId
-              WHERE productID = :product_id'
+              SET user_name = :username, password = :password, fname = :fname, lname = :lname , email = :email, phone = :phone
+              WHERE user_id = :id'
                ;
     $statement = $db->prepare($query);
     $statement->bindValue(":productCode", $code);
@@ -118,6 +118,15 @@ class userInfo_db
     $statement->bindValue(':product_id', $product_id);
     $statement->execute();
     $statement->closeCursor();
+   }
+   
+   function getAll()
+   {
+       $db = Database::getDB();
+       $query = 'SELECT * FROM ';
+       $statement = $db->prepare($query);
+       $statement->execute();
+       $statement->closeCursor();
    }
       
  }
