@@ -13,7 +13,7 @@ class spending_db
      $statement->closeCursor();
      return $spending; 
     }
-    function addSpend($userId,$categoryId,$amount, $name, $id , $date)
+    function addSpend($userId,$categoryId,$amount, $name , $date)
     {
      $db = database::getDB();
      $query = 'INSERT INTO Spending
@@ -26,7 +26,6 @@ class spending_db
      $statement->bindValue(':categoryId',$categoryId);
      $statement-> bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
-     $statement->bindValue(':id',$id);
      $statement->bindValue(':date',$date);
      $statement->execute();
      $statement->closeCursor(); 
@@ -36,15 +35,17 @@ class spending_db
      $db = database::getDB(); 
      $query = 'UPDATE Spending
               SET
-                (category_id,name, amount)
+                (costName, category_id, Samount, sDate)
               VALUE
-                 (:categoryId, :amount)
+                 (:name, :caId, :amount, :date)
               WHERE spending_id = :spendId'
                ;
      $statement = $db->prepare($query);
      $statement->bindValue(":spendId", $spendId);
+     $statement->bindValue(":caId", $categoryId);
+     $statement->bindValue(":name", $name);
      $statement->bindValue(":amount", $amount);
-     $statement->bindValue(":categoryId",$categoryId);
+     $statement->bindValue(":date", $date);
      $statement->execute();
      $statement->closeCursor();
     }

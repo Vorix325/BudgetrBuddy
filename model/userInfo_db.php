@@ -87,7 +87,7 @@ class userInfo_db
   }
   function addUser($username,$password,$fname,$lname,$email,$phone)
   {
-    $db = Database::getDB();
+    $db = database::getDB();
     $query = 'INSERT INTO user
                 (user_name, password, first_name, last_name, email, phone_number)
                VALUES
@@ -123,10 +123,25 @@ class userInfo_db
    function getAll()
    {
        $db = Database::getDB();
-       $query = 'SELECT * FROM ';
+       $query = 'SELECT * FROM users_bbudget'
+               ;
        $statement = $db->prepare($query);
        $statement->execute();
+       $datas = $statement->fetchAll();
+       $users = [];
+      foreach($datas as $data) 
+      {
+         $user = new User();
+         $user->setFname($data[1]);
+         $user->setLname($data[2]);
+         $user->setUser($data[0]);
+         $user->setPhone($data[4]);
+         $user->setEmail($data[3]);
+         $user->setNick($data[5]);
+         $users[] = $user;
+      }
        $statement->closeCursor();
+       return $users;
    }
       
  }

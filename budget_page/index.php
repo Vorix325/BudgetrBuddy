@@ -64,19 +64,19 @@ switch($action)
         $month = date('m', $time);
         $year = date('Y', $time);
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
-        $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $id);
+        $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $time);
         break;
     case 'updateSpending':
-         $spendName = filter_input(INPUT_POST, 'spendName');
-        $userId = $userInfo->getCurrent();
-        $costName = filter_input(INPUT_POST,'costName');
+        $spendId = filter_input(INPUT_POST,'spendId');
+        $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
+        $spendName = filter_input(INPUT_POST, 'spendName');
         $categoryId = filter_input(INPUT_POST,'categoryId');
         $time = strtotime($_POST['dateFrom']);
         $date = date('d',$time);
         $month = date('m', $time);
         $year = date('Y', $time);
-        $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
-        $spendingDB->updateSpend($userId, $categoryId, $amount, $spendName, $id);
+        
+        $spendingDB->updateSpend($spendId, $categoryId, $amount, $spendName, $time);
                 
 }
 function validateDate($date, $format = 'Y-m-d'){
