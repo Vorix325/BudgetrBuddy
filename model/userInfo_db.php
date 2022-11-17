@@ -105,7 +105,7 @@ class userInfo_db
   }
    function updateUser($id, $username,$password,$fname,$lname,$email,$phone)
    {
-    $db = Database::getDB();
+    $db = database::getDB();
     $query = 'UPDATE user
               SET user_name = :username, password = :password, fname = :fname, lname = :lname , email = :email, phone = :phone
               WHERE user_id = :id'

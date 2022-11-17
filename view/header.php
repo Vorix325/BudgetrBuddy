@@ -8,7 +8,7 @@
             rel="stylesheet"
         />
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="BudgetrBuddy/bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
 </head>   
 <body>
 <header><h1>Budge Buddy</h1></header>
@@ -19,6 +19,7 @@
                 </div>
                 <ul class="navigation">
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Home</li></a>
+                    <form action='../user_info/index.php'>
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Profile</li></a>
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php'><li>Contact</li></a>
                     <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php'><li>Login In</li></a>

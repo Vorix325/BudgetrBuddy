@@ -26,7 +26,7 @@ class category_db
   
   function addCategory($userId,$categoryName)
   {
-    $db = Database::getDB();
+    $db = database::getDB();
     $query = 'INSERT INTO categories 
                (user_id, category_name)
               VALUE
