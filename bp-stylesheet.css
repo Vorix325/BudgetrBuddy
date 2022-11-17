@@ -126,6 +126,7 @@ body{
     border-color: #1E90FF ;
 }
 .budget-amount-container,
+.start-month-container,
 .expense-amount-container {
     background-color: #ffffff;
     padding: 1.25em 0.9em;
@@ -224,7 +225,8 @@ input[type=email] {
     font-weight: 200;
 }
 .super-info,
-.user-info {
+.user-info,
+.category-info {
     width: 100%;
 	text-align: center;
     background-color:  #ffffff;
