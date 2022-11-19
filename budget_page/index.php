@@ -18,7 +18,7 @@ if ($action == NULL) {
 
 switch($action)
 {
-    case 'showBudget':
+    case 'showSpending':
         $userId = $userInfo->getCurrent();
         
         $errorMessage = "";
@@ -54,6 +54,19 @@ switch($action)
             
         }   
         break;
+    case 'showBudget':
+        $userId = $userInfo->getCurrent();
+        $categories = $categoryDB->getCategory($userId[0]);
+         
+         foreach($categories as $ca)
+          {
+             $caNames[] = $ca->getCaName();
+              $caTotals[] = $ca->getTotal();
+               
+          }
+        included('../budget_page/add_page.php');
+        break;
+        
     case 'addSpending':
         $spendName = filter_input(INPUT_POST, 'spendName');
         $userId = $userInfo->getCurrent();

@@ -12,7 +12,7 @@
             rel="stylesheet"
         />
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="BudgetrBuddy/bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
         <!-- Font Awesome link -->
 		    <link 
 		    rel="stylesheet"
@@ -75,60 +75,22 @@
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
 								<th>&emsp;&nbsp;&nbsp;Category&emsp;&nbsp;&nbsp;</th>
-								<th>&emsp;Expense Cost&emsp;</th>
-                                <th>&nbsp;Spending Cost&nbsp;</th>
+								<th>&emsp;Limit&emsp;</th>
+                                                                <th>&nbsp;Spending Cost&nbsp;</th>
 								<th>&ensp;Modify&ensp;</th>
 								<th>&ensp;Delete&ensp;</th>
-								<th>&ensp;Add&ensp;</th>
+								
 							</tr>
+                                                        <?php foreach($categories as $ca) :?>
 							<tr>
-								<td>Food</td>
-                <td></td>
-                <td></td>
+								<td><?php echo $ca->getName(); ?></td>
+                                                                <td><?php echo $ca->getTotal(); ?></td>
+                                                                <td></td>
 								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
 								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-plus" id="user-edit"></i></button></td>
+								
 							</tr>
-              <tr>
-								<td>Clothing</td>
-                <td></td>
-                <td></td>
-								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-plus" id="user-edit"></i></button></td>
-							</tr>
-              <tr>
-								<td>Utility</td>
-                <td></td>
-                <td></td>
-								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-plus" id="user-edit"></i></button></td>
-							</tr>
-              <tr>
-								<td>Transportation</td>
-                <td></td>
-                <td></td>
-								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-plus" id="user-edit"></i></button></td>
-							</tr>
-              <tr>
-								<td>Medical</td>
-                <td></td>
-                <td></td>
-								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-plus" id="user-edit"></i></button></td>
-							</tr>
-              <tr>
-								<td>Entertainment</td>
-                <td></td>
-                <td></td>
-								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-plus" id="user-edit"></i></button></td>
-							</tr>
+                                                        <?php endforeach; ?>
 						</table>
 						<br>
 						<p>To save changes made to spending click <a href="#">Update</a></p>

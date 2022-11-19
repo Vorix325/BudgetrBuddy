@@ -42,11 +42,12 @@ CREATE TABLE Budget_Bbudget
 (
     budget_id   INT NOT NULL,
     amount      FLOAT,
-    category_id INT NOT NULL,
-    Sdate       DATE,
+    user_id INT NOT NULL,
+    SMonth       VARCHAR(30),
+    SYear        VARCHAR(30),
     PRIMARY KEY (budget_id),
-    FOREIGN KEY (category_id)
-        REFERENCES Category_BBudget(category_id)
+    FOREIGN KEY (user_id)
+        REFERENCES Users_Bbudget(user_id)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
@@ -76,10 +77,12 @@ INSERT INTO currentq VALUES
 INSERT INTO Users_BBudget VALUES
 ('guest','guest','guest','guest','guest','guest','reg','guest1',0);
 INSERT INTO Category_BBudget VALUES
-('groceries',      0, 0, 0),
-('utility',        1, 0, 0),
-('medical',        2, 0, 0),
-('transportation', 3, 0, 0);
+('food',      0, 0, 0),
+('cloth',        1, 0, 0),
+('ultility',        2, 0, 0),
+('transportation', 3, 0, 0),
+('medial',          4,0,0),
+('entertaiment',    5,0,0);
 
 -- create the users
 CREATE USER IF NOT EXISTS mgs_user@localhost 
