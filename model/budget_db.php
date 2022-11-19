@@ -31,5 +31,18 @@ class budget_db
     $statement->execute();
     $statement->closeCursor();
     }
+    function updateBudget($budgetId, $amount)
+    {
+     $db = database::getDB();
+    $query = 'UPDATE Budget_Bbudget
+              amount = :amount
+              WHERE budget_id = :budgetId';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':amount',$amount);
+    $statement->bindValue(':budgetId',$budgetId);
+    $statement->execute();
+    $statement->closeCursor();
+        
+    }
 }
 

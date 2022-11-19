@@ -29,17 +29,6 @@
                 <div class="welcome" id="welcome">
                     <h3>Hey Buddy! Let's work on that Budget</h3>
                 </div>    
-
-                <div class="budget-container">
-                     <!-- Month Date -->
-                     <div class="start-month-container">
-                        <h3>Month Date</h3> 
-                        <label for="month">Select Month & Date</label>
-                        <p class= "hide error" id="month-error">Date is invalid</p>
-                        <input type="date" class="month-date" id="month-date"/>
-                        <button class = "submit" id="set-month-button">Set Date</button>
-                     </div>
-                        
                      
                 </div>
                  <!-- Output -->
@@ -65,6 +54,8 @@
                      id="list">
                 </div>
                 <!-- Budget Category Table -->
+                <form action="index.php" method ="post">
+                    <input type='hidden' name='action' value='updateBudget'>
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
 								<th>&emsp;&nbsp;&nbsp;Category&emsp;&nbsp;&nbsp;</th>
@@ -80,14 +71,14 @@
                                                                 <td><?php echo $ca->getTotal(); ?></td>
                                                                 <td></td>
 								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
+								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit" name="deleteBudget"></i></button></td>
 								
 							</tr>
                                                         <?php endforeach; ?>
 						</table>
 						<br>
-						<p>To save changes made to spending click <a href="#">Update</a></p>
 						<button type=button class="submit">Update</button> 
+                </form>
             </div>
         </div>
         <!-- Java Script -->

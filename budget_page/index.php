@@ -87,7 +87,19 @@ switch($action)
        
         
         break;
-        
+    case 'addBudget' :
+        $dateTime = new DateTime();
+        $month = $dateTime->format('m');
+        $year = $dateTime->format('Y');
+        $amount = filter_input(INPUT_POST, 'amount');
+        $userId = $userInfo->getCurrent();
+        $budgetDB->addBudget($amount, $userId[0], $month, $year);
+        break;
+    case 'addCategory' :
+        $userId = $userInfo->getCurrent();
+        $categoryName = filter_input(INPUT_POST, 'category_name');
+        $categoryDB->addCategory($userId[0], $categoryName);
+        break;
     case 'addSpending':
         $spendName = filter_input(INPUT_POST, 'spendName');
         $userId = $userInfo->getCurrent();

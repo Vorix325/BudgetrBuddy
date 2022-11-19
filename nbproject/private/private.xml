@@ -5,10 +5,12 @@
         <group>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/budget_view.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/category_db.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/budget_limit.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/budget_db.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/login.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/user_database.sql</file>
-            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/spending_db.php</file>
         </group>
     </open-files>
 </project-private>
