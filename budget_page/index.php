@@ -5,9 +5,11 @@ require('../model/category.php');
 require('../model/category_db.php');
 require('../model/spending_db.php');
 require('../model/userInfo_db.php');
+require("../model/budget_db.php");
 $userInfo = new userInfo_db();
 $categoryDB = new category_db();
 $spendingDB = new spending_db();
+$budgetDB = new budget_db();
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_POST, 'action');
@@ -56,15 +58,34 @@ switch($action)
         break;
     case 'showBudget':
         $userId = $userInfo->getCurrent();
+        $dateTime = new DateTime();
+        $month = $dateTime->format('m');
+        $year = $dateTime->format('Y');
+        $budget = $budgetDB->getBudget($userId[0], $month, $year);
+        $array = $spendingDB->getSpendTime($month,$year);
         $categories = $categoryDB->getCategory($userId[0]);
-         
-         foreach($categories as $ca)
-          {
-             $caNames[] = $ca->getCaName();
-              $caTotals[] = $ca->getTotal();
-               
-          }
-        included('../budget_page/add_page.php');
+        if($budget == null || $array == null || categories == null)
+        {
+            $budget = 0;
+            $total = 0;
+            $balance = $budget - $total;
+            $error = "No budget Data";
+            include('../budget_page/budget_limit.php');
+            
+        }
+        else
+        {
+            $total = 0;
+            foreach($array as $t)
+           {
+             $total += $t;
+           }
+             $balance = $budget - $total;
+             include('../budget_page/budget_limit.php');
+        }
+        
+       
+        
         break;
         
     case 'addSpending':

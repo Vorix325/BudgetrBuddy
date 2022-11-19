@@ -13,10 +13,23 @@ class spending_db
      $statement->closeCursor();
      return $spending; 
     }
+    function getSpendTime($month , $year)
+    {
+        $db = database::getDB();
+     $query = 'SELECT  Samount  FROM spending_bbudget
+              WHERE SMonth = :month AND SYear = :year';
+     $statement = $db->prepare($query);
+     $statement->bindValue(':month',$month);
+     $statement->bindValue(':year', $year);
+     $statement->execute();
+     $spending = $statement->fetchAll();
+     $statement->closeCursor();
+     return $spending; 
+    }
     function addSpend($userId,$categoryId,$amount, $name , $date)
     {
      $db = database::getDB();
-     $query = 'INSERT INTO Spending
+     $query = 'INSERT INTO spending_bbudget
                (user_id, category_id,Samount, costName, SDate)
               VALUE
                (:userId, :categoryId, :amount, :name, :date)';
@@ -33,7 +46,7 @@ class spending_db
     function updateSpend($spendId,$categoryId,$amount, $name, $date)
     {
      $db = database::getDB(); 
-     $query = 'UPDATE Spending
+     $query = 'UPDATE spending_bbudget
               SET
                 (costName, category_id, Samount, sDate)
               VALUE

@@ -13,7 +13,7 @@ CREATE TABLE Users_Bbudget
     nick_name    VARCHAR(30),
     typeof_user  VARCHAR(30),
     password     VARCHAR(30),
-    user_id      INT NOT NULL,
+    user_id      INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (user_id)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE currentq
 CREATE TABLE Category_BBudget
 (
     category_name VARCHAR(30),
-    category_id   INT            NOT NULL,
+    category_id   INT            NOT NULL  AUTO_INCREMENT,
     user_id       INT            NOT NULL,
     total         FLOAT,                     
     PRIMARY KEY (category_id),
@@ -40,7 +40,7 @@ CREATE TABLE Category_BBudget
 
 CREATE TABLE Budget_Bbudget
 (
-    budget_id   INT NOT NULL,
+    budget_id   INT NOT NULL AUTO_INCREMENT,
     amount      FLOAT,
     user_id INT NOT NULL,
     SMonth       VARCHAR(30),
@@ -54,12 +54,14 @@ CREATE TABLE Budget_Bbudget
 
 CREATE TABLE Spending_Bbudget
 (
-    spending_id    INT              NOT NULL,
+    spending_id    INT              NOT NULL AUTO_INCREMENT,
     user_id        INT,
     costName       VARCHAR(30),
     category_id    INT,
     Samount        FLOAT,
-    smonth         VARCHAR(15),
+    SDate        VARCHAR(30),
+    SMonth       VARCHAR(30),
+    SYear        VARCHAR(30),
     PRIMARY KEY (spending_id),
     FOREIGN KEY (category_id)
         REFERENCES Category_BBudget(category_id)

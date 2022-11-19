@@ -18,20 +18,19 @@
         <div class="wrapper">
             <div class="container">
                 <div class="welcome" id="welcome">
-                    <p>test</p>
                     <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
     <script>
     var xValues = <?php echo $caName; ?>;
     var yValues = <?php echo $caTotal; ?>;
-    var barColors = <?php echo $color; ?>;
+    
 
     new Chart("myChart", {
     type: "bar",
     data: {
         labels: xValues,
         datasets: [{
-        backgroundColor: barColors,
+        backgroundColor: "rgba(0,0,0,1.0)",
         data: yValues
         }]
     },
