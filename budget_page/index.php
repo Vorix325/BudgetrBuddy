@@ -66,8 +66,8 @@ switch($action)
         $categories = $categoryDB->getCategory($userId[0]);
         if($budget == null || $array == null || categories == null)
         {
-            $budget = 0;
-            $total = 0;
+            $budget = $month;
+            $total = $year;
             $balance = $budget - $total;
             $error = "No budget Data";
             include('../budget_page/budget_limit.php');
@@ -81,12 +81,14 @@ switch($action)
              $total += $t;
            }
              $balance = $budget - $total;
-             include('../budget_page/budget_limit.php');
+             include('../budget_page/budget_lview.php');
         }
         
        
         
         break;
+        
+        
     case 'addBudget' :
         $dateTime = new DateTime();
         $month = $dateTime->format('m');
@@ -100,20 +102,40 @@ switch($action)
         $categoryName = filter_input(INPUT_POST, 'category_name');
         $categoryDB->addCategory($userId[0], $categoryName);
         break;
+    case 'deleteBudget' :
+        $caId = filter_input(INPUT_POST, 'ca_id', 
+            FILTER_VALIDATE_INT);
+        $categoryDB->deleteCategory($ca_id);
+        break;
+    case 'showAddSpend':
+        $userId = $userInfo->getCurrent();
+        $categories = $categoryDB->getCategory($userId[0]);
+        include('../budget_page/spend_add.php');
+        break;
     case 'addSpending':
         $spendName = filter_input(INPUT_POST, 'spendName');
-        $userId = $userInfo->getCurrent();
-        $costName = filter_input(INPUT_POST,'costName');
+        $userId = filter_input(INPUT_POST, 'userId');
         $categoryId = filter_input(INPUT_POST,'categoryId');
         $time = strtotime($_POST['dateFrom']);
         $date = date('d',$time);
         $month = date('m', $time);
         $year = date('Y', $time);
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
+        
         $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $time);
         break;
+    case 'showUpSpend':
+        $userId = $userInfo->getCurrent();
+        $categories = $categoryDB->getCategory($userId[0]);
+        $name = filter_input(INPUT_POST, 'spendName');
+        $amount = filter_input(INPUT_POST, 'spendAmount', FILTER_VALIDATE_FLOAT);
+        $time = strtotime($_POST['date']);
+        $date = new DateTime($time);
+        $category_id = filter_input(INPUT_POST, 'categoryID');
+        include('../budget_page/spend_edit.php');
+        break;
     case 'updateSpending':
-        $spendId = filter_input(INPUT_POST,'spendId');
+        
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
         $spendName = filter_input(INPUT_POST, 'spendName');
         $categoryId = filter_input(INPUT_POST,'categoryId');
@@ -122,7 +144,7 @@ switch($action)
         $month = date('m', $time);
         $year = date('Y', $time);
         
-        $spendingDB->updateSpend($spendId, $categoryId, $amount, $spendName, $time);
+        $spendingDB->updateSpend($categoryId, $amount, $spendName, $time);
                 
 }
 function validateDate($date, $format = 'Y-m-d'){

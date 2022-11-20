@@ -19,12 +19,11 @@ CREATE TABLE Users_Bbudget
 
 CREATE TABLE currentq
 (
-    queue   INT NOT NULL,
-    user_id INT,
-    typeof_user VARCHAR(30),
+    queue       INT NOT NULL,
+    user_id     INT,
+    typeof_user  VARCHAR(30),
     PRIMARY KEY (queue)
-    FOREIGN KEY(typeof_user) REFERENCES Users_Bbudget(typeof_user)
-
+    
 );
 
 CREATE TABLE Category_BBudget
@@ -32,6 +31,7 @@ CREATE TABLE Category_BBudget
     category_name VARCHAR(30),
     category_id   INT            NOT NULL  AUTO_INCREMENT,
     user_id       INT            NOT NULL,
+    limitS         FLOAT,
     total         FLOAT,                     
     PRIMARY KEY (category_id),
     FOREIGN KEY (user_id) REFERENCES Users_Bbudget(user_id)
@@ -59,6 +59,7 @@ CREATE TABLE Spending_Bbudget
     costName       VARCHAR(30),
     category_id    INT,
     Samount        FLOAT,
+    timeS          DATE,
     SDate        VARCHAR(30),
     SMonth       VARCHAR(30),
     SYear        VARCHAR(30),
@@ -74,17 +75,17 @@ CREATE TABLE Spending_Bbudget
 );
 -- INSERT Current User
 INSERT INTO currentq VALUES
-(1, 0);
+(1, 0, 'regular');
 
 INSERT INTO Users_BBudget VALUES
 ('guest','guest','guest','guest','guest','guest','reg','guest1',0);
 INSERT INTO Category_BBudget VALUES
-('food',      0, 0, 0),
-('cloth',        1, 0, 0),
-('ultility',        2, 0, 0),
-('transportation', 3, 0, 0),
-('medial',          4,0,0),
-('entertaiment',    5,0,0);
+('food',           0, 0, 100 ,0),
+('cloth',          1, 0, 100 ,0),
+('ultility',       2, 0, 100 ,0),
+('transportation', 3, 0, 100 ,0),
+('medial',         4, 0, 100 ,0),
+('entertaiment',   5, 0, 100 ,0);
 
 -- create the users
 CREATE USER IF NOT EXISTS mgs_user@localhost 

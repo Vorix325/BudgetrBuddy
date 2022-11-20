@@ -26,24 +26,24 @@ class spending_db
      $statement->closeCursor();
      return $spending; 
     }
-    function addSpend($userId,$categoryId,$amount, $name , $date)
+    function addSpend($userId,$categoryId,$amount, $name , $time, $date, $month, $year)
     {
      $db = database::getDB();
      $query = 'INSERT INTO spending_bbudget
-               (user_id, category_id,Samount, costName, SDate)
+               (user_id, category_id,Samount, costName, timeS, SDate, SMonth, SYear)
               VALUE
-               (:userId, :categoryId, :amount, :name, :date)';
+               (:userId, :categoryId, :amount, :name, :time, :date, :month, :year)';
              
      $statement = $db->prepare($query);
      $statement->bindValue(':userId',$userId);
      $statement->bindValue(':categoryId',$categoryId);
      $statement-> bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
-     $statement->bindValue(':date',$date);
+     $statement->bindValue(':time',$time);
      $statement->execute();
      $statement->closeCursor(); 
     }
-    function updateSpend($spendId,$categoryId,$amount, $name, $date)
+    function updateSpend($spendId,$categoryId,$amount, $name,$time, $date, $month, $year)
     {
      $db = database::getDB(); 
      $query = 'UPDATE spending_bbudget

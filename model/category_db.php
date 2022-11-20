@@ -17,13 +17,23 @@ class category_db
      $category->setUserID($data['user_id']);
      $category->setCaID($data['category_id']);
      $category->setCaName($data['category_name']);
+     $category->setLimit($data['limitS']);
      $category->setTotal($data['total']);
      $categories[] = $category;
     }
     $statement->closeCursor();
     return $categories; 
   }
-  
+  function deleteCategory($ca_id)
+  {
+    $db =database::getDB();
+    $query = 'DELETE FROM Category_Bbudget
+              WHERE category_id = :caId';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':caId', $ca_id);
+    $statement->execute();
+    $statement->closeCursor();
+  }
   function addCategory($userId,$categoryName)
   {
     $db = database::getDB();

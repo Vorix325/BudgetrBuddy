@@ -5,6 +5,7 @@ class category
     private string $categoryName;
     private int $categoryId;
     private float $total;
+    private float $limit;
     
      public function __construct() 
      {
@@ -13,7 +14,14 @@ class category
         $this->categoryName = '';
         $this->total = 0;
      }
-             
+    public function getLimit()
+    {
+        return $this->limit;
+    }
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+    }
     public function getUserID() {
         return $this->userId;
     }
