@@ -51,6 +51,9 @@ switch($action)
             $current = filter_input(INPUT_POST, 'current');
             $currentShow = $categoryDB->getId($current);
             $allSpend = $spendingDB->getSpend($currentShow);
+            $dateTime = new DateTime();
+            $currentM = $dateTime->format('m');
+            $currentY = $dateTime->format('Y'); 
             include('../budget_page/spend_view.php');
             
             
@@ -107,22 +110,27 @@ switch($action)
             FILTER_VALIDATE_INT);
         $categoryDB->deleteCategory($ca_id);
         break;
+    case 'deleteSpend' :
+        $spend_id = filter_input(INPUT_POST, 'spending_id');
+        $category_id = filter_input(INPUT_POST, 'category_id');
+        $spendingDB->deleteSpend($spend_id,$category_id);
+        break;
     case 'showAddSpend':
         $userId = $userInfo->getCurrent();
         $categories = $categoryDB->getCategory($userId[0]);
         include('../budget_page/spend_add.php');
         break;
     case 'addSpending':
-        $spendName = filter_input(INPUT_POST, 'spendName');
+        $spendName = filter_input(INPUT_POST, 'spending_Name');
         $userId = filter_input(INPUT_POST, 'userId');
         $categoryId = filter_input(INPUT_POST,'categoryId');
-        $time = strtotime($_POST['dateFrom']);
+        $time = strtotime($_POST['time']);
         $date = date('d',$time);
         $month = date('m', $time);
         $year = date('Y', $time);
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
         
-        $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $time);
+        $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $time, $date, $month, $year);
         break;
     case 'showUpSpend':
         $userId = $userInfo->getCurrent();
@@ -137,14 +145,14 @@ switch($action)
     case 'updateSpending':
         
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
-        $spendName = filter_input(INPUT_POST, 'spendName');
+        $spendName = filter_input(INPUT_POST, 'spending_Name');
         $categoryId = filter_input(INPUT_POST,'categoryId');
-        $time = strtotime($_POST['dateFrom']);
+        $time = strtotime($_POST['time']);
         $date = date('d',$time);
         $month = date('m', $time);
         $year = date('Y', $time);
         
-        $spendingDB->updateSpend($categoryId, $amount, $spendName, $time);
+        $spendingDB->updateSpend($categoryId, $amount, $spendName, $time, $date, $month, $year);
                 
 }
 function validateDate($date, $format = 'Y-m-d'){

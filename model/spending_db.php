@@ -26,8 +26,21 @@ class spending_db
      $statement->closeCursor();
      return $spending; 
     }
+    function deleteSpend($spend_id,$categoryId)
+    {
+       $db = database::getDB();
+    $query = 'DELETE FROM spending_bbudget
+              WHERE $spend_id = :spend_id';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':spend_id', $spend_id);
+    $statement->execute();
+    $statement->closeCursor();
+    $total = $this->getTotal($categoryId);
+    $this->countTotal($categoryId, $total);
+    }
     function addSpend($userId,$categoryId,$amount, $name , $time, $date, $month, $year)
     {
+     
      $db = database::getDB();
      $query = 'INSERT INTO spending_bbudget
                (user_id, category_id, Samount, costName, timeS, SDate, SMonth, SYear)
@@ -45,6 +58,8 @@ class spending_db
      $statement->bindValue(':year',$year);
      $statement->execute();
      $statement->closeCursor(); 
+     $total = $this->getTotal($categoryId);
+     $this->countTotal($categoryId, $total);
     }
     function updateSpend($spendId,$userId,$categoryId,$amount, $name,$time, $date, $month, $year)
     {
@@ -68,6 +83,39 @@ class spending_db
      $statement->bindValue(':year',$year);
      $statement->execute();
      $statement->closeCursor();
+     $total = $this->getTotal($categoryId);
+     $this->countTotal($categoryId, $total);
+    }
+    function countTotal($category_id, $total)
+    {
+        
+     
+     $db = database::getDB(); 
+     $query = 'UPDATE Category_bbudget
+              SET
+                (total)
+              VALUE
+                 (:total)
+              WHERE category_id = :caId';
+               
+     $statement = $db->prepare($query);
+     $statement->bindValue(':caId',$category_id);
+     $statement->bindValue(':total', $total);
+     $statement->execute();
+     $statement->closeCursor();
+    }
+    function getTotal($category_id)
+    {
+     $db = database::getDB(); 
+     $query = 'SELECT SUM(amount) FROM spending_bbudget
+               WHERE category_id = :caId ';
+               
+     $statement = $db->prepare($query);
+     $statement->bindValue(':caId',$category_id);
+     $statement->execute();
+     $total = $statement->fetch();
+     $statement->closeCursor();
+     return $total;
     }
 }
 

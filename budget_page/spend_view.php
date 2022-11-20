@@ -8,7 +8,7 @@
         <!-- JS link -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="BudgetrBuddy/bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
     </head>
 
     <body>
@@ -61,17 +61,42 @@
                             <th>Edit</th><!-- comment -->
                             <th>Delete</th>
                         </tr>
+                        
                         <tr>
                     <?php foreach ($allSpend as $spend) : ?>
-                        <td><?php echo $spend['spending_id']; ?></td>
-                        <td><?php echo $spend['costName']; ?></td><!-- comment -->
-                        <td><?php echo $spend['Sname']; ?></td>
-                        <td><?php echo $spend['timeS']; ?></td>
-                        <td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-			<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit" name="deleteSpend"></i></button></td>
+                        <?php if($spend['SMonth'] == $currentM && $spend['SYear'] = $currentY) : ?>
+                        <td><input type='text' name='spend_id' value='<?php echo $spend['spending_id']; ?>'></td>
+                        <td><input type='text' name='spending_Name' value='<?php echo $spend['costName']; ?>'></td>
+                         <td><input type='text' name='category_id' value='<?php echo $spend['category_id']; ?>'></td>
+                         <td><input type='text' name='time' value='<?php echo $spend['timeS']; ?>'></td>
+                         <td><form action="./index.php" method='post'>
+                                 <input type='hidden' name='action' value='showUpSpend'><!-- comment -->
+                                 <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
+                                 <input type='hidden' name='spending_Name' value='<?php echo $spend['costName']; ?>'>
+                                 <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
+                                 <input type='hidden' name='time' value='<?php echo $spend['timeS']; ?>'></td>
+                                 
+                            <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
+                         </form></td>
+			<td><form action="./index.php" method='post'>
+                              <input type='hidden' name='action' value='deleteSpend'><!-- comment -->
+                              <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
+                              <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
+                              <button class="user-edit"><i class="fas fa-user-times" id="user-edit" onclick="return confirm('Are you sure?')" name="deleteSpend"></i></button>
+                            </form></td>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                         </tr>
                     </Table>
+                    <br>
+                    <form action="./index.php" method='post'>
+                         <input type='hidden' name='action' value='showAddSpend'><!-- comment -->
+                          <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
+                          <input type='hidden' name='spending_Name' value='<?php echo $spend['costName']; ?>'>
+                          <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
+                          <input type='hidden' name='time' value='<?php echo $spend['timeS']; ?>'>
+                          <button type='submit' value='Add New Spending'>
+                    </form>
                 </nav>
                 </div>
             </div>
