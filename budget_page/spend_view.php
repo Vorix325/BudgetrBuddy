@@ -57,12 +57,18 @@
                             <th>Spend Id</th><!-- comment -->
                             <th>Cost Name</th><!-- comment -->
                             <th>Amount</th>
+                            <th>Date</th><!-- comment -->
+                            <th>Edit</th><!-- comment -->
+                            <th>Delete</th>
                         </tr>
                         <tr>
                     <?php foreach ($allSpend as $spend) : ?>
                         <td><?php echo $spend['spending_id']; ?></td>
                         <td><?php echo $spend['costName']; ?></td><!-- comment -->
                         <td><?php echo $spend['Sname']; ?></td>
+                        <td><?php echo $spend['timeS']; ?></td>
+                        <td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
+			<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit" name="deleteSpend"></i></button></td>
                     <?php endforeach; ?>
                         </tr>
                     </Table>

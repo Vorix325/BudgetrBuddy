@@ -30,7 +30,7 @@ class spending_db
     {
      $db = database::getDB();
      $query = 'INSERT INTO spending_bbudget
-               (user_id, category_id,Samount, costName, timeS, SDate, SMonth, SYear)
+               (user_id, category_id, Samount, costName, timeS, SDate, SMonth, SYear)
               VALUE
                (:userId, :categoryId, :amount, :name, :time, :date, :month, :year)';
              
@@ -40,25 +40,32 @@ class spending_db
      $statement-> bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
      $statement->bindValue(':time',$time);
+     $statement->bindValue(':date',$date);
+     $statement->bindValue(':month',$month);
+     $statement->bindValue(':year',$year);
      $statement->execute();
      $statement->closeCursor(); 
     }
-    function updateSpend($spendId,$categoryId,$amount, $name,$time, $date, $month, $year)
+    function updateSpend($spendId,$userId,$categoryId,$amount, $name,$time, $date, $month, $year)
     {
      $db = database::getDB(); 
      $query = 'UPDATE spending_bbudget
               SET
-                (costName, category_id, Samount, sDate)
+                (user_id, costName, category_id, Samount, timeS, sDate, SMonth, SYear)
               VALUE
-                 (:name, :caId, :amount, :date)
+                 (:userId, :name, :caId, :amount, :time, :date,:month, :year )
               WHERE spending_id = :spendId'
                ;
      $statement = $db->prepare($query);
-     $statement->bindValue(":spendId", $spendId);
-     $statement->bindValue(":caId", $categoryId);
-     $statement->bindValue(":name", $name);
-     $statement->bindValue(":amount", $amount);
-     $statement->bindValue(":date", $date);
+     $statement->bindValue(':spendId',$spendId);
+     $statement->bindValue(':userId',$userId);
+     $statement->bindValue(':categoryId',$categoryId);
+     $statement-> bindValue(':amount', $amount);
+     $statement->bindValue(':name', $name);
+     $statement->bindValue(':time',$time);
+     $statement->bindValue(':date',$date);
+     $statement->bindValue(':month',$month);
+     $statement->bindValue(':year',$year);
      $statement->execute();
      $statement->closeCursor();
     }

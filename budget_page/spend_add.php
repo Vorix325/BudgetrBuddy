@@ -13,7 +13,7 @@
         <?php endforeach; ?>
         </select>
         <br>
-        <input type ="hidden" name='userId' value=<?php echo $userId; ?>>
+        <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
         <label>Name:</label>
         <input type="text" name="spendName" />
         <br>

@@ -14,7 +14,7 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
-        $action = 'showBudget';
+        $action = 'showSpending';
     }
 }  
 
@@ -51,7 +51,7 @@ switch($action)
             $current = filter_input(INPUT_POST, 'current');
             $currentShow = $categoryDB->getId($current);
             $allSpend = $spendingDB->getSpend($currentShow);
-            include('../budget_page/budget_view.php');
+            include('../budget_page/spend_view.php');
             
             
         }   

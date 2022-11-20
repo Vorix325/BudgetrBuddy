@@ -4,11 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/admin/start-month.html</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/budget_view.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/spend_edit.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/spend_view.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/spend_add.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/user_database.sql</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/spending_db.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/spending.php</file>
         </group>
     </open-files>
 </project-private>
