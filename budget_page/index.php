@@ -91,24 +91,43 @@ switch($action)
         
         break;
         
-        
+    
     case 'addBudget' :
         $dateTime = new DateTime();
         $month = $dateTime->format('m');
         $year = $dateTime->format('Y');
-        $amount = filter_input(INPUT_POST, 'amount');
-        $userId = $userInfo->getCurrent();
-        $budgetDB->addBudget($amount, $userId[0], $month, $year);
+        $amount = filter_input(INPUT_POST, 'Limit');
+        $userId = filter_input(INPUT_POST, 'userId');
+        $budgetDB->addBudget($amount, $userId, $month, $year);
         break;
-    case 'addCategory' :
-        $userId = $userInfo->getCurrent();
-        $categoryName = filter_input(INPUT_POST, 'category_name');
-        $categoryDB->addCategory($userId[0], $categoryName);
-        break;
-    case 'deleteBudget' :
+     case 'deleteBudget' :
         $caId = filter_input(INPUT_POST, 'ca_id', 
             FILTER_VALIDATE_INT);
         $categoryDB->deleteCategory($ca_id);
+        break;
+    
+    case 'showAddCategory':
+        $dateTime = new DateTime();
+        $month = $dateTime->format('m');
+        $year = $dateTime->format('Y');
+        $userId = filter_input(INPUT_POST, 'userId');
+        include('../budget_page/budget_add.php');
+        break;
+    case 'addCategory' :
+        $userId = filter_input(INPUT_POST, 'userId');
+        $categoryName = filter_input(INPUT_POST, 'category_name');
+        $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
+        $month = filter_input(INPUT_POST, 'month');
+        $year = filter_input(INPUT_POST,'year');
+        $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year);
+        break;
+    case 'showUpCategory':
+        $dateTime = new DateTime();
+        $month = $dateTime->format('m');
+        $year = $dateTime->format('Y');
+        $userId = filter_input(INPUT_POST, 'userId');
+        $name = filter_input(INPUT_POST, 'name');
+        include('../budget_page/budget_edit.php');
         break;
     case 'deleteSpend' :
         $spend_id = filter_input(INPUT_POST, 'spending_id');

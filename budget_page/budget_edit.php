@@ -1,38 +1,24 @@
 <?php include '../view/header.php'; ?>
 <main>
-    <h1>Add Product</h1>
+    <h1>Add New Category</h1>
     <form action="." method="post" id="add_product_form">
         <input type="hidden" name="action" value="add_product">
-
-        <label>Category:</label>
-        <select name="category_id">
-        <?php foreach ( $categories as $category ) : ?>
-            <option value="<?php echo $category['categoryID']; ?>">
-                <?php echo $category['categoryName']; ?>
-            </option>
-        <?php endforeach; ?>
-        </select>
-        <br>
-
-        <label>Code:</label>
-        <input type="text" name="code" />
-        <br>
-
+        <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
+        <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
+        <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
         <label>Name:</label>
-        <input type="text" name="name" />
+        <input type="text" name="ca_name" value="<?php echo $name; ?>"/>
         <br>
 
-        <label>List Price:</label>
-        <input type="text" name="price" />
+        <label>Limit:</label>
+        <input type="text" name="Limit" value='<?php echo $limit; ?>'/>
         <br>
 
         <label>&nbsp;</label>
         <input type="submit" value="Add Product" />
         <br>
     </form>
-    <p class="last_paragraph">
-        <a href="?action=list_products">View Product List</a>
-    </p>
+   
 
 </main>
 <?php include '../view/footer.php'; ?>

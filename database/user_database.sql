@@ -32,7 +32,9 @@ CREATE TABLE Category_BBudget
     category_id   INT            NOT NULL  AUTO_INCREMENT,
     user_id       INT            NOT NULL,
     limitS         FLOAT,
-    total         FLOAT,                     
+    total         FLOAT, 
+    SMonth        VARCHAR(30),
+    SYear         VARCHAR(30),                    
     PRIMARY KEY (category_id),
     FOREIGN KEY (user_id) REFERENCES Users_Bbudget(user_id)
         

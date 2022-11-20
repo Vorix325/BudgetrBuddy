@@ -67,13 +67,29 @@
 							</tr>
                                                         <?php foreach($categories as $ca) :?>
 							<tr>
-								<td><?php echo $ca->getCaName(); ?>
-                                                                     <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>></td>
-                                                                <td><?php echo $ca->getLimit(); ?></td>
+                                                            <?php if($ca->getMonth() == $month && $ca->getYear() == $year) : ?>
+                                                                <td><?php echo $ca->getCaName(); ?></td>
+								<td><?php echo $ca->getLimit(); ?></td>
                                                                 <td><?php echo $ca->getTotal(); ?></td>
-								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit" name="deleteBudget"></i></button></td>
-								
+                                             
+                                                                <td><form action="./index.php" method ="post">
+                                                                    <input type ="hidden" name='action' value='showAddCategory'>
+                                                                    <input type='hidden' name='userId' value='<?php echo $userId[0]; ?>'>
+                                                                    <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
+                                                                    <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
+                                                                    <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
+                                                                    <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
+                                                                    
+                                                                </form></td>
+                                                                <td><form action="./index.php" method="post">
+                                                                    <input type ="hidden" name='action' value='showUpCategory'>
+                                                                    <input type='hidden' name='userId' value='<?php echo $userId[0]; ?>'>
+                                                                    <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
+                                                                    <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
+                                                                    <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
+                                                                    <button class="user-edit"><i class="fas fa-user-times" id="user-edit" name="deleteBudget"></i></button>
+                                                                </form></td>
+							    <?php endif; ?>
 							</tr>
                                                         <?php endforeach; ?>
 						</table>

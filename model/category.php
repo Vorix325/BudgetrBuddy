@@ -6,6 +6,9 @@ class category
     private int $categoryId;
     private float $total;
     private float $limit;
+    private string $month;
+    private string $year;
+            
     
      public function __construct() 
      {
@@ -13,6 +16,24 @@ class category
         $this->categoryId = 0;
         $this->categoryName = '';
         $this->total = 0;
+        $this->month = 'January';
+        $this->year = '2022';
+     }
+     public function getMonth()
+     {
+         return $this->month;
+     }
+     public function setMonth($month)
+     {
+         $this->month = $month;
+     }
+      public function getYear()
+     {
+         return $this->year;
+     }
+     public function setYear($Year)
+     {
+         $this->month = $year;
      }
     public function getLimit()
     {
