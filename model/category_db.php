@@ -19,6 +19,8 @@ class category_db
      $category->setCaName($data['category_name']);
      $category->setLimit($data['limitS']);
      $category->setTotal($data['total']);
+     $category->setMonth($data['SMonth']);
+     $category->setYear($data['SYear']);
      $categories[] = $category;
     }
     $statement->closeCursor();

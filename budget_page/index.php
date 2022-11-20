@@ -100,7 +100,7 @@ switch($action)
         $userId = filter_input(INPUT_POST, 'userId');
         $budgetDB->addBudget($amount, $userId, $month, $year);
         break;
-     case 'deleteBudget' :
+     case 'deleteCategory' :
         $caId = filter_input(INPUT_POST, 'ca_id', 
             FILTER_VALIDATE_INT);
         $categoryDB->deleteCategory($ca_id);
@@ -127,6 +127,7 @@ switch($action)
         $year = $dateTime->format('Y');
         $userId = filter_input(INPUT_POST, 'userId');
         $name = filter_input(INPUT_POST, 'name');
+        $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
         include('../budget_page/budget_edit.php');
         break;
     case 'deleteSpend' :

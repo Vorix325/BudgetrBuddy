@@ -54,8 +54,7 @@
                      id="list">
                 </div>
                 <!-- Budget Category Table -->
-                <form action="index.php" method ="post">
-                    <input type='hidden' name='action' value='updateBudget'>
+       
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
 								<th>&emsp;&nbsp;&nbsp;Category&emsp;&nbsp;&nbsp;</th>
@@ -72,30 +71,34 @@
 								<td><?php echo $ca->getLimit(); ?></td>
                                                                 <td><?php echo $ca->getTotal(); ?></td>
                                              
-                                                                <td><form action="./index.php" method ="post">
-                                                                    <input type ="hidden" name='action' value='showAddCategory'>
-                                                                    <input type='hidden' name='userId' value='<?php echo $userId[0]; ?>'>
-                                                                    <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
-                                                                    <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
-                                                                    <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
-                                                                    <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
-                                                                    
-                                                                </form></td>
                                                                 <td><form action="./index.php" method="post">
                                                                     <input type ="hidden" name='action' value='showUpCategory'>
                                                                     <input type='hidden' name='userId' value='<?php echo $userId[0]; ?>'>
                                                                     <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
                                                                     <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
                                                                     <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
-                                                                    <button class="user-edit"><i class="fas fa-user-times" id="user-edit" name="deleteBudget"></i></button>
+                                                                    <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
+                                                                    
+                                                                </form></td>
+                                                                <td><form action="./index.php" method="post">
+                                                                    <input type ="hidden" name='action' value='deleteCategory'>
+                                                                    <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>><!-- comment -->
+                                                                    <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                 </form></td>
 							    <?php endif; ?>
 							</tr>
                                                         <?php endforeach; ?>
 						</table>
 						<br>
-						<button type=button class="submit">Update</button> 
-                </form>
+                                                <form action="./index.php" method ="post">
+                                                                    <input type ="hidden" name='action' value='showAddCategory'>
+                                                                    <input type='hidden' name='userId' value='<?php echo $userId[0]; ?>'>
+                                                                    <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
+                                                                    <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
+                                                                    <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
+                                                                    <button class="user-edit"><i class="fas fa-user-edit" id="user-edit" name="Add Budget"></i></button>
+                                                </form> 
+                </form
             </div>
         </div>
         <!-- Java Script -->
