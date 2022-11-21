@@ -31,7 +31,7 @@ class category
      {
          return $this->year;
      }
-     public function setYear($Year)
+     public function setYear($year)
      {
          $this->month = $year;
      }

@@ -26,7 +26,6 @@
                 </div>
                 <div class="info-container">
                     <h3>Your Profile</h3>
-                    <p><?php print_r($info); ?> test</p>
                     <table border="1" id="user-info" class="user-info" style="display: block; margin: 0 auto;">
                         <tr>
                             <th>Name</th>

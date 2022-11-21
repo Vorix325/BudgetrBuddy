@@ -14,15 +14,9 @@
     </head>    
     <body>
         
-
+   
         <!-- Header -->
-        <div class ="header">
-            <div class="inner-header">
-                <div class="logo-container">
-                    <h1>Budget<span>Buddy</span></h1>
-                </div>
-            </div>
-        </div>
+        <?php include '../view/header.php'; ?>
 
         <div class="wrapper">
             <div class="container">

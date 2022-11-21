@@ -12,20 +12,19 @@
 </head>   
 <body>
 <header><h1>Budge Buddy</h1></header>
+
  <div class ="header">
             <div class="inner-header">
                 <div class="logo-container">
                     <h1>Budget<span>Buddy</span></h1>
                 </div>
                 <ul class="navigation">
-                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Home</li></a>
-                    <form action='../user_info/index.php'>
-                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy'><li>Profile</li></a>
+                    <a href='../index.php'><li>Home</li></a>
+                    <a href='../BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php'><li>Contact</li></a>
-                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php'><li>Login In</li></a>
-                    <form action='../user_info/index.php'>
-                        <input type="hidden" name='action' value='logout'>
-                        <li><input type="button" value="Logout"></li>
+                    <a href= '../BudgetBuddy/user_info/index.php?action=show_login'><li>Login In</li></a>
+                    <a href= '../BudgetBuddy/user_info/index.php?action=logout'><li>Login Out</li></a>
+                   
                 </ul>
             </div>
 </div>

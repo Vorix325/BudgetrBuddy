@@ -52,7 +52,7 @@
                         </form>
                         <?php endforeach; ?>
                     </ul><!-- comment -->
-                    <Table>
+                    <Table border = '1'>
                         <tr>
                             <th>Spend Id</th><!-- comment -->
                             <th>Cost Name</th><!-- comment -->

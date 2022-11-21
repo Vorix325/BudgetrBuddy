@@ -7,7 +7,7 @@ $userInfo = new userInfo_db();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
-    $action = filter_input(INPUT_POST, 'action');
+    $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
         $action = 'show_login';
     }
@@ -40,12 +40,11 @@ switch($action)
             include('../user_info/login.php');
             break;
         }
-    case 'logout' :
+    case 'logout':
         $userInfo->updateCurrent(0);
         include('../user_info/logout.php');
         break;
     case 'show_reg':
-      $errorMessage = '';
       include('../user_info/register.php');
       break;
     case 'register' :
@@ -60,12 +59,12 @@ switch($action)
         if($password == $confirm)
         {
             $userInfo->addUser($username, $password, $fname, $lname, $email, $phone);
-            include('../user_info/login.php');
+            header("Location: ../index.php");
         }
         else
         {
-            $errorMessage = 'Please match the password';
-            include('../user_info/register.php');
+            $error = 'Please match the password';
+            include('../errors/error/php');
             
         }
         break;

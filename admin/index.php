@@ -8,7 +8,7 @@ $userInfo = new userInfo_db;
 $spendingDB = new spending_db();
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
-    $action = filter_input(INPUT_POST, 'action');
+    $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
         $action = 'showBudget';
     }

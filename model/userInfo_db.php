@@ -87,11 +87,13 @@ class userInfo_db
   }
   function addUser($username,$password,$fname,$lname,$email,$phone)
   {
+    $type = "reg";
+    $nickname = $username;
     $db = database::getDB();
-    $query = 'INSERT INTO user
-                (user_name, password, first_name, last_name, email, phone_number)
+    $query = 'INSERT INTO users_bbudget
+                (user_name, first_name, last_name, email, phone_number, nick_name, typeof_user, password)
                VALUES
-                 (:username, :password, :fname, :lname, :email, :phone)';
+                 (:username,:fname,     :lname,    :email, :phone, :nick, :type, :password)';
             
     $statement = $db->prepare($query);
     $statement->bindValue(':username',$username);
@@ -100,22 +102,27 @@ class userInfo_db
     $statement->bindValue(':lname',$lname);
     $statement->bindValue(':email',$email);
     $statement->bindValue(':phone',$phone);
+    $statement->bindValue(':nick', $nickname);
+    $statement->bindValue(':type', $type);
     $statement->execute();
     $statement->closeCursor(); 
   }
    function updateUser($id, $username,$password,$fname,$lname,$email,$phone)
    {
     $db = database::getDB();
-    $query = 'UPDATE user
+    $query = 'UPDATE users_bbudget
               SET user_name = :username, password = :password, fname = :fname, lname = :lname , email = :email, phone = :phone
               WHERE user_id = :id'
                ;
     $statement = $db->prepare($query);
-    $statement->bindValue(":productCode", $code);
-    $statement->bindValue(":productName", $name);
-    $statement->bindValue(":Price", $price);
-    $statement->bindValue(":categoryId",$categoryID);
-    $statement->bindValue(':product_id', $product_id);
+    $statement->bindValue(':id', $id);
+    $statement->bindValue(':username',$username);
+    $statement->bindValue(':password',$password);
+    $statement->bindValue(':fname',$fname);
+    $statement->bindValue(':lname',$lname);
+    $statement->bindValue(':email',$email);
+    $statement->bindValue(':phone',$phone);
+    $statement->bindValue(':nick', $nickname);
     $statement->execute();
     $statement->closeCursor();
    }

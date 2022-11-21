@@ -82,12 +82,12 @@ INSERT INTO currentq VALUES
 INSERT INTO Users_BBudget VALUES
 ('guest','guest','guest','guest','guest','guest','reg','guest1',0);
 INSERT INTO Category_BBudget VALUES
-('food',           0, 0, 100 ,0),
-('cloth',          1, 0, 100 ,0),
-('ultility',       2, 0, 100 ,0),
-('transportation', 3, 0, 100 ,0),
-('medial',         4, 0, 100 ,0),
-('entertaiment',   5, 0, 100 ,0);
+('food',           0, 0, 100 ,0, 'January', '2022'),
+('cloth',          1, 0, 100 ,0, 'January', '2022'),
+('ultility',       2, 0, 100 ,0, 'January', '2022'),
+('transportation', 3, 0, 100 ,0, 'January', '2022'),
+('medial',         4, 0, 100 ,0, 'January', '2022'),
+('entertaiment',   5, 0, 100 ,0, 'January', '2022');
 
 -- create the users
 CREATE USER IF NOT EXISTS mgs_user@localhost 

@@ -7,7 +7,7 @@ class user
     private string $lname;
     private string $password;
     private string $email;
-    private int $phone;
+    private string $phone;
     private string $nick;
     private string $typeUser;
     
@@ -18,7 +18,7 @@ class user
         $this->lname = '';
         $this->password= "";
         $this->email = '';
-        $this->phone= 0;
+        $this->phone= '';
         $this->typeUser = '';
     }
 
@@ -71,7 +71,7 @@ class user
         return $this->phone;
     }
 
-    public function setPhone(int $phone) {
+    public function setPhone(string $phone) {
         $this->phone= $phone;
     }
      public function getNick() {
