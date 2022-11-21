@@ -39,6 +39,7 @@ switch($action)
             $caId = [];
             foreach($categories as $ca)
             {
+                $caId[] = $ca->getCaID();
                 $caNames[] = $ca->getCaName();
                 $caTotals[] = $ca->getTotal();
                
@@ -48,6 +49,10 @@ switch($action)
             
             /*Generate data for category */
             $current = filter_input(INPUT_POST, 'current');
+            if($current == null)
+            {
+                $current = $caID[0];
+            }
             $currentShow = $categoryDB->getId($current);
             $allSpend = $spendingDB->getSpend($currentShow);
             $dateTime = new DateTime();

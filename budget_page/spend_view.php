@@ -46,9 +46,10 @@
 
                 <nav>
                     <ul>
-                        <?php foreach($caNames as $ca) : ?>
+                        <?php foreach($categories as $ca) : ?>
                         <form action="./index.php" method ="post">
-                        <a href=""> <li><?php echo $ca; ?></li></a>
+                        <input type ="hidden" name="current" value='<?php echo $ca->getCaID(); ?>'>
+                        <a href=""> <li><?php echo $ca->getCaName(); ?></li></a>
                         </form>
                         <?php endforeach; ?>
                     </ul><!-- comment -->
