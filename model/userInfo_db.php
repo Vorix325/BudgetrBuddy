@@ -9,19 +9,17 @@ class userInfo_db
     $statement = $db->prepare($query);
     $statement->bindValue(':username',$username);
     $statement->execute();
-    $password = $statement->fetchAll();
+    $password = $statement->fetch();
     $statement->closeCursor();
     return $password; 
  }
- function updateCurrent($userId)
+ function updateCurrent($userId, $type)
  {
     $db = database::getDB();
-    $query = 'UPDATE currentQ
-              SET user_id = :userId
-              WHERE queue = 1;'
-               ;
+    $query = 'UPDATE currentQ SET user_id = :userId, typeof_user = :type WHERE queue = 1';   
     $statement = $db->prepare($query);
-    $statement->bindValue(":userId", $userId);
+    $statement->bindValue(':userId', $userId);
+    $statement->bindValue(':type',$type);
     $statement->execute();
     $statement->closeCursor();
  }
@@ -33,24 +31,24 @@ class userInfo_db
     $statement = $db->prepare($sql);
     $statement->execute();
     $userId = $statement->fetch();
-     
     $statement->closeCursor();
     return $userId;
  }
  function getUserID($username)
  {
     $db = database::getDB();
-    $query = 'SELECT user_id FROM users_bbudget
+    $query = 'SELECT user_id, typeof_user FROM users_bbudget
               WHERE user_name = :username'
  
               ;
     $statement = $db->prepare($query);
     $statement->bindValue(':username',$username);
     $statement->execute();
-    $userID = $statement->fetch();
+    $user = $statement->fetch();
     $statement->closeCursor();
-    return $userID; 
+    return $user; 
   }
+ 
   function getUserInfo($userID)
   {
     $db = database::getDB();
@@ -64,11 +62,11 @@ class userInfo_db
     $data = $statement->fetch();
     $user = new User();
     if($data == null)
-        {
+    {
             $error = "Please select 2 exactly product for compare";
-            include('../errors/error.php');
+            header('Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/errors/error.php');
             
-        }
+    }
      else 
     {
       

@@ -19,11 +19,11 @@
                     <h1>Budget<span>Buddy</span></h1>
                 </div>
                 <ul class="navigation">
-                    <a href='../index.php'><li>Home</li></a>
-                    <a href='../BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
+                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy/index.php'><li>Home</li></a>
+                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php'><li>Contact</li></a>
-                    <a href= '../BudgetBuddy/user_info/index.php?action=show_login'><li>Login In</li></a>
-                    <a href= '../BudgetBuddy/user_info/index.php?action=logout'><li>Login Out</li></a>
+                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_login'><li>Login In</li></a>
+                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=logout'><li>Login Out</li></a>
                    
                 </ul>
             </div>

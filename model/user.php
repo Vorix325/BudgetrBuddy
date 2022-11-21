@@ -20,6 +20,7 @@ class user
         $this->email = '';
         $this->phone= '';
         $this->typeUser = '';
+        $this->nick= '';
     }
 
     public function getID() {

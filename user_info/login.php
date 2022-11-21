@@ -41,7 +41,7 @@
             <!-- Login -->      
             <div class="login-container">
                <form action="index.php" method='post'>
-                <input type="hidden" name='action' value='show_profile'>
+                <input type="hidden" name='action' value='login'>
                 <label>Username : </label>   
                 <input type="text" placeholder="Enter Username" name="username" required/>  
                 <label>Password : </label>   

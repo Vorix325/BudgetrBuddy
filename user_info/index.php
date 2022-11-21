@@ -25,19 +25,29 @@ switch($action)
         $password = trim(filter_input(INPUT_POST, 'password'));
         $checkCall = $userInfo->checkLogin($username);
         
-        $check = password_hash('guest1', PASSWORD_DEFAULT);
+        $check = password_hash($checkCall[0], PASSWORD_DEFAULT);
         if(password_verify($password, $check))
         {
-            $errorMessage = '';
-            $userId = $userInfo->getUserID($username);
-            $userInfo->updateCurrent($userId[0]);
-            header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php");
+            
+            $user = $userInfo->getUserID($username);
+            if($user == null)
+            {
+                
+                include('../errors/test.php');
+            }
+            else 
+            {
+                $userInfo->updateCurrent($user[0], $user[1]);
+                
+                header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/index.php");
+            }
+            
             break;
         }
         else
         {
-            $errorMessage = "Please enter correct login info";
-            include('../user_info/login.php');
+            $error = "Please enter correct login info";
+            include('../errors/error.php');
             break;
         }
     case 'logout':
@@ -59,7 +69,7 @@ switch($action)
         if($password == $confirm)
         {
             $userInfo->addUser($username, $password, $fname, $lname, $email, $phone);
-            header("Location: ../index.php");
+            header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/index.php");
         }
         else
         {

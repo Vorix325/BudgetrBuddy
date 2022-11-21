@@ -23,8 +23,7 @@ switch($action)
     case 'showSpending':
         $userId = $userInfo->getCurrent();
         
-        $errorMessage = "";
-        $errorB = '';
+        
         $categories = $categoryDB->getCategory($userId[0]);
         if($categories == null)
         {
