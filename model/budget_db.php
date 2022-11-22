@@ -2,6 +2,17 @@
 
 class budget_db
 {
+    function getAll()
+    {
+      $db = database::getDB();
+      $query = 'SELECT * FROM Budget_Bbudget
+               ';
+      $statement = $db->prepare($query);
+      $statement->execute();
+      $total = $statement->fetchAll();
+      $statement->closeCursor();
+      return $total;
+    }
     function getBudget($userId, $month, $year)
     {
     $db = database::getDB();

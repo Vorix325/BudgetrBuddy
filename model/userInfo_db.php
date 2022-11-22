@@ -105,7 +105,7 @@ class userInfo_db
     $statement->execute();
     $statement->closeCursor(); 
   }
-   function updateUser($id, $username,$password,$fname,$lname,$email,$phone)
+   function updateUser($id, $username,$password,$fname,$lname,$email,$phone, $nickname)
    {
     $db = database::getDB();
     $query = 'UPDATE users_bbudget
@@ -124,7 +124,19 @@ class userInfo_db
     $statement->execute();
     $statement->closeCursor();
    }
-   
+   function getName($user_id)
+   {
+        $db = database::getDB();
+    $query = 'SELECT user_name FROM users_bbudget
+              WHERE user_id = :id'
+               ;
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $user_id);
+    $statement->execute();
+    $name = $statement->fetch();
+    $statement->closeCursor();
+    return $name;
+   }
    function getAll()
    {
        $db = Database::getDB();
