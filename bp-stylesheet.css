@@ -84,7 +84,9 @@ body{
 .message,
 .about-container,
 .profile-container,
-.start-container {
+.start-container,
+.category-container,
+.spending-view {
     background-color: #ffffff;
     padding: 1.8em 1.2em;
     box-shadow: 0 0.6em 1.2em rgba(20, 0, 80, 0.06);
@@ -182,7 +184,7 @@ button.submit:hover {
     cursor: pointer;
 }
 input[type=text], input[type=password],
-input[type=email] {   
+input[type=email], input[type=tel] {   
     width: 100%;   
     background-color: #ffffff;
     padding: 0.6em 0.3em;
@@ -226,7 +228,8 @@ input[type=email] {
 }
 .super-info,
 .user-info,
-.category-info {
+.category-info,
+.spending-list{
     width: 100%;
 	text-align: center;
     background-color:  #ffffff;
@@ -253,4 +256,26 @@ button.user-edit:hover {
 }
 button.profile-submit:hover {
    opacity: 0.7;
+}
+.spend-navigation{
+    height: 100%;
+    cursor: pointer;
+}
+.spend-navigation a{
+    height:100%;
+    display: table;
+    float: left;
+    padding: 0px 20px;
+}
+.spend-navigation a:hover{
+    opacity: 0.7;
+}
+.spend-navigation a:last-child {
+    padding-right: 0;
+}
+.spend-navigation a li {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    font-size: 14px;
 }
