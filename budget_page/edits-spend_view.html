@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+        <title>Revised Spend View</title>
+
+        <!-- Google Font link -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
+        <!-- Font Awesome link -->
+		<link 
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <!-- Header -->
+        <?php include '../view/header.php'; ?>
+
+        <div class="wrapper">
+            <div class="container">
+                <div class="spending-view">
+                    <ul class="spend-navigation">
+                        <a><li>Food</li></a>
+                        <a><li>Clothing</li></a>
+                        <a><li>Utility</li></a>
+                        <a><li>Transportation</li></a>
+                        <a><li>Medical</li></a>
+                        <a><li>Entertainment</li></a>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Spending List -->
+            <div class="list">
+                <h3>Spending List:</h3>
+                <div class="expense-list-container"
+                     id="list">
+                </div>
+                <!-- Spending Table -->
+						<table border="1" class="spending-list" style="display: block; margin: 0 auto;">
+							<tr>
+								<th>&emsp;&nbsp;&nbsp;&nbsp;Spend Id&emsp;&nbsp;&nbsp;&nbsp;</th>
+								<th>&emsp;&nbsp;Cost Name&nbsp;&emsp;</th>
+                                <th>&emsp;&nbsp;Amount&emsp;&nbsp;</th>
+								<th>&emsp;&emsp;&ensp;Date&emsp;&emsp;&ensp;</th>
+                                <th>&ensp;Edit&ensp;</th>
+								<th>&ensp;Delete&ensp;</th>
+							</tr>
+							<tr>
+								<td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+								<td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
+								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
+							</tr>
+						</table>
+						<br>
+						<p>To save changes made to spending click <a href="#">Update</a></p>
+						<button type=button class="submit">Update</button> 
+            </div>
+        </div>
+        <!-- Footer -->
+        <?php include '../view/footer.php'; ?>
+    </body>
+</html>
