@@ -279,3 +279,8 @@ button.profile-submit:hover {
     height: 100%;
     font-size: 14px;
 }
+.month-date, .select-category {
+    width: 100%;
+    height: 40px;
+}
+
