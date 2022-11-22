@@ -32,21 +32,14 @@
             <div class="category-container">
             <main>
                 <h1>Edit Budget</h1>
-                <form action="." method="post" id="add_product_form">
-                    <input type="hidden" name="action" value="add_product">
+                <form action="./index.php" method="post" id="updateCategory">
+                    <input type="hidden" name="action" value="updateCategory">
+                    <input type ="hidden" name="ca_id" Value="<?php echo $category_id; ?>">
                     <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
                     <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
                     <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
                     <label>Name:</label>
-                    <select name="categoryId" class="select-category">
-                        <?php foreach ( $categories as $category ) : ?>
-                            <?php if($category->getMonth() == $currentM && $category->getYear() == $currentY) : ?>
-                            <option value="<?php echo $category->getCaID(); ?>" <?php if( $category->getCaID() == $category_id ): ?> selected="selected" <?php endif; ?>>
-                                <?php echo $category->getCaName(); ?>
-                            </option>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                        </select>
+                     <input type="text" name="ca_name" value='<?php echo $name; ?>'/>
                     <br>
 
                     <label>Limit:</label>

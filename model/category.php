@@ -70,7 +70,11 @@ class category
     public function getTotal() {
         return $this->total;
     }
-    public function setTotal(float $amount) {
+    public function setTotal($amount) {
+        if($amount == null)
+        {
+            $amount = 0;
+        }
          $this->total = $amount;
     }
     

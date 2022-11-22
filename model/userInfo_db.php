@@ -1,4 +1,5 @@
 <?php
+
 class userInfo_db
 {
  function checkLogin($username)
@@ -70,9 +71,9 @@ class userInfo_db
     $statement = $db->prepare($query);
     $statement->bindValue(':userid',$userID);
     $statement->execute();
-    $data = $statement->fetch();
+    $datas = $statement->fetchAll();
     $user = new User();
-    if($data == null)
+    if($datas == null)
     {
             $error = "Please select 2 exactly product for compare";
             header('Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/errors/error.php');
@@ -81,12 +82,16 @@ class userInfo_db
      else 
     {
       
-      $user->setFname($data[1]);
-      $user->setLname($data[2]);
-      $user->setUser($data[0]);
-      $user->setPhone($data[4]);
-      $user->setEmail($data[3]);
-      $user->setNick($data[5]);
+     foreach($datas as $data)
+     {
+      $user->setFname($data['first_name']);
+      $user->setLname($data['last_name']);
+      $user->setUser($data['user_name']);
+      $user->setPhone($data['phone_number']);
+      $user->setEmail($data['email']);
+      $user->setNick($data['nick_name']);
+      $user->setPass($data['password']);
+     }
      
     }
    
@@ -159,13 +164,16 @@ class userInfo_db
        $users = [];
       foreach($datas as $data) 
       {
-         $user = new User();
-         $user->setFname($data[1]);
-         $user->setLname($data[2]);
-         $user->setUser($data[0]);
-         $user->setPhone($data[4]);
-         $user->setEmail($data[3]);
-         $user->setNick($data[5]);
+         $user = new user();
+         $user->setFname($data['first_name']);
+         $user->setLname($data['last_name']);
+         $user->setUser($data['user_name']);
+         $user->setPhone($data['phone_number']);
+         $user->setEmail($data['email']);
+         $user->setNick($data['nick_name']);
+         $user->setPass($data['password']);
+         $user->setType($data['typeof_user']);
+         $user->setID($data['user_id']);
          $users[] = $user;
       }
        $statement->closeCursor();

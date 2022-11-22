@@ -58,7 +58,7 @@
                         <?php if($ca->getMonth() == $currentM && $ca->getYear() == $currentY) : ?>
                         <form action="./index.php" method ="post">
                         <input type ="hidden" name="current" value='<?php echo $ca->getCaID(); ?>'>
-                        <a href=""> <li><?php echo $ca->getCaName(); ?></li></a>
+                        <li><button tpye = 'submit'><?php echo $ca->getCaName(); ?></button></li>
                         </form>
                         <?php endif; ?>
                         <?php endforeach; ?>
@@ -77,7 +77,7 @@
                         <tr>
                     <?php foreach ($allSpend as $spend) : ?>
                         
-                  
+                      <?php if($spend['category_id'] == $current) : ?>
                         <?php if( $spend['SMonth'] == $currentM && $spend['SYear'] = $currentY) : ?>
                         <td><input type='text' name='spend_id' value='<?php echo $spend['spending_id']; ?>'></td>
                         <td><input type='text' name='spending_Name' value='<?php echo $spend['costName']; ?>'></td>
@@ -101,6 +101,7 @@
                               <button class="user-edit"><i class="fas fa-user-times" id="user-edit" onclick="return confirm('Are you sure?')" name="deleteSpend"></i></button>
                             </form></td>
                         <?php endif; ?>
+                      <?php endif; ?>
                     <?php endforeach; ?>
                         </tr>
                     </Table>

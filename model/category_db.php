@@ -36,21 +36,43 @@ class category_db
     $statement->execute();
     $statement->closeCursor();
   }
-  function addCategory($userId,$categoryName)
+  function addCategory($userId,$categoryName,$limit, $month, $year)
   {
     $db = database::getDB();
-    $query = 'INSERT INTO categories 
-               (user_id, category_name)
+    $query = 'INSERT INTO category_bbudget
+               (category_name, user_id, limitS , total, SMonth, SYear)
               VALUE
-               (:userId, :categoryName)';
+               (:categoryName, :userId, :limit, 0, :month, :year )';
              
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->bindValue(':categoryName',$categoryName);
+    $statement->bindValue(':limit',$limit);
+    $statement->bindValue(':month',$month);
+    $statement->bindValue(':year', $year);
     $statement->execute();
     $statement->closeCursor(); 
   }
-  
+  function updateCategory($categoryId, $userId,$categoryName,$limit, $month, $year)
+  {
+    $db = database::getDB();
+    $query = 'UPDATE category_bbudget
+              SET
+               category_name = :categoryName, user_id = :userId, limitS = :limit , SMonth = :month, SYear = :year
+              WHERE 
+               category_id = :caId'
+            ;
+             
+    $statement = $db->prepare($query);
+    $statement->bindValue(':caId',$categoryId);
+    $statement->bindValue(':userId',$userId);
+    $statement->bindValue(':categoryName',$categoryName);
+    $statement->bindValue(':limit',$limit);
+    $statement->bindValue(':month',$month);
+    $statement->bindValue(':year', $year);
+    $statement->execute();
+    $statement->closeCursor(); 
+  }
   function getId($categoryName)
   {
     $db = database::getDB();

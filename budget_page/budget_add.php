@@ -31,8 +31,8 @@
             <div class="category-container">
             <main>
                 <h1>Set Budget</h1>
-                <form action="." method="post" id="add_product_form">
-                    <input type="hidden" name="action" value="add_product">
+                <form action="." method="post" id="addCategory">
+                    <input type="hidden" name="action" value="addCategory">
                     <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
                     <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
                     <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->

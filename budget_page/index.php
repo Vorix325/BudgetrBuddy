@@ -82,16 +82,17 @@ switch($action)
         $year = $dateTime->format('Y');
         $currentM = $dateTime->format('F');
         $currentY = $dateTime->format('Y'); 
-        $budget = $budgetDB->getBudget($userId[0], $month, $year);
-        $array = $spendingDB->getSpendTime($month,$year);
+        //$budget = $budgetDB->getBudget($userId[0], $month, $year);
+        $budget = 0;
+        $array = $spendingDB->getSpendTime($currentM,$year);
         $categories = $categoryDB->getCategory($userId[0]);
-        if($budget == null || $array == null || categories == null)
+        if( $array == null || $categories == null)
         {
             $budget = $month;
             $total = $year;
             $balance = $budget - $total;
             $error = "No budget Data";
-            include('../budget_page/budget_view.php');
+            include('../errors/error.php');
             
         }
         else
@@ -99,7 +100,7 @@ switch($action)
             $total = 0;
             foreach($array as $t)
            {
-             $total += $t;
+             //$total = $total + $t;
            }
              $balance = $budget - $total;
              include('../budget_page/budget_view.php');
@@ -112,7 +113,7 @@ switch($action)
     
     case 'addBudget' :
         $dateTime = new DateTime();
-        $month = $dateTime->format('m');
+        $month = $dateTime->format('F');
         $year = $dateTime->format('Y');
         
         $amount = filter_input(INPUT_POST, 'Limit');
@@ -120,14 +121,14 @@ switch($action)
         $budgetDB->addBudget($amount, $userId, $month, $year);
         break;
      case 'deleteCategory' :
-        $caId = filter_input(INPUT_POST, 'ca_id', 
-            FILTER_VALIDATE_INT);
-        $categoryDB->deleteCategory($ca_id);
+        $caId = filter_input(INPUT_POST, 'ca_id');
+        $categoryDB->deleteCategory($caId);
+        header('Location: ../budget_page/index.php?action=showBudget');
         break;
     
     case 'showAddCategory':
         $dateTime = new DateTime();
-        $month = $dateTime->format('m');
+        $month = $dateTime->format('F');
         $year = $dateTime->format('Y');
         $userId = filter_input(INPUT_POST, 'userId');
         $categories = $categoryDB->getCategory($userId[0]);
@@ -135,27 +136,42 @@ switch($action)
         break;
     case 'addCategory' :
         $userId = filter_input(INPUT_POST, 'userId');
-        $categoryName = filter_input(INPUT_POST, 'category_name');
-        $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
+        $categoryName = filter_input(INPUT_POST, 'ca_name');
+        $limit = filter_input(INPUT_POST, 'Limit');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST,'year');
         $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year);
+        header('Location: ../budget_page/index.php?action=showBudget');
         break;
     case 'showUpCategory':
         $dateTime = new DateTime();
         $currentM = $dateTime->format('F');
         $currentY = $dateTime->format('Y'); 
-        $month = $dateTime->format('m');
+        $month = $dateTime->format('F');
         $year = $dateTime->format('Y');
         $userId = filter_input(INPUT_POST, 'userId');
         $name = filter_input(INPUT_POST, 'name');
+        $category_id = filter_input(INPUT_POST, 'ca_id');
         $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
+ 
         include('../budget_page/budget_edit.php');
         break;
+    case 'updateCategory' :
+      
+        $month = filter_input(INPUT_POST, 'month');
+        $year = filter_input(INPUT_POST, 'year');
+        $userId = filter_input(INPUT_POST, 'userId');
+        $name = filter_input(INPUT_POST, 'name');
+        $category_id = filter_input(INPUT_POST, 'ca_id');
+        $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
+        $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year);
+        header('Location: ../budget_page/index.php?action=showBudget');
+        break;
     case 'deleteSpend' :
-        $spend_id = filter_input(INPUT_POST, 'spending_id');
+        $spend_id = filter_input(INPUT_POST, 'spend_id');
         $category_id = filter_input(INPUT_POST, 'category_id');
-        $spendingDB->deleteSpend($spend_id,$category_id);
+        $spendingDB->deleteSpend($spend_id, $category_id);
+        header('Location: ../budget_page/index.php?action=showSpending');
         break;
     case 'showAddSpend':
         $userId = $userInfo->getCurrent();
@@ -176,9 +192,13 @@ switch($action)
         break;
     case 'showUpSpend':
         $userId = $userInfo->getCurrent();
+        $spendId = filter_input(INPUT_POST, 'spend_id');
         $categories = $categoryDB->getCategory($userId[0]);
         $name = filter_input(INPUT_POST, 'name');
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
+        $dateTime = new DateTime();
+        $currentM = $dateTime->format('F');
+        $currentY = $dateTime->format('Y');
         $date = filter_input(INPUT_POST, 'date');
         $month = filter_input(INPUT_POST, 'month');
         $nmonth = date("m", strtotime($month));
@@ -189,16 +209,19 @@ switch($action)
         include('../budget_page/spend_edit.php');
         break;
     case 'updateSpending':
-        
+        $spendId = filter_input(INPUT_POST, 'spend_id');
+        $userId = filter_input(INPUT_POST, 'userId');
         $amount = filter_input(INPUT_POST, 'amount');
         $name = filter_input(INPUT_POST, 'name');
         $categoryId = filter_input(INPUT_POST,'categoryId');
         $time = strtotime($_POST['time']);
         $date = date('d',$time);
-        $month = date('m', $time);
+        $month = date('F', $time);
         $year = date('Y', $time);
+        $spendingDB->updateSpend($spendId, $userId, $categoryId, $amount, $name, $date, $month, $year);
         
-        $spendingDB->updateSpend($categoryId, $amount, $spendName, $date, $month, $year);
+        header('Location: ../budget_page/index.php?action=showSpending');
+        break;
                 
 }
 function validateDate($date, $format = 'Y-m-d'){

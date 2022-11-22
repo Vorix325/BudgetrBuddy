@@ -22,7 +22,14 @@ class user
         $this->typeUser = '';
         $this->nick= '';
     }
-
+    public function getType()
+    {
+        return $this->typeUser;
+    }
+    public function setType($type)
+    {
+        $this->typeUser = $type;
+    }
     public function getID() {
         return $this->id;
     }

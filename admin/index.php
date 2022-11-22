@@ -2,6 +2,7 @@
 require('../model/database.php');
 require('../model/category.php');
 require('../model/budget_db.php');
+require('../model/user.php');
 require('../model/userInfo_db.php');
 
 $userInfo = new userInfo_db;      
@@ -10,12 +11,16 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
-        $action = 'showBudget';
+        $action = 'showUser';
     }
 }  
 
 switch($action)
 {
+    case 'showUser' :
+        $datas = $userInfo->getAll();
+        include('../admin/admin_UserView.php');
+        break;
     case 'showBudget':
         $main = $budgetDB->getAll();
         include('../admin/admin_All.php');

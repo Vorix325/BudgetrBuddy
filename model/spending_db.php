@@ -29,14 +29,14 @@ class spending_db
     function deleteSpend($spend_id,$categoryId)
     {
        $db = database::getDB();
-    $query = 'DELETE FROM spending_bbudget
-              WHERE $spend_id = :spend_id';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':spend_id', $spend_id);
-    $statement->execute();
-    $statement->closeCursor();
-    $total = $this->getTotal($categoryId);
-    $this->countTotal($categoryId, $total);
+     $query = 'DELETE FROM spending_bbudget
+              WHERE spending_id = :spend_id';
+     $statement = $db->prepare($query);
+     $statement->bindValue(':spend_id', $spend_id);
+     $statement->execute();
+     $statement->closeCursor();
+     $total = $this->getTotal($categoryId);
+     $this->countTotal($categoryId, $total);
     }
     function addSpend($userId,$categoryId,$amount, $name , $date, $month, $year)
     {
@@ -65,15 +65,13 @@ class spending_db
      $db = database::getDB(); 
      $query = 'UPDATE spending_bbudget
               SET
-                (user_id, costName, category_id, Samount, sDate, SMonth, SYear)
-              VALUE
-                 (:userId, :name, :caId, :amount, :date,:month, :year )
+                user_id  = :userId, costName = :name, category_id = :caId, Samount = :amount, sDate = :date, SMonth = :month, SYear = :year
               WHERE spending_id = :spendId'
                ;
      $statement = $db->prepare($query);
      $statement->bindValue(':spendId',$spendId);
      $statement->bindValue(':userId',$userId);
-     $statement->bindValue(':categoryId',$categoryId);
+     $statement->bindValue(':caId',$categoryId);
      $statement-> bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
      $statement->bindValue(':date',$date);

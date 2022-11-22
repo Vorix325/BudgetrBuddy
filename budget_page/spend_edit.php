@@ -30,7 +30,7 @@
             <div class="super-welcome">
                 <main>
                     <h1>Edit Spending</h1><br>
-                    <form action="." method="post" id="add_product_form">
+                    <form action="./index.php" method="post" id="add_product_form">
                         <input type="hidden" name="action" value="updateSpending">
                         <label>Select Budget Category:</label><br>
                         <select name="categoryId" class="select-category">
@@ -43,7 +43,8 @@
                         <?php endforeach; ?>
                         </select>
                         <br>
-                        <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
+                        <input type ="hidden" name='spend_id' value='<?php echo $spendId; ?>'>
+                        <input type ="hidden" name='userId' value='<?php echo $userId[0]; ?>'>
                         <label>Name:</label>
                         <input type="text" name="name" value="<?php echo $name; ?>" >
                         <br>
@@ -54,9 +55,9 @@
                         
                         <label for="month">Select Month & Date of Spending:</label>
                         <p class= "hide error" id="month-error">Date is invalid</p>
-                        <input type="date" class="month-date"  id="month-date" value="<?php echo $times ?>" >
+                        <input type="date" name = 'time' class="month-date"  id="month-date" value="<?php echo $times ?>" >
                         <br><br>
-                        <input type=button class="profile-submit" value="Update Spending" >
+                        <input type="submit" class="profile-submit" value="Update Spending" >
                         <br>
                     </form>
                 </main>
