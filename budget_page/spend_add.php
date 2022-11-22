@@ -35,26 +35,28 @@
                         <br>
                         <input type="hidden" name="action" value="addSpending">
                         <label>Select Budget Category:</label><br>
-                        <select name="category_id" class="select-category">
+                        <select name="categoryId" class="select-category">
                         <?php foreach ( $categories as $category ) : ?>
-                            <option value="<?php echo $category->getCaID(); ?>">
+                            <?php if($category->getMonth() == $currentM && $category->getYear() == $currentY) : ?>
+                            <option value="<?php echo $category->getCaID(); ?>" <?php if( $category->getCaID() == $category_id ): ?> selected="selected" <?php endif; ?>>
                                 <?php echo $category->getCaName(); ?>
                             </option>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                         </select>
                         <br>
                         <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
                         <label>Name:</label>
-                        <input type="text" name="spendName" value="<?php echo $name; ?>" />
+                        <input type="text" name="spending_Name" />
                         <br>
                         <label>Amount:</label>
-                        <input type="text" name="amount" />
+                        <input type="text" name="spend" />
                         <br>
                         <label for="month">Select Month & Date of Spending:</label><br>
                         <p class= "hide error" id="month-error">Date is invalid</p>
-                        <input type="date" class="month-date"  id="month-date">
+                        <input type="date" class="month-date"  id="month-date" name='time'>
                         <br><br>
-                        <input type=button class="profile-submit" value="Add Spending" />
+                        <input type='submit' class="profile-submit" value="Add Spending" />
                         <br>
                     </form>
                 </main>

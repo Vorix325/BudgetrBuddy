@@ -48,7 +48,18 @@ class userInfo_db
     $statement->closeCursor();
     return $user; 
   }
+ function getAllUser()
+ {
+     $db = database::getDB();
+    $query = 'SELECT user_id, user_name FROM users_bbudget'
+              
  
+              ;
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $data = $statement->fetchAll();
+    return $data;
+ }
   function getUserInfo($userID)
   {
     $db = database::getDB();

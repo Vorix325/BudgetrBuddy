@@ -38,7 +38,15 @@
                     <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
                     <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
                     <label>Name:</label>
-                    <input type="text" name="ca_name" value="<?php echo $name; ?>"/>
+                    <select name="categoryId" class="select-category">
+                        <?php foreach ( $categories as $category ) : ?>
+                            <?php if($category->getMonth() == $currentM && $category->getYear() == $currentY) : ?>
+                            <option value="<?php echo $category->getCaID(); ?>" <?php if( $category->getCaID() == $category_id ): ?> selected="selected" <?php endif; ?>>
+                                <?php echo $category->getCaName(); ?>
+                            </option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        </select>
                     <br>
 
                     <label>Limit:</label>

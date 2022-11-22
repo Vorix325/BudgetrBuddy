@@ -33,27 +33,30 @@
                     <form action="." method="post" id="add_product_form">
                         <input type="hidden" name="action" value="updateSpending">
                         <label>Select Budget Category:</label><br>
-                        <select name="category_id" class="select-category">
+                        <select name="categoryId" class="select-category">
                         <?php foreach ( $categories as $category ) : ?>
+                            <?php if($category->getMonth() == $currentM && $category->getYear() == $currentY) : ?>
                             <option value="<?php echo $category->getCaID(); ?>" <?php if( $category->getCaID() == $category_id ): ?> selected="selected" <?php endif; ?>>
                                 <?php echo $category->getCaName(); ?>
                             </option>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                         </select>
                         <br>
                         <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
                         <label>Name:</label>
-                        <input type="text" name="spendName" value="<?php echo $name; ?>" />
+                        <input type="text" name="name" value="<?php echo $name; ?>" >
                         <br>
 
                         <label>Amount:</label>
-                        <input type="text" name="amount" value="<?php echo $amount; ?>" />
+                        <input type="text" name="amount" value="<?php echo $amount; ?>" >
                         <br>
+                        
                         <label for="month">Select Month & Date of Spending:</label>
                         <p class= "hide error" id="month-error">Date is invalid</p>
-                        <input type="date" class="month-date"  id="month-date" value="<?php echo $date; ?>">
+                        <input type="date" class="month-date"  id="month-date" value="<?php echo $times ?>" >
                         <br><br>
-                        <input type=button class="profile-submit" value="Update Spending" />
+                        <input type=button class="profile-submit" value="Update Spending" >
                         <br>
                     </form>
                 </main>

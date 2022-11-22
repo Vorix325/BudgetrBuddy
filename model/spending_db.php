@@ -4,7 +4,7 @@ class spending_db
     function getSpend($categoryId)
     {
      $db = database::getDB();
-     $query = 'SELECT spending_id, Samount , costName FROM spending_bbudget
+     $query = 'SELECT * FROM spending_bbudget
               WHERE category_id = :categoryId';
      $statement = $db->prepare($query);
      $statement->bindValue(':categoryId',$categoryId);
@@ -38,21 +38,20 @@ class spending_db
     $total = $this->getTotal($categoryId);
     $this->countTotal($categoryId, $total);
     }
-    function addSpend($userId,$categoryId,$amount, $name , $time, $date, $month, $year)
+    function addSpend($userId,$categoryId,$amount, $name , $date, $month, $year)
     {
      
      $db = database::getDB();
      $query = 'INSERT INTO spending_bbudget
-               (user_id, category_id, Samount, costName, timeS, SDate, SMonth, SYear)
+               (user_id, category_id, Samount, costName, SDate, SMonth, SYear)
               VALUE
-               (:userId, :categoryId, :amount, :name, :time, :date, :month, :year)';
+               (:userId, :categoryId, :amount, :name, :date, :month, :year)';
              
      $statement = $db->prepare($query);
      $statement->bindValue(':userId',$userId);
      $statement->bindValue(':categoryId',$categoryId);
      $statement-> bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
-     $statement->bindValue(':time',$time);
      $statement->bindValue(':date',$date);
      $statement->bindValue(':month',$month);
      $statement->bindValue(':year',$year);
@@ -61,14 +60,14 @@ class spending_db
      $total = $this->getTotal($categoryId);
      $this->countTotal($categoryId, $total);
     }
-    function updateSpend($spendId,$userId,$categoryId,$amount, $name,$time, $date, $month, $year)
+    function updateSpend($spendId,$userId,$categoryId,$amount, $name, $date, $month, $year)
     {
      $db = database::getDB(); 
      $query = 'UPDATE spending_bbudget
               SET
-                (user_id, costName, category_id, Samount, timeS, sDate, SMonth, SYear)
+                (user_id, costName, category_id, Samount, sDate, SMonth, SYear)
               VALUE
-                 (:userId, :name, :caId, :amount, :time, :date,:month, :year )
+                 (:userId, :name, :caId, :amount, :date,:month, :year )
               WHERE spending_id = :spendId'
                ;
      $statement = $db->prepare($query);
@@ -77,7 +76,6 @@ class spending_db
      $statement->bindValue(':categoryId',$categoryId);
      $statement-> bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
-     $statement->bindValue(':time',$time);
      $statement->bindValue(':date',$date);
      $statement->bindValue(':month',$month);
      $statement->bindValue(':year',$year);

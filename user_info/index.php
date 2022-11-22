@@ -51,7 +51,9 @@ switch($action)
             break;
         }
     case 'logout':
-        $userInfo->updateCurrent(0);
+        $x = null;
+        $y = null;
+        $userInfo->updateCurrent($x,$y);
         include('../user_info/logout.php');
         break;
     case 'show_reg':

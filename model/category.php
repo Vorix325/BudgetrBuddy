@@ -33,7 +33,7 @@ class category
      }
      public function setYear($year)
      {
-         $this->month = $year;
+         $this->year = $year;
      }
     public function getLimit()
     {

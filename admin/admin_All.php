@@ -30,42 +30,7 @@
                     <h3>Let's start the month and work on that Budget!</h3>
                 </div>    
 
-                <div class="budget-container">
-                     <!-- Start Month -->
-                     <div class="start-month-container">
-                        <h3>Month Date</h3> 
-                        <label for="month">Select Month & Date</label>
-                        <p class= "hide error"
-                        id="month-error">Date is invalid
-                        </p>
-                        <input
-                        type="date"
-                        class="month-date"
-                        id="month-date"
-                        />
-                        <button class = "submit"
-                        id="set-month-button">Start Month
-                        </button>
-                     </div>
-                     <!-- Budget -->
-                     <div class="budget-amount-container">
-                        <h3>Budget</h3>
-                        <label for="budget">Budget Total for the Month:</label>
-                        <p class="hide error"
-                        id="budget-error">Value cannot be empty or negative
-                        </p>
-                        <input type = "number"
-                               id="budget-amount"
-                               placeholder="Enter Your Budget"
-                        />
-                        <button class = "submit"
-                        id="budget-amount-button">Set Budget
-                        </button>    
-                     </div>
-                </div>
-                 <!-- Output -->
-                
-            </div>
+               
             <!-- Budget Cateogory List -->
             <div class="list">
                 <h3>Budget Category List:</h3>

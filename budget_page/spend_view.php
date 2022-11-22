@@ -7,8 +7,16 @@
 
         <!-- JS link -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
         <!-- Stylesheet -->
         <link rel="stylesheet" href="../bp-stylesheet.css" />
+        <!-- Font Awesome link -->
+		<link 
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <body>
@@ -45,14 +53,17 @@
     </script>
 
                 <nav>
-                    <ul>
+                    <ul class="spend-navigation">
                         <?php foreach($categories as $ca) : ?>
+                        <?php if($ca->getMonth() == $currentM && $ca->getYear() == $currentY) : ?>
                         <form action="./index.php" method ="post">
                         <input type ="hidden" name="current" value='<?php echo $ca->getCaID(); ?>'>
                         <a href=""> <li><?php echo $ca->getCaName(); ?></li></a>
                         </form>
+                        <?php endif; ?>
                         <?php endforeach; ?>
                     </ul><!-- comment -->
+                    <br>
                     <Table border = '1'>
                         <tr>
                             <th>Spend Id</th><!-- comment -->
@@ -65,19 +76,23 @@
                         
                         <tr>
                     <?php foreach ($allSpend as $spend) : ?>
-                        <?php if($spend['SMonth'] == $currentM && $spend['SYear'] = $currentY) : ?>
+                        
+                  
+                        <?php if( $spend['SMonth'] == $currentM && $spend['SYear'] = $currentY) : ?>
                         <td><input type='text' name='spend_id' value='<?php echo $spend['spending_id']; ?>'></td>
                         <td><input type='text' name='spending_Name' value='<?php echo $spend['costName']; ?>'></td>
-                         <td><input type='text' name='category_id' value='<?php echo $spend['category_id']; ?>'></td>
-                         <td><input type='text' name='time' value='<?php echo $spend['timeS']; ?>'></td>
+                         <td><input type='text' name='amount' value='<?php echo $spend['Samount']; ?>'></td>
+                         <td><input type='text' name='time' value='<?php echo $spend['SYear'].'-'.$spend['SMonth'].'-'.$spend['SDate']; ?>'></td>
                          <td><form action="./index.php" method='post'>
                                  <input type='hidden' name='action' value='showUpSpend'><!-- comment -->
                                  <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
-                                 <input type='hidden' name='spending_Name' value='<?php echo $spend['costName']; ?>'>
+                                 <input type='hidden' name='name' value='<?php echo $spend['costName']; ?>'>
                                  <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
-                                 <input type='hidden' name='time' value='<?php echo $spend['timeS']; ?>'></td>
-                                 
-                            <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
+                                 <input type='hidden' name='amount' value='<?php echo $spend['Samount']; ?>'>
+                                 <input type='hidden' name='date' value='<?php echo $spend['SDate']; ?>'></td>
+                                 <input type='hidden' name='month' value='<?php echo $spend['SMonth']; ?>'></td><!-- comment -->
+                                 <input type='hidden' name='year' value='<?php echo $spend['SYear']; ?>'></td>
+                                 <button type='submit' class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                          </form></td>
 			<td><form action="./index.php" method='post'>
                               <input type='hidden' name='action' value='deleteSpend'><!-- comment -->
@@ -95,7 +110,6 @@
                           <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
                           <input type='hidden' name='spending_Name' value='<?php echo $spend['costName']; ?>'>
                           <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
-                          <input type='hidden' name='time' value='<?php echo $spend['timeS']; ?>'>
                           <button type='submit' value='Add New Spending'>
                     </form>
                 </nav>
