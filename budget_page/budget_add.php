@@ -1,24 +1,54 @@
-<?php include '../view/header.php'; ?>
-<main>
-    <h1>Add New Category</h1>
-    <form action="." method="post" id="add_product_form">
-        <input type="hidden" name="action" value="add_product">
-        <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
-        <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
-        <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
-        <label>Name:</label>
-        <input type="text" name="ca_name" />
-        <br>
+<!DOCTYPE html>
 
-        <label>Limit:</label>
-        <input type="text" name="Limit" />
-        <br>
+<html lang="en">
+    <head>
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+        <title>Add Budget Page</title>
 
-        <label>&nbsp;</label>
-        <input type="submit" value="Add Product" />
-        <br>
-    </form>
-   
+        <!-- Google Font link -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
+    </head>
 
-</main>
-<?php include '../view/footer.php'; ?>
+    <body>
+        <!-- Header -->
+        <?php include '../view/header.php'; ?>
+
+        <div class="wrapper">
+            <div class="container">
+                <!-- To Add Budget -->
+                <div class="welcome">
+                    <h3>Hey Buddy, set your budget limit here so we can keep track of your finances.</h3>
+                </div>
+            </div>
+
+            <!-- Set Budget -->   
+            <div class="category-container">
+            <main>
+                <h1>Set Budget</h1>
+                <form action="." method="post" id="add_product_form">
+                    <input type="hidden" name="action" value="add_product">
+                    <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
+                    <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
+                    <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
+                    <label>Name:</label>
+                    <input type="text" name="ca_name" placeholder="Name"/>
+                    <br>
+                    <label>Limit:</label>
+                    <input type="text" name="Limit" placeholder="Enter Amount" />
+                    <br>
+                    <input class="submit" type="submit" value="Set Budget" />
+                    <br>
+                </form>
+            </main>
+            </div>
+        </div>
+        <!-- Footer -->
+        <?php include '../view/footer.php'; ?>
+    </body>
+</html>
