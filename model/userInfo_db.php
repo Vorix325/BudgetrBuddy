@@ -140,6 +140,38 @@ class userInfo_db
     $statement->execute();
     $statement->closeCursor();
    }
+   function updateAdmin($id, $username,$password,$fname,$lname,$email,$phone, $nickname, $type)
+   {
+    $db = database::getDB();
+    $query = 'UPDATE users_bbudget
+              SET user_name = :username, password = :password, fname = :fname, lname = :lname , email = :email, phone = :phone, typeof_user = :type
+              WHERE user_id = :id'
+               ;
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $id);
+    $statement->bindValue(':username',$username);
+    $statement->bindValue(':password',$password);
+    $statement->bindValue(':type',$type);
+    $statement->bindValue(':fname',$fname);
+    $statement->bindValue(':lname',$lname);
+    $statement->bindValue(':email',$email);
+    $statement->bindValue(':phone',$phone);
+    $statement->bindValue(':nick', $nickname);
+    $statement->execute();
+    $statement->closeCursor();
+   }
+   function deleteUser($userId)
+   {
+    $db = database::getDB();
+    $query = '
+              DELETE FROM users_bbudget
+              WHERE user_id = :id'
+               ;
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $userId);
+    $statement->execute();
+    $statement->closeCursor();
+   }
    function getName($user_id)
    {
         $db = database::getDB();

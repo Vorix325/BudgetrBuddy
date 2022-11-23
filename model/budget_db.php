@@ -42,15 +42,18 @@ class budget_db
     $statement->execute();
     $statement->closeCursor();
     }
-    function updateBudget($budgetId, $amount)
+    function updateBudget($budgetId, $userId, $amount, $month, $year)
     {
      $db = database::getDB();
     $query = 'UPDATE Budget_Bbudget
-              amount = :amount
+              user_id = :userId, amount = :amount, SMonth = :month, SYear = :year
               WHERE budget_id = :budgetId';
     $statement = $db->prepare($query);
+    $statement->bindValue(':userId',$userId);
     $statement->bindValue(':amount',$amount);
     $statement->bindValue(':budgetId',$budgetId);
+    $statement->bindValue(":month", $month);
+    $statement->bindValue(":year",$year);
     $statement->execute();
     $statement->closeCursor();
         

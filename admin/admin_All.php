@@ -63,23 +63,30 @@
                                                                 <td><?php echo $d['SMonth']; ?></td>
                                                                 <td><?php echo $d['SYear']; ?></td>
                                                                 <td><form action="./index.php" method='post'>
-                                                                        <input type='hidden' name='action' value='showEditTotal'>
+                                                                        <input type='hidden' name='action' value='showEdit'>
+                                                                        <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
                                                                         <input type='hidden' name='month' value='<?php echo $d['user_id']; ?>'>
                                                                         <input type='hidden' name="userName" value="<?php echo $nameA[0]; ?>"><!-- comment -->
                                                                         <input type='hidden' name='amount' value='<?php echo $d['amount']; ?>'>
                                                                         <input type='hidden' name='month' value='<?php echo $d['SMonth']; ?>'>
-                                                                        <input type='hidden' name='month' value='<?php echo $d['SYear']; ?>'>
+                                                                        <input type='hidden' name='year' value='<?php echo $d['SYear']; ?>'>
                                                                     <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                                                                     </form></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
+                                                                    <td><form action="./index.php" method ='post'>
+                                                                         <input type='hidden' name='action' value='deleteBudget'>
+                                                                         <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
+                                                                         <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
+                                                                        </form></td>
 						            <?php endforeach; ?>
 							</tr>
               
 						</table>
 						<br>
-						<p>To save changes made to budget categories click <a href="#">Update</a></p>
-						<button type=button class="submit">Update</button> 
-            </div>
+                                                <form action ="./index.php" method="post">
+                                                    <input type='hidden' name='action' value='showAdd'><!-- comment -->
+                                                    <input type='submit'>
+                                                </form>
+						            </div>
         </div>
         <!-- Java Script -->
         <script src = "../budget_page/script.js"></script>
