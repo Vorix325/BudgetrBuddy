@@ -35,6 +35,16 @@ class userInfo_db
     $statement->closeCursor();
     return $userId;
  }
+ function getCurrentType()
+ {
+    $db = database::getDB();
+    $sql = "SELECT typeof_user FROM currentq WHERE queue = 1;";  
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $userId = $statement->fetch();
+    $statement->closeCursor();
+    return $userId;
+ }
  function getUserID($username)
  {
     $db = database::getDB();

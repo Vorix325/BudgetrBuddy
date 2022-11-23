@@ -29,33 +29,33 @@ class budget_db
     }
     function addBudget($amount, $userId, $month, $year)
     {
-    $db = database::getDB();
-    $query = 'INSERT INTO Budget_Bbudget
+     $db = database::getDB();
+     $query = 'INSERT INTO Budget_Bbudget
               (amount, user_id, SMonth, SYear)
               VALUE
               (:amount, :userId, :month, :year)';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':amount',$amount);
-    $statement->bindValue(':userId',$userId);
-    $statement->bindValue(':month',$month);
-    $statement->bindValue(':year',$year);
-    $statement->execute();
-    $statement->closeCursor();
+     $statement = $db->prepare($query);
+     $statement->bindValue(':amount',$amount);
+     $statement->bindValue(':userId',$userId);
+     $statement->bindValue(':month',$month);
+     $statement->bindValue(':year',$year);
+     $statement->execute();
+     $statement->closeCursor();
     }
     function updateBudget($budgetId, $userId, $amount, $month, $year)
     {
      $db = database::getDB();
-    $query = 'UPDATE Budget_Bbudget
+     $query = 'UPDATE Budget_Bbudget
               user_id = :userId, amount = :amount, SMonth = :month, SYear = :year
               WHERE budget_id = :budgetId';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':userId',$userId);
-    $statement->bindValue(':amount',$amount);
-    $statement->bindValue(':budgetId',$budgetId);
-    $statement->bindValue(":month", $month);
-    $statement->bindValue(":year",$year);
-    $statement->execute();
-    $statement->closeCursor();
+     $statement = $db->prepare($query);
+     $statement->bindValue(':userId',$userId);
+     $statement->bindValue(':amount',$amount);
+     $statement->bindValue(':budgetId',$budgetId);
+     $statement->bindValue(":month", $month);
+     $statement->bindValue(":year",$year);
+     $statement->execute();
+     $statement->closeCursor();
         
     }
 }

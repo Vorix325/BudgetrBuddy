@@ -1,4 +1,26 @@
-
+<?php 
+   $dsn = 'mysql:host=localhost;dbname=bbdatabase';
+   $username = 'mgs_user';
+   $password = 'pa55word';
+   $options = array(PDO::ATTR_ERRMODE =>
+   PDO::ERRMODE_EXCEPTION);
+ try 
+ {
+   $db1 = new PDO($dsn, $username, $password, $options);
+ } 
+ catch (PDOException $e) 
+ {
+      exit;
+ }
+ 
+   global $db1;
+    $sql = "SELECT typeof_user FROM currentq WHERE queue = 1;";  
+    $statement = $db1->prepare($sql);
+    $statement->execute();
+    $types = $statement->fetch();
+    $statement->closeCursor();
+    $type = $types[0];
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +42,14 @@
                 </div>
                 <ul class="navigation">
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/index.php'><li>Home</li></a>
-                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
-                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php'><li>Spending</li></a>
-                    <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php?action=showBudget'><li>Budget</li></a>
-                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=logout'><li>Logout</li></a>
+                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=showLogin'><li>Login</li></a>
+                    <?php 
+                    if($type != null) : ?>
+                      <a href='/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
+                      <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php'><li>Spending</li></a>
+                      <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php?action=showBudget'><li>Budget</li></a>
+                      <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=logout'><li>Logout</li></a>
+                    <?php endif; ?>
                 </ul>
             </div>
 </div>
