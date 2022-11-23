@@ -28,6 +28,7 @@ switch($action)
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
         $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
+        $pass = filter_input(INPUT_POST, 'password');
         $nick = filter_input(INPUT_POST, 'nick');
         $type = filter_input(INPUT_POST, 'type');
         $userId = filter_input(INPUT_POST, 'userId');
@@ -55,7 +56,7 @@ switch($action)
         $main = $budgetDB->getAll();
         include('../admin/admin_All.php');
         break;
-    case 'showAdd':
+    case 'showAddBudget':
         $user = $userDB->getAllUser();
         $month_names = array("January","February","March","April","May","June","July","August","September","October","November","December");
         $year_10 = array('2020','2021','2022','2023','2024','2025');
@@ -69,7 +70,7 @@ switch($action)
         $budgetDB->addBudget($amount, $userId, $month, $year);
         header('Location: ./index.php?action=showBudget');
         break;
-    case 'showEdit' :
+    case 'showEditBudget' :
         $userId = filter_input(INPUT_POST, 'id');
         $username = filter_input(INPUT_POST, 'name');
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);

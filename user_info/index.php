@@ -88,5 +88,29 @@ switch($action)
             $info = new user();
         }
         include('../user_info/profile.php');
+        break;
+    case 'showEdit' :
+        $userId= filter_input(INPUT_POST, 'userId');
+        $username = filter_input(INPUT_POST, 'username');
+        $password = filter_input(INPUT_POST, 'password');
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $fname = filter_input(INPUT_POST, 'fname');
+        $lname = filter_input(INPUT_POST, 'lname');
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
+        $nick = filter_input(INPUT_POST, 'nickname');
+        include('../user_info/edit-profile.php');
+        break;
+    case 'editProfile' :
+        $userId= filter_input(INPUT_POST, 'userId');
+        $username = filter_input(INPUT_POST, 'username');
+        $password = filter_input(INPUT_POST, 'password');
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $fname = filter_input(INPUT_POST, 'fname');
+        $lname = filter_input(INPUT_POST, 'lname');
+        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
+        $nick = filter_input(INPUT_POST, 'nickname');
+        $userDB->updateUser($userId,$username,$password, $fname, $lname, $email,$phone, $nick);
+        header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile");
+        break;
         
 }

@@ -43,12 +43,18 @@
                 <ul class="navigation">
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/index.php'><li>Home</li></a>
                     <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=showLogin'><li>Login</li></a>
+                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_reg'><li>Register</li></a>
                     <?php 
                     if($type != null) : ?>
                       <a href='/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
                       <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php'><li>Spending</li></a>
                       <a href='/ex_starts/BudgetBuddy/BudgetBuddy/budget_page/index.php?action=showBudget'><li>Budget</li></a>
                       <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=logout'><li>Logout</li></a>
+                    <?php endif; ?>
+                    <?php
+                     if($type == "super") : ?>
+                      <a href='/ex_starts/BudgetBuddy/BudgetBuddy/admin/index.php?action=showUser'><li>Manage User</li></a>
+                      <a href='/ex_starts/BudgetBuddy/BudgetBuddy/admin/index.php?action=showBudget'><li>Start Month</li></a>
                     <?php endif; ?>
                 </ul>
             </div>

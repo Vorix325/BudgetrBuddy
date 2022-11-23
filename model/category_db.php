@@ -26,6 +26,20 @@ class category_db
     $statement->closeCursor();
     return $categories; 
   }
+  function getCa($userId, $month, $year)
+  {
+    $db = database::getDB();
+    $query = 'SELECT SUM(total) AS totalS FROM Category_BBudget
+              WHERE user_id = :userId , SMonth = :m, $Year = :y';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':userId',$userId);
+    $statement->bindValue(':m',$month);
+    $statement->bindValue(':y',$year);
+    $statement->execute();
+    $data = $statement->fetch(PDO::FETCH_ASSOC);
+    $sum = $data['totalS'];
+    return $sum;
+  }
   function deleteCategory($ca_id)
   {
     $db =database::getDB();
@@ -76,7 +90,7 @@ class category_db
   function getId($categoryName)
   {
     $db = database::getDB();
-    $query = 'SELECT category_name FROM category_bbudget
+    $query = 'SELECT category_id FROM category_bbudget
               WHERE category_name = :categoryName';
              
     $statement = $db->prepare($query);
@@ -86,6 +100,19 @@ class category_db
     $statement->closeCursor();
      return $id;    
     
+  }
+  function checkTotal($id)
+  {
+    $db = database::getDB();
+    $query = 'SELECT total, limits FROM category_bbudget
+              WHERE category_id = :id';
+             
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id',$id);
+    $statement->execute();
+    $array = $statement->fetch();
+    $statement->closeCursor();
+    return $array;
   }
 }
 

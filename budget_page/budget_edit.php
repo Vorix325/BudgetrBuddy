@@ -43,7 +43,8 @@
                     <br>
 
                     <label>Limit:</label>
-                    <input type="text" name="Limit" value='<?php echo $limit; ?>'/>
+                    <input type="text" name="Limit" value='<?php echo $limit; ?>'>
+                    <input type="hidden" name="old" value='<?php echo $limit; ?>'>
                     <br>
 
                     <label>&nbsp;</label>

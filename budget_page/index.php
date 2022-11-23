@@ -111,15 +111,7 @@ switch($action)
         break;
         
     
-    case 'addBudget' :
-        $dateTime = new DateTime();
-        $month = $dateTime->format('F');
-        $year = $dateTime->format('Y');
-        
-        $amount = filter_input(INPUT_POST, 'Limit');
-        $userId = filter_input(INPUT_POST, 'userId');
-        $budgetDB->addBudget($amount, $userId, $month, $year);
-        break;
+    
      case 'deleteCategory' :
         $caId = filter_input(INPUT_POST, 'ca_id');
         $categoryDB->deleteCategory($caId);
@@ -140,8 +132,19 @@ switch($action)
         $limit = filter_input(INPUT_POST, 'Limit');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST,'year');
-        $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year);
-        header('Location: ../budget_page/index.php?action=showBudget');
+        $r = $budgetDB->getBudget($userId, $month, $year);
+        $s = $categoryDB->getCa($userId, $month, $year);
+        $sM = $s + $limit;
+        if($sm <= $r)
+        {
+            $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year);
+            header('Location: ../budget_page/index.php?action=showBudget');
+        }
+        else 
+        {
+            $error = "You current limit exceed Admin setting";
+            include("../errors/error.php");
+        }
         break;
     case 'showUpCategory':
         $dateTime = new DateTime();
@@ -161,11 +164,24 @@ switch($action)
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
         $userId = filter_input(INPUT_POST, 'userId');
+        $old = filter_input(INPUT_POST, 'old', FILTER_VALIDATE_FLOAT);
         $name = filter_input(INPUT_POST, 'name');
         $category_id = filter_input(INPUT_POST, 'ca_id');
         $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
-        $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year);
+        $r = $budgetDB->getBudget($userId, $month, $year);
+        $s = $categoryDB->getCa($userId, $month, $year);
+        $sM = $s + $limit-$old;
+        if($sm <= $r)
+        {
+            $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year);
         header('Location: ../budget_page/index.php?action=showBudget');
+        }
+        else 
+        {
+            $error = "You current limit exceed Admin setting";
+            include("../errors/error.php");
+        }
+        
         break;
     case 'deleteSpend' :
         $spend_id = filter_input(INPUT_POST, 'spend_id');
@@ -188,7 +204,28 @@ switch($action)
         $year = date('Y', $time);
         $amount = filter_input(INPUT_POST, 'spend');
         
-        $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $date, $month, $year);
+        
+        $array = $categoryDB->checkTotal($userId);
+        $check = $array['total'] + $amount;
+        if($array[limitS] < $check)
+        {
+             $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $date, $month, $year);
+             
+             $s = ($check/$array[limitS])*100;
+             if($s >= 80)
+             {
+                 $user = $userDB->getUserInfo($userId);
+                 $username = $user->getUser();
+                 $emailTo = $user->getEmail();
+                 include('../email/budget_email.php');
+                 header("Location: ../budget_page/index.php?action=showSpending");
+             }
+        }
+        else 
+        {
+            $error = "Your Spending exceed this category limit";
+            header("Location: ../errors/error.php?error=$error");
+        }
         break;
     case 'showUpSpend':
         $userId = $userInfo->getCurrent();
@@ -211,6 +248,7 @@ switch($action)
     case 'updateSpending':
         $spendId = filter_input(INPUT_POST, 'spend_id');
         $userId = filter_input(INPUT_POST, 'userId');
+        $old = filter_input(INPUT_POST, 'amount');
         $amount = filter_input(INPUT_POST, 'amount');
         $name = filter_input(INPUT_POST, 'name');
         $categoryId = filter_input(INPUT_POST,'categoryId');
@@ -219,7 +257,27 @@ switch($action)
         $month = date('F', $time);
         $year = date('Y', $time);
         $spendingDB->updateSpend($spendId, $userId, $categoryId, $amount, $name, $date, $month, $year);
-        
+        $array = $categoryDB->checkTotal($userId);
+        $check = $array['total'] + $amount - $old;
+        if($array[limitS] < $check)
+        {
+             $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $date, $month, $year);
+             
+             $s = ($check/$array[limitS])*100;
+             if($s >= 80)
+             {
+                 $user = $userDB->getUserInfo($userId);
+                 $username = $user->getUser();
+                 $emailTo = $user->getEmail();
+                 include('../email/budget_email.php');
+                 header("Location: ../budget_page/index.php?action=showSpending");
+             }
+        }
+        else 
+        {
+            $error = "Your Spending exceed this category limit";
+            header("Location: ../errors/error.php?error=$error");
+        }
         header('Location: ../budget_page/index.php?action=showSpending');
         break;
                 

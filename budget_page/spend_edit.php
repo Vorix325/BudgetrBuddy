@@ -51,6 +51,7 @@
 
                         <label>Amount:</label>
                         <input type="text" name="amount" value="<?php echo $amount; ?>" >
+                        <input type="hidden" name="old" value="<?php echo $amount; ?>" >
                         <br>
                         
                         <label for="month">Select Month & Date of Spending:</label>

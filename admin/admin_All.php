@@ -63,7 +63,7 @@
                                                                 <td><?php echo $d['SMonth']; ?></td>
                                                                 <td><?php echo $d['SYear']; ?></td>
                                                                 <td><form action="./index.php" method='post'>
-                                                                        <input type='hidden' name='action' value='showEdit'>
+                                                                        <input type='hidden' name='action' value='showEditBudget'>
                                                                         <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
                                                                         <input type='hidden' name='month' value='<?php echo $d['user_id']; ?>'>
                                                                         <input type='hidden' name="userName" value="<?php echo $nameA[0]; ?>"><!-- comment -->
@@ -77,15 +77,19 @@
                                                                          <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
                                                                          <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                         </form></td>
-						            <?php endforeach; ?>
+                                                                        
+						             <?php endforeach; ?>
 							</tr>
-              
+                                                        
 						</table>
-						<br>
                                                 <form action ="./index.php" method="post">
-                                                    <input type='hidden' name='action' value='showAdd'><!-- comment -->
+                                                    <input type='hidden' name='action' value='showAddBudget'><!-- comment -->
+                                                    
                                                     <input type='submit'>
                                                 </form>
+                                        
+						<br>
+                                                
 						            </div>
         </div>
         <!-- Java Script -->

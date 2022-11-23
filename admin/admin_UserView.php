@@ -65,19 +65,29 @@
                                                                 <td><?php echo $d ->getPass(); ?></td>
                                                                 <td><?php echo $d ->getType(); ?></td>
                                                                 <td><form action="./index.php" method='post'>
-                                                                        <input type='hidden' name='action' value='showEditTotal'>
-                                                                       
+                                                                    <input type='hidden' name='action' value='showEditUser'>
+                                                                    <input type='hidden' name='userId' value='<?php echo $d->getID() ;?>'><!-- comment -->
+                                                                    <input type='hidden' name='username' value='<?php echo $d ->getUser(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='fname' value='<?php echo $d ->getFname(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='lname' value='<?php echo $d ->getLname(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='email' value='<?php echo $d ->getEmail(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='phone' value='<?php echo $d ->getPhone(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='nickname' value='<?php echo $d ->getNick(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='password' value='<?php echo $d ->getPass(); ?>l'><!-- comment -->
+                                                                    <input type='hidden' name='type' value='<?php echo $d ->getType(); ?>'><!-- comment -->
                                                                     <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                                                                     </form></td>
-								<td><button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button></td>
+                                                                    <td><form action='./index.php' method='post'>
+                                                                      <input type='hidden' name='action' value='deleteUser'>
+                                                                      <input type='hidden' name='id' value='<?php echo $d->getID() ;?>'>
+                                                                      <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
+                                                                    </form></td>
 						            <?php endforeach; ?>
 							</tr>
               
 						</table>
 						<br>
-						<p>To save changes made to budget categories click <a href="#">Update</a></p>
-						<button type=button class="submit">Update</button> 
-            </div>
+						
         </div>
         <!-- Java Script -->
         <script src = "../budget_page/script.js"></script>

@@ -50,7 +50,7 @@
                      <label>Nick Name:</label>
                      <input type="text" name="lname" value='<?php echo $nick; ?>'/>
                      <br> 
-                    <button type=button class="profile-submit">Update</button> 
+                    <button type='submit' class="profile-submit">Update</button> 
                     </form>
                 </div>
             </div>

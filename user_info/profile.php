@@ -43,8 +43,10 @@
                         </tr>
                     </table>
                     <br>
-                    <p>Details not quite right? <a href="#">Modify</a> your account then click <a href="#">Update</a></p>
-                    <button type=button class="profile-submit">Update</button> 
+                    <form action='./index.php' method='post'>
+                    <button type=button class="profile-submit">Update</button>
+                    
+                    </form>
                 </div>
             </div>
         </div>

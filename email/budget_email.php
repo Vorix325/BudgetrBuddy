@@ -2,10 +2,7 @@
 
   $template = './alert_template.php';
 
-  $emailTo = filter_input(INPUT_POST, 'email');
-  $username = filter_input(INPUT_POST, 'name');
-  $budget = filter_input(INPUT_POST, 'budget');
-  $month = filter_input(INPUT_POST, 'month');
+ 
   $subject = "Spending Warning";
   
   $swap_var = array(

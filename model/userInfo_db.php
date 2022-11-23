@@ -150,7 +150,7 @@ class userInfo_db
     $statement->execute();
     $statement->closeCursor();
    }
-   function updateAdmin($id, $username,$password,$fname,$lname,$email,$phone, $nickname, $type)
+   function updateAdmin($id, $username,$password,$fname,$lname,$email,$phone, $type)
    {
     $db = database::getDB();
     $query = 'UPDATE users_bbudget
@@ -166,7 +166,7 @@ class userInfo_db
     $statement->bindValue(':lname',$lname);
     $statement->bindValue(':email',$email);
     $statement->bindValue(':phone',$phone);
-    $statement->bindValue(':nick', $nickname);
+    
     $statement->execute();
     $statement->closeCursor();
    }
