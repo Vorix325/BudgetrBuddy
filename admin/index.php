@@ -1,12 +1,14 @@
 <?php
 require('../model/database.php');
 require('../model/category.php');
+require('../model/category_db.php');
 require('../model/budget_db.php');
 require('../model/user.php');
 require('../model/userInfo_db.php');
 
 $userInfo = new userInfo_db;      
 $budgetDB = new budget_db();
+$categoryDB = new category_db();
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -68,6 +70,11 @@ switch($action)
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
         $budgetDB->addBudget($amount, $userId, $month, $year);
+        $caName = array('food','cloth','utility','transportation','medical','entertainment');
+        for($i = 0; $i < count($caName); $i+= 1)
+        {
+            $categoryDB->addCategory($userId, $caName[$i], 0, $month, $year);
+        }
         header('Location: ./index.php?action=showBudget');
         break;
     case 'showEditBudget' :
