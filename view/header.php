@@ -42,7 +42,7 @@
                 </div>
                 <ul class="navigation">
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/index.php'><li>Home</li></a>
-                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=showLogin'><li>Login</li></a>
+                    <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_login'><li>Login</li></a>
                     <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_reg'><li>Register</li></a>
                     <?php 
                     if($type != null) : ?>

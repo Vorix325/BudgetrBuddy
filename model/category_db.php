@@ -26,6 +26,42 @@ class category_db
     $statement->closeCursor();
     return $categories; 
   }
+  function getReport($userId, $month, $year)
+  {
+      $db = database::getDB();
+    $query = 'SELECT * FROM Category_BBudget
+              WHERE user_id = :userId , SMonth = :m, $Year = :y';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':userId',$userId);
+    $statement->bindValue(':m',$month);
+    $statement->bindValue(':y',$year);
+    $statement->execute();
+    $datas = $statement->fetchAll();
+    $categories = [];
+    foreach ($datas as $data) {
+     $category = new category();
+     $category->setUserID($data['user_id']);
+     $category->setCaID($data['category_id']);
+     $category->setCaName($data['category_name']);
+     $category->setLimit($data['limitS']);
+     $category->setTotal($data['total']);
+     $category->setMonth($data['SMonth']);
+     $category->setYear($data['SYear']);
+     $categories[] = $category;
+    }
+    return $categories;
+  }
+  function get90($userId)
+  {
+      $db = database::getDB();
+    $query = 'SELECT * FROM Category_BBudget
+              WHERE user_id = :userId AND ROUND(total * 100.0 / limitS, 1) >= 90 ';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':userId',$userId);
+    $statement->execute();
+    $datas = $statement->fetchAll();
+    return $datas;
+  }
   function getCa($userId, $month, $year)
   {
     $db = database::getDB();

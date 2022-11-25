@@ -94,4 +94,8 @@ switch($action)
         $budgetDB->updateBudget($amount, $userId, $month, $year);
         header('Location: ./index.php?action=showBudget');
         break;
+    case 'report' :
+      $userId = filter_input(INPUT_POST, 'id');
+      $month = filter_input(INPUT_POST, 'month');
+      $year = filter_input(INPUT_POST, 'year');
 }
