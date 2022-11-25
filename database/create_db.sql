@@ -44,7 +44,7 @@ CREATE TABLE Budget_Bbudget
 (
     budget_id   INT NOT NULL AUTO_INCREMENT,
     amount      FLOAT,
-    user_id INT NOT NULL,
+    user_id     INT NOT NULL,
     SMonth       VARCHAR(30),
     SYear        VARCHAR(30),
     PRIMARY KEY (budget_id),
@@ -79,14 +79,18 @@ INSERT INTO currentq VALUES
 (1, 0, 'regular');
 
 INSERT INTO Users_BBudget VALUES
-('guest','guest','guest','guest','guest','guest','reg','guest1',0);
+('testUser','JK','LSO','test@gmail.com','135-246-9825','guestTest','reg','Test$abc',0),
+ ('testAdmin','AD','STK','testAdmin@gmail.com','569-234-1235','admin','super','abcd',1);
 INSERT INTO Category_BBudget VALUES
-('food',           0, 0, 100 ,50, 'November', '2022'),
+('food',           0, 0, 100 ,20, 'November', '2022'),
 ('cloth',          1, 0, 100 ,40, 'November', '2022'),
 ('ultility',       2, 0, 100 ,70, 'November', '2022'),
-('transportation', 3, 0, 100 ,0, 'January', '2022'),
-('medial',         4, 0, 100 ,0, 'January', '2022'),
-('entertaiment',   5, 0, 100 ,0, 'January', '2022');
+('transportation', 3, 0, 100 ,0, 'November', '2022'),
+('medial',         4, 0, 100 ,0, 'November', '2022'),
+('entertaiment',   5, 0, 100 ,0, 'November', '2022');
+
+INSERT INTO Budget_bbudget VALUES
+(0,  1000, 0, 'November', '2022' );
 
 INSERT INTO Spending_Bbudget VALUES
 (0,0,'McDonald',0,20,'2022-11-12','November','2022');

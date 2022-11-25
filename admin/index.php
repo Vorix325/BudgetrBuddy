@@ -98,4 +98,6 @@ switch($action)
       $userId = filter_input(INPUT_POST, 'id');
       $month = filter_input(INPUT_POST, 'month');
       $year = filter_input(INPUT_POST, 'year');
+      $datas = $categoryDB->getReport($userId, $month, $year);
+      $c90 = $categoryDB->get90($userId);
 }

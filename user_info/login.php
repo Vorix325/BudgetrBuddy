@@ -33,7 +33,7 @@
                 <!-- Welcome -->
                 <div class="welcome">
                     <h3>Welcome to Budget Buddy! Let's get started on that budget</h3>
-                    <p><?php print_r($as); ?></P>
+                   
                    
                 </div>
             </div>

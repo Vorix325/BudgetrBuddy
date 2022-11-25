@@ -1,16 +1,19 @@
 <?php include '../view/header.php'; ?>
 <main>
-    <h1>Edit User Budget</h1>
+    <h1>Report</h1>
     <form action="." method="post" id="start_month">
         <input type="hidden" name="action" value="editBudget">
         <br>
-        <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
-        <label>User:</label>
-        <input type='text' value="<?php echo $username; ?> readonly>
+        <label>Top Spend Month:</label>
+        <?php foreach ($c90 as $c): ?>
+        <p><?php echo $c->getCaName(); ?> <?php echo $c->getTotal(); ?></p>
+        <?php endforeach; ?>
+      
         <br>
-
-        <label>Budget:</label>
-        <input type="text" name="amount" value="<?php echo $amount; ?>">
+        
+        <?php foreach ($datas as $data): ?>
+        <label>Categories :</label>
+        <p><?php echo $data->getCaName(); ?></p>
         <br>
         <label>Month: </label><!-- comment -->
         <input type='text' value="<?php echo $month; ?>" readonly>
@@ -19,7 +22,9 @@
         <label>&nbsp;</label>
         <input type="submit" value="Start Month" />
         <br>
+        <?php endforeach; ?>
     </form>
     
 </main>
 <?php include '../view/footer.php'; ?>
+

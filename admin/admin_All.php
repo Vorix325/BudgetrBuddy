@@ -53,7 +53,7 @@
                                                             <?php foreach($main as $d) : ?>
 								<td><?php echo $d['user_id'] ;?></td>
                                                                 <td><?php 
-                                                                       require('../model/userInfo_db.php');
+                                                                      
                                                                        $userDB = new userInfo_db();
                                                                        $nameA = $userDB->getName($d['user_id']);
                                                                        echo $nameA[0];
