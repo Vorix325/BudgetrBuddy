@@ -47,6 +47,7 @@
                                                                 <th>&ensp;&emsp;&emsp;Year&ensp;&emsp;&emsp;</th>
 								<th>&emsp;Modify&emsp;</th>
 								<th>&emsp;Delete&emsp;</th>
+                                                                <th>&emsp;Report&emsp;</th>
 								
 							</tr>
 							<tr>
@@ -77,7 +78,13 @@
                                                                          <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
                                                                          <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                         </form></td>
-                                                                        
+                                                                                <td><form action='./index.php' method='post'>
+                                                                                     <input type='hidden' name='action' value='report'>
+                                                                                     <input type='hidden' name='month' value='<?php echo $d['user_id']; ?>'>
+                                                                                     <input type='hidden' name='month' value='<?php echo $d['SMonth']; ?>'>
+                                                                                     <input type='hidden' name='year' value='<?php echo $d['SYear']; ?>'>
+                                                                                      <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
+                                                                                    </form></td>
 						             <?php endforeach; ?>
 							</tr>
                                                         
