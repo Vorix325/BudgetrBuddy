@@ -100,4 +100,5 @@ switch($action)
       $year = filter_input(INPUT_POST, 'year');
       $datas = $categoryDB->getReport($userId, $month, $year);
       $c90 = $categoryDB->get90($userId);
+      include("../admin/report.php");
 }

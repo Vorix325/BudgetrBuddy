@@ -27,7 +27,8 @@ switch($action)
         $categories = $categoryDB->getCategory($userId[0]);
         if($categories == null)
         {
-            $error = "Please select 2 exactly product for compare";
+            $errorName = "Empty Spending";
+            $error = "User don't have any spending set up";
             include('../errors/error.php');
             
         }
@@ -63,8 +64,9 @@ switch($action)
                 }
                 else 
                 {
-                    $error = 'Invalid data';
-                    header('Location: ../errors/error.php?error=$error');
+                    $error = 'Cant find the category ID ';
+                    $errorName = 'Invalid data';
+                    header("Location: ../errors/error.php?error=$error?errorName=$errorName");
                 }
             }
             $currentShow = $categoryDB->getId($current);
@@ -91,6 +93,7 @@ switch($action)
             $budget = $month;
             $total = $year;
             $balance = $budget - $total;
+            $errorName = "Missing budget data";
             $error = "No budget Data";
             include('../errors/error.php');
             
@@ -142,6 +145,7 @@ switch($action)
         }
         else 
         {
+            $errorName = "Over Limit";
             $error = "You current limit exceed Admin setting";
             include("../errors/error.php");
         }
@@ -178,6 +182,7 @@ switch($action)
         }
         else 
         {
+            $errorName = "Over Limit";
             $error = "You current limit exceed Admin setting";
             include("../errors/error.php");
         }
@@ -223,6 +228,7 @@ switch($action)
         }
         else 
         {
+            $errorName = "Over Limit";
             $error = "Your Spending exceed this category limit";
             header("Location: ../errors/error.php?error=$error");
         }
@@ -275,6 +281,7 @@ switch($action)
         }
         else 
         {
+            $errorName = "Over Limit";
             $error = "Your Spending exceed this category limit";
             header("Location: ../errors/error.php?error=$error");
         }

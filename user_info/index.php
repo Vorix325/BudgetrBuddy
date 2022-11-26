@@ -46,6 +46,7 @@ switch($action)
         }
         else
         {
+            $errorName = "Incorrect User Info";
             $error = "Please enter correct login info";
             include('../errors/error.php');
             break;
@@ -75,6 +76,7 @@ switch($action)
         }
         else
         {
+            $errorName = "Wrong password";
             $error = 'Please match the password';
             include('../errors/error/php');
             

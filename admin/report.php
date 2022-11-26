@@ -15,12 +15,17 @@
         <label>Categories :</label>
         <p><?php echo $data->getCaName(); ?></p>
         <br>
+        <label>Spending Limit</label>
+        <p><?php echo $data->getLimit(); ?></p>
+        <br><!-- comment -->
+        <label>Total Spend</label>
+        <p><?php echo $data->getTotal(); ?></p>
+        <br>
         <label>Month: </label><!-- comment -->
-        <input type='text' value="<?php echo $month; ?>" readonly>
+        <p><?php echo $data->getMonth(); ?></p>
         <label>Year: </label>
-        <input type='text' value="<?php echo $year; ?>" readonly>
+        <?php echo $data->getYear(); ?></p>
         <label>&nbsp;</label>
-        <input type="submit" value="Start Month" />
         <br>
         <?php endforeach; ?>
     </form>
