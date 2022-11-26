@@ -15,9 +15,11 @@ class budget_db
     }
     function getBudget($userId, $month, $year)
     {
-    $db = database::getDB();
-    $query = 'SELECT amount FROM Budget_Bbudget
-              WHERE user_id = :userId AND SMonth = :month AND SYear = :year ';
+     $db = database::getDB();
+     $query = 'SELECT amount FROM Budget_Bbudget
+               WHERE user_id = :userId
+               AND SMonth = :month
+               AND SYear = :year ';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->bindValue(':month',$month);

@@ -35,7 +35,8 @@
                  <div class="output-container flex-space">
                     <div>
                         <p>Total Budget</p>
-                        <span id="amount"><?php echo $budget; ?></span>
+                        
+                        <span id="amount"><?php echo $budgets; ?></span>
                     </div>
                     <div>
                         <p>Total Expenses</p>

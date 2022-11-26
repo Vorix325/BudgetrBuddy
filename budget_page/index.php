@@ -84,8 +84,8 @@ switch($action)
         $year = $dateTime->format('Y');
         $currentM = $dateTime->format('F');
         $currentY = $dateTime->format('Y'); 
-        //$budget = $budgetDB->getBudget($userId[0], $month, $year);
-        $budget = 0;
+        $budget = $budgetDB->getBudget($userId[0], $currentM, $year);
+        $budgets = $budget[0];
         $array = $spendingDB->getSpendTime($currentM,$year);
         $categories = $categoryDB->getCategory($userId[0]);
         if( $array == null || $categories == null)
@@ -101,11 +101,12 @@ switch($action)
         else
         {
             $total = 0;
-            foreach($array as $t)
-           {
-             //$total = $total + $t;
-           }
-             $balance = $budget - $total;
+             foreach($array as $a)
+             {
+                 $total += $a['Samount'];
+             }
+           
+             $balance = $budgets - $total;
              include('../budget_page/budget_view.php');
         }
         
@@ -141,7 +142,7 @@ switch($action)
         if($sm <= $r)
         {
             $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year);
-            header('Location: ../budget_page/index.php?action=showBudget');
+            header('Location: .?action=showBudget');
         }
         else 
         {
@@ -169,7 +170,7 @@ switch($action)
         $year = filter_input(INPUT_POST, 'year');
         $userId = filter_input(INPUT_POST, 'userId');
         $old = filter_input(INPUT_POST, 'old', FILTER_VALIDATE_FLOAT);
-        $name = filter_input(INPUT_POST, 'name');
+        $name = filter_input(INPUT_POST, 'ca_name');
         $category_id = filter_input(INPUT_POST, 'ca_id');
         $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
         $r = $budgetDB->getBudget($userId, $month, $year);
@@ -197,6 +198,9 @@ switch($action)
     case 'showAddSpend':
         $userId = $userInfo->getCurrent();
         $categories = $categoryDB->getCategory($userId[0]);
+        $dateTime = new DateTime();
+        $currentM = $dateTime->format('F');
+        $currentY = $dateTime->format('Y');
         include('../budget_page/spend_add.php');
         break;
     case 'addSpending':
@@ -205,7 +209,7 @@ switch($action)
         $categoryId = filter_input(INPUT_POST,'categoryId');
         $time = strtotime($_POST['time']);
         $date = date('d',$time);
-        $month = date('m', $time);
+        $month = date('F', $time);
         $year = date('Y', $time);
         $amount = filter_input(INPUT_POST, 'spend');
         
@@ -215,7 +219,8 @@ switch($action)
         if($array['limitS'] > $check)
         {
              $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $date, $month, $year);
-             
+             include("../errors/test.php");
+             //header("Location: .?action=showSpending");
              $s = ($check/$array['limitS'])*100;
              if($s >= 80)
              {

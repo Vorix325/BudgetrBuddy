@@ -15,7 +15,7 @@ class spending_db
     }
     function getSpendTime($month , $year)
     {
-        $db = database::getDB();
+     $db = database::getDB();
      $query = 'SELECT  Samount  FROM spending_bbudget
               WHERE SMonth = :month AND SYear = :year';
      $statement = $db->prepare($query);
@@ -45,12 +45,12 @@ class spending_db
      $query = 'INSERT INTO spending_bbudget
                (user_id, category_id, Samount, costName, SDate, SMonth, SYear)
               VALUE
-               (:userId, :categoryId, :amount, :name, :date, :month, :year)';
+               (:userId, :categoryId, :amount, :name   , :date, :month, :year)';
              
      $statement = $db->prepare($query);
      $statement->bindValue(':userId',$userId);
      $statement->bindValue(':categoryId',$categoryId);
-     $statement-> bindValue(':amount', $amount);
+     $statement->bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
      $statement->bindValue(':date',$date);
      $statement->bindValue(':month',$month);

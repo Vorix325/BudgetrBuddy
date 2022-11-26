@@ -38,14 +38,14 @@
                         <select name="categoryId" class="select-category">
                         <?php foreach ( $categories as $category ) : ?>
                             <?php if($category->getMonth() == $currentM && $category->getYear() == $currentY) : ?>
-                            <option value="<?php echo $category->getCaID(); ?>" <?php if( $category->getCaID() == $category_id ): ?> selected="selected" <?php endif; ?>>
+                            <option value="<?php echo $category->getCaID(); ?>">
                                 <?php echo $category->getCaName(); ?>
                             </option>
                             <?php endif; ?>
                         <?php endforeach; ?>
                         </select>
                         <br>
-                        <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
+                        <input type ="hidden" name='userId' value='<?php echo $userId[0]; ?>'>
                         <label>Name:</label>
                         <input type="text" name="spending_Name" />
                         <br>
