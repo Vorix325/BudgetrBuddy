@@ -5,26 +5,26 @@
         <input type="hidden" name="action" value="addBudget">
         <br>
         <label>User:</label>
-        <select>
+        <select name = 'id'>
             <?php foreach($user as $s) : ?>
-            <option name = 'id' value="<?php echo $s['user_id']; ?>"><?php echo $s['user_name']; ?></option>
+            <option value="<?php echo $s['user_id']; ?>"><?php echo $s['user_name']; ?></option>
             <?php endforeach; ?>
         </select>
         <br>
 
         <label>Budget:</label>
-        <input type="text" name="amount" />
+        <input type="text" name="amount" >
         <br>
         <label>Month: </label><!-- comment -->
-        <select>
+        <select name = 'month'>
             <?php foreach($month_names as $month) : ?>
-            <option name = 'month' value="<?php echo $month; ?>"><?php echo $month; ?></option>
+            <option value="<?php echo $month; ?>"><?php echo $month; ?></option>
             <?php endforeach; ?>
         </select>
         <label>Year: </label>
-        <select>
+        <select name='year'>
             <?php foreach($year_10 as $year) : ?>
-            <option name = 'year' value="<?php echo $year; ?>"><?php echo $year; ?></option>
+            <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
             <?php endforeach; ?>
         </select>
         <label>&nbsp;</label>

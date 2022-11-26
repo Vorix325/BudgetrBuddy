@@ -53,8 +53,9 @@
 								<th>&emsp;Delete&emsp;</th>
 								
 							</tr>
-							<tr>
+							
                                                             <?php foreach($datas as $d) : ?>
+                                                              <tr>
 								<td><?php echo $d->getID() ;?></td>
                                                                 <td><?php echo $d ->getUser(); ?></td>   
                                                                 <td><?php echo $d ->getFname(); ?></td><!-- < -->
@@ -67,23 +68,24 @@
                                                                 <td><form action="./index.php" method='post'>
                                                                     <input type='hidden' name='action' value='showEditUser'>
                                                                     <input type='hidden' name='userId' value='<?php echo $d->getID() ;?>'><!-- comment -->
-                                                                    <input type='hidden' name='username' value='<?php echo $d ->getUser(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='name' value='<?php echo $d ->getUser(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='fname' value='<?php echo $d ->getFname(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='lname' value='<?php echo $d ->getLname(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='email' value='<?php echo $d ->getEmail(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='phone' value='<?php echo $d ->getPhone(); ?>'><!-- comment -->
-                                                                    <input type='hidden' name='nickname' value='<?php echo $d ->getNick(); ?>'><!-- comment -->
-                                                                    <input type='hidden' name='password' value='<?php echo $d ->getPass(); ?>l'><!-- comment -->
+                                                                    <input type='hidden' name='nick' value='<?php echo $d ->getNick(); ?>'><!-- comment -->
+                                                                    <input type='hidden' name='pass' value='<?php echo $d ->getPass(); ?>l'><!-- comment -->
                                                                     <input type='hidden' name='type' value='<?php echo $d ->getType(); ?>'><!-- comment -->
                                                                     <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
-                                                                    </form></td>
+                                                                 </form></td>
                                                                     <td><form action='./index.php' method='post'>
                                                                       <input type='hidden' name='action' value='deleteUser'>
                                                                       <input type='hidden' name='id' value='<?php echo $d->getID() ;?>'>
                                                                       <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                     </form></td>
+                                                                    </tr>
 						            <?php endforeach; ?>
-							</tr>
+							
               
 						</table>
 						<br>

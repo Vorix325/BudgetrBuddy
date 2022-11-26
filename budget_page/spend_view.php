@@ -74,9 +74,9 @@
                             <th>Delete</th>
                         </tr>
                         
-                        <tr>
-                    <?php foreach ($allSpend as $spend) : ?>
                         
+                    <?php foreach ($allSpend as $spend) : ?>
+                        <tr>
                       <?php if($spend['category_id'] == $current) : ?>
                         <?php if( $spend['SMonth'] == $currentM && $spend['SYear'] = $currentY) : ?>
                         <td><input type='text' name='spend_id' value='<?php echo $spend['spending_id']; ?>'></td>
@@ -102,8 +102,9 @@
                             </form></td>
                         <?php endif; ?>
                       <?php endif; ?>
+                             </tr>
                     <?php endforeach; ?>
-                        </tr>
+                       
                     </Table>
                     <br>
                     <form action="./index.php" method='post'>

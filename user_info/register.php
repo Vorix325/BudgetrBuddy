@@ -30,9 +30,9 @@
                     <label>Phone</label><br>
                     <input type="tel" placeholder="" id="phone" name='phone' required><br>
                      <label>Username</label>
-                    <input type="text" placeholder="" id="username" name='username' required>
+                    <input type="text" placeholder="" id="userName" name='userName' required>
                     <label>Password</label>
-                    <input type="password" placeholder="" id="password" name='password' required>
+                    <input type="password" placeholder="" id="pass" name='pass' required>
                     <label>Confirm Password</label>
                     <input type="password" placeholder="" id="confirm-password" name='confirm' required>
                     <br>

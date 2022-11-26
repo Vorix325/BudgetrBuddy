@@ -66,7 +66,7 @@
                                                                         <input type='hidden' name='action' value='showEditBudget'>
                                                                         <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
                                                                         <input type='hidden' name='month' value='<?php echo $d['user_id']; ?>'>
-                                                                        <input type='hidden' name="userName" value="<?php echo $nameA[0]; ?>"><!-- comment -->
+                                                                        <input type='hidden' name="name" value="<?php echo $nameA[0]; ?>"><!-- comment -->
                                                                         <input type='hidden' name='amount' value='<?php echo $d['amount']; ?>'>
                                                                         <input type='hidden' name='month' value='<?php echo $d['SMonth']; ?>'>
                                                                         <input type='hidden' name='year' value='<?php echo $d['SYear']; ?>'>

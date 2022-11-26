@@ -135,8 +135,10 @@ class userInfo_db
    {
     $db = database::getDB();
     $query = 'UPDATE users_bbudget
-              SET user_name = :username, password = :password, fname = :fname, lname = :lname , email = :email, phone = :phone
-              WHERE user_id = :id'
+              SET 
+              user_name = :username, first_name = :fname, last_name = :lname , email = :email, phone_number = :phone, nick_name = :nick, password = :password
+              WHERE 
+              user_id = :id'
                ;
     $statement = $db->prepare($query);
     $statement->bindValue(':id', $id);
@@ -150,18 +152,28 @@ class userInfo_db
     $statement->execute();
     $statement->closeCursor();
    }
-   function updateAdmin($id, $username,$password,$fname,$lname,$email,$phone, $type)
+   function updateAdmin($id, $username,$password,$fname,$lname,$email,$phone, $nickname, $type )
    {
     $db = database::getDB();
-    $query = 'UPDATE users_bbudget
-              SET user_name = :username, password = :password, fname = :fname, lname = :lname , email = :email, phone = :phone, typeof_user = :type
-              WHERE user_id = :id'
-               ;
+    $query = 'UPDATE users_bbudget                  
+                SET
+                  user_name = :username,
+                  first_name = :fname,
+                  last_name = :lname,
+                  email = :email,
+                  phone_number = :phone,
+                  nick_name = :nick,
+                  typeof_user = :type,
+                  password = :password
+                WHERE
+                 user_id = :id';
+               
     $statement = $db->prepare($query);
     $statement->bindValue(':id', $id);
     $statement->bindValue(':username',$username);
     $statement->bindValue(':password',$password);
     $statement->bindValue(':type',$type);
+    $statement->bindValue(':nick', $nickname);
     $statement->bindValue(':fname',$fname);
     $statement->bindValue(':lname',$lname);
     $statement->bindValue(':email',$email);

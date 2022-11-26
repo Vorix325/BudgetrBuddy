@@ -192,7 +192,7 @@ switch($action)
         $spend_id = filter_input(INPUT_POST, 'spend_id');
         $category_id = filter_input(INPUT_POST, 'category_id');
         $spendingDB->deleteSpend($spend_id, $category_id);
-        header('Location: ../budget_page/index.php?action=showSpending');
+        header('Location: .?action=showSpending');
         break;
     case 'showAddSpend':
         $userId = $userInfo->getCurrent();
@@ -212,18 +212,18 @@ switch($action)
         
         $array = $categoryDB->checkTotal($userId);
         $check = $array['total'] + $amount;
-        if($array[limitS] < $check)
+        if($array['limitS'] > $check)
         {
              $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $date, $month, $year);
              
-             $s = ($check/$array[limitS])*100;
+             $s = ($check/$array['limitS'])*100;
              if($s >= 80)
              {
                  $user = $userDB->getUserInfo($userId);
                  $username = $user->getUser();
                  $emailTo = $user->getEmail();
                  include('../email/budget_email.php');
-                 header("Location: ../budget_page/index.php?action=showSpending");
+                 header("Location: .?action=showSpending");
              }
         }
         else 
@@ -262,21 +262,20 @@ switch($action)
         $date = date('d',$time);
         $month = date('F', $time);
         $year = date('Y', $time);
-        $spendingDB->updateSpend($spendId, $userId, $categoryId, $amount, $name, $date, $month, $year);
         $array = $categoryDB->checkTotal($userId);
         $check = $array['total'] + $amount - $old;
-        if($array[limitS] < $check)
+        if($array['limitS'] > $check)
         {
-             $spendingDB->addSpend($userId, $categoryId, $amount, $spendName, $date, $month, $year);
+             $spendingDB->updateSpend($spendId,$userId, $categoryId, $amount, $name, $date, $month, $year);
              
-             $s = ($check/$array[limitS])*100;
+             $s = ($check/$array['limitS'])*100;
              if($s >= 80)
              {
-                 $user = $userDB->getUserInfo($userId);
+                 $user = $userInfo->getUserInfo($userId);
                  $username = $user->getUser();
                  $emailTo = $user->getEmail();
                  include('../email/budget_email.php');
-                 header("Location: ../budget_page/index.php?action=showSpending");
+                 header("Location: .?action=showSpending");
              }
         }
         else 
@@ -285,7 +284,7 @@ switch($action)
             $error = "Your Spending exceed this category limit";
             header("Location: ../errors/error.php?error=$error");
         }
-        header('Location: ../budget_page/index.php?action=showSpending');
+        header('Location: .?action=showSpending');
         break;
                 
 }

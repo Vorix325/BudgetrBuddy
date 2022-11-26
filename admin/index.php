@@ -24,30 +24,29 @@ switch($action)
         include('../admin/admin_UserView.php');
         break;
     case 'showEditUser':
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
+        $userName = filter_input(INPUT_POST, 'name');
+        $pass = filter_input(INPUT_POST, 'pass');
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
-        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
-        $pass = filter_input(INPUT_POST, 'password');
+        $phone = filter_input(INPUT_POST, 'phone');
         $nick = filter_input(INPUT_POST, 'nick');
-        $type = filter_input(INPUT_POST, 'type');
+        $typeKL = filter_input(INPUT_POST, 'type');
         $userId = filter_input(INPUT_POST, 'userId');
-        include('../admin/admin/admin_UserEdit.php');
+        include('../admin/admin_UserEdit.php');
         break;
     case 'editUser':
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
+        $userName = filter_input(INPUT_POST, 'userName');
+        $pass = filter_input(INPUT_POST, 'pass');
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
         $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
         $nick = filter_input(INPUT_POST, 'nick');
-        $type = filter_input(INPUT_POST, 'type');
+        $typeKL = filter_input(INPUT_POST, 'type');
         $userId = filter_input(INPUT_POST, 'userId');
-        $userInfo->updateAdmin($userId, $username, $password, $fname, $lname, $email, $phone, $nick, $type);
-        header('Location: ./index.php?action=showUser');
+        $userInfo->updateAdmin($userId, $userName, $pass, $fname, $lname, $email, $phone, $nick, $typeKL);
+        header('Location: .?action=showUser');
         break;
     case 'deleteUser':
         $userId = filter_input(INPUT_POST, 'id');
@@ -59,31 +58,32 @@ switch($action)
         include('../admin/admin_All.php');
         break;
     case 'showAddBudget':
-        $user = $userDB->getAllUser();
+        $user = $userInfo->getAllUser();
         $month_names = array("January","February","March","April","May","June","July","August","September","October","November","December");
         $year_10 = array('2020','2021','2022','2023','2024','2025');
-        include ('../admin/admin_AddBudget');
+        include ('../admin/admin_AddBudget.php');
         break;
     case 'addBudget':
         $userId = filter_input(INPUT_POST, 'id');
-        $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
+        $amount = filter_input(INPUT_POST, 'amount');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
+        //include '../errors/test.php';
         $budgetDB->addBudget($amount, $userId, $month, $year);
         $caName = array('food','cloth','utility','transportation','medical','entertainment');
         for($i = 0; $i < count($caName); $i+= 1)
         {
             $categoryDB->addCategory($userId, $caName[$i], 0, $month, $year);
         }
-        header('Location: ./index.php?action=showBudget');
+        header('Location: .?action=showBudget');
         break;
     case 'showEditBudget' :
         $userId = filter_input(INPUT_POST, 'id');
-        $username = filter_input(INPUT_POST, 'name');
+        $userName = filter_input(INPUT_POST, 'name');
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
-        include('../admin/admin_EditBudget');
+        include('../admin/admin_EditBudget.php');
         break;
     case 'editBudget' :
         $budgetId = filter_input(INPUT_POST, 'budgetId');
@@ -92,7 +92,7 @@ switch($action)
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
         $budgetDB->updateBudget($amount, $userId, $month, $year);
-        header('Location: ./index.php?action=showBudget');
+        header('Location: .?action=showBudget');
         break;
     case 'report' :
       $userId = filter_input(INPUT_POST, 'id');

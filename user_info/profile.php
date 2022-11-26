@@ -28,25 +28,35 @@
                     <h3>Your Profile</h3>
                     <table border="1" id="user-info" class="user-info" style="display: block; margin: 0 auto;">
                         <tr>
-                            <th>Name</th>
+                            <th>UserName</th><!--  -->
+                            <th>Password</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Nick Name</th>
                             <th>Modify</th>
                         </tr>
                         <tr>
-                            <td><?php echo $info->getFname()." ". $info->getLname(); ?></td>
-                            <td><?php echo $info->getEmail(); ?></td>
-                            <td><?php echo $info->getPhone(); ?></td>
-                            <td><?php echo $info->getNick(); ?></td>
-                            <td><button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
+                            <form action='./index.php' method='post'>
+                             <input type ='hidden' name='action' value='showEdit'><!-- comment -->
+                             <input type = 'hidden' name='userId' value='<?php echo $info->getID(); ?>'>
+                            <td><input type='text' name='userName' value='<?php echo $info->getUser(); ?>' readonly></td>
+                            <td><input type='text' name='pass' value='<?php echo $info->getPass(); ?>' readonly></td>
+                            <td><input type='text' name='fname' value='<?php echo $info->getFname(); ?>' readonly></td>
+                            <td><input type='text' name='lname' value='<?php echo $info->getLname(); ?>' readonly></td>
+                            <td><input type='text' name='email' value='<?php echo $info->getEmail(); ?>' readonly></td>
+                            <td><input type='text' name='phone' value='<?php echo $info->getPhone(); ?>' readonly></td>
+                            <td><input type='text' name='nick' value='<?php echo $info->getNick(); ?>' readonly></td>
+                            <td><button type = 'submit' class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button></td>
+                            </form>
                         </tr>
                     </table>
                     <br>
-                    <form action='./index.php' method='post'>
-                    <button type=button class="profile-submit">Update</button>
                     
-                    </form>
+                             
+                    
+                    
                 </div>
             </div>
         </div>

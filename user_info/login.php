@@ -43,9 +43,9 @@
                <form action="index.php" method='post'>
                 <input type="hidden" name='action' value='login'>
                 <label>Username : </label>   
-                <input type="text" placeholder="Enter Username" name="username" required/>  
+                <input type="text" placeholder="Enter Username" name="userName" required/>  
                 <label>Password : </label>   
-                <input type="password" placeholder="Enter Password" name="password" required/>  
+                <input type="password" placeholder="Enter Password" name="pass" required/>  
                 <button class="submit">Login</button> 
                </form> 
                 &nbsp;

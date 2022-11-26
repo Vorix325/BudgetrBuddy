@@ -6,7 +6,7 @@
         <br>
         <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
         <label>User:</label>
-        <input type='text' value="<?php echo $username; ?> readonly>
+        <input type='text' value="<?php echo $userName; ?>" readonly>
         <br>
 
         <label>Budget:</label>
@@ -17,7 +17,7 @@
         <label>Year: </label>
         <input type='text' value="<?php echo $year; ?>" readonly>
         <label>&nbsp;</label>
-        <input type="submit" value="Start Month" />
+        <input type="submit" value="Edit User Allowance" />
         <br>
     </form>
     

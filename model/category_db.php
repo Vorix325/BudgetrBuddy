@@ -152,7 +152,7 @@ class category_db
   function checkTotal($id)
   {
     $db = database::getDB();
-    $query = 'SELECT total, limits FROM category_bbudget
+    $query = 'SELECT total, limitS FROM category_bbudget
               WHERE category_id = :id';
              
     $statement = $db->prepare($query);

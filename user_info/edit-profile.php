@@ -27,13 +27,13 @@
                 <div class="info-container">
                     <h3>Profile</h3>
                     <form action='./index.php' method="post">
-                      <input type='hidden' name='action'  value='editUser'>
-                      <input type='hidden' name='userId'  value='<?php echo $userId; ?>'>
+                     <input type='hidden' name='action'  value='editProfile'>
+                     <input type='hidden' name='userId'  value='<?php echo $userId; ?>'>
                      <label>User Name:</label>
-                     <input type="text" name="username" value='<?php echo $username; ?>'/>
+                     <input type="text" name="userName" value='<?php echo $userName; ?>'/>
                      <br>
                      <label>Password:</label>
-                     <input type="text" name="password" value='<?php echo $password; ?>'/>
+                     <input type="text" name="pass" value='<?php echo $pass; ?>'/>
                      <br> 
                      <label>First Name:</label>
                      <input type="text" name="fname" value='<?php echo $fname; ?>'/>
@@ -48,9 +48,9 @@
                      <input type="text" name="phone" value='<?php echo $phone; ?>'/>
                      <br> 
                      <label>Nick Name:</label>
-                     <input type="text" name="lname" value='<?php echo $nick; ?>'/>
+                     <input type="text" name="nick" value='<?php echo $nick; ?>'/>
                      <br> 
-                    <button type='submit' class="profile-submit">Update</button> 
+                     <button type='submit' class="profile-submit">Update</button> 
                     </form>
                 </div>
             </div>

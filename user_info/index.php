@@ -21,15 +21,15 @@ switch($action)
         include('../user_info/login.php');
         break;
     case 'login':
-        $username = filter_input(INPUT_POST, 'username');
-        $password = trim(filter_input(INPUT_POST, 'password'));
-        $checkCall = $userInfo->checkLogin($username);
+        $userName = filter_input(INPUT_POST, 'userName');
+        $pass = trim(filter_input(INPUT_POST, 'pass'));
+        $checkCall = $userInfo->checkLogin($userName);
         
         $check = password_hash($checkCall[0], PASSWORD_DEFAULT);
-        if(password_verify($password, $check))
+        if(password_verify($pass, $check))
         {
             
-            $user = $userInfo->getUserID($username);
+            $user = $userInfo->getUserID($userName);
             if($user == null)
             {
                 
@@ -39,7 +39,7 @@ switch($action)
             {
                 $userInfo->updateCurrent($user[0], $user[1]);
                 
-                header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/index.php");
+                header("Location: ../index.php");
             }
             
             break;
@@ -61,18 +61,18 @@ switch($action)
       include('../user_info/register.php');
       break;
     case 'register' :
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
+        $userName = filter_input(INPUT_POST, 'userName');
+        $pass = filter_input(INPUT_POST, 'pass');
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
         $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
         $confirm = filter_input(INPUT_POST, 'confirm');
         
-        if($password == $confirm)
+        if($pass == $confirm)
         {
             $userInfo->addUser($username, $password, $fname, $lname, $email, $phone);
-            header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/index.php");
+            header("Location: ../index.php");
         }
         else
         {
@@ -93,26 +93,27 @@ switch($action)
         break;
     case 'showEdit' :
         $userId= filter_input(INPUT_POST, 'userId');
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $userName = filter_input(INPUT_POST, 'userName');
+        $pass = filter_input(INPUT_POST, 'pass');
+        $email = filter_input(INPUT_POST, 'email');
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
-        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
-        $nick = filter_input(INPUT_POST, 'nickname');
+        $phone = filter_input(INPUT_POST, 'phone');
+        $nick = filter_input(INPUT_POST, 'nick');
         include('../user_info/edit-profile.php');
         break;
     case 'editProfile' :
         $userId= filter_input(INPUT_POST, 'userId');
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $userName = filter_input(INPUT_POST, 'userName');
+        $pass = filter_input(INPUT_POST, 'pass');
+        $email = filter_input(INPUT_POST, 'email');
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
-        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
-        $nick = filter_input(INPUT_POST, 'nickname');
-        $userDB->updateUser($userId,$username,$password, $fname, $lname, $email,$phone, $nick);
-        header("Location: http://localhost/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile");
+        $phone = filter_input(INPUT_POST, 'phone');
+        $nick = filter_input(INPUT_POST, 'nick');
+        $userInfo->updateUser($userId,$userName,$pass, $fname, $lname, $email,$phone, $nick);
+        
+        header('Location: .?action=show_profile');
         break;
         
 }
