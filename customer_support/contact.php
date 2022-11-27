@@ -14,7 +14,7 @@
     </head>
 
     <body>
-        <form action="index.php" method='post'>
+        
 
         <!-- Header -->
         <?php include '../view/header.php'; ?>
@@ -30,9 +30,11 @@
                 </div>
 
                 <div class="contact-container">
-                    <form method="post" class="message">
+                    <form action='./index.php' method="post" class="message">
                         <h3>What's up Buddy?</h3>
-                        <textarea id="message" placeholder="Message" cols="100" rows="10"></textarea>
+                        <input type='hidden' name='action' value='send'>
+                        <input type='hidden' name='id' value='<?php echo $userId; ?>'>
+                        <textarea id="message" placeholder="Message" name='mess' cols="100" rows="10"></textarea>
                         <button type="button" class="submit" id="submit">Send</button>  
 
                     </form> 
@@ -43,5 +45,4 @@
         <!-- Footer -->
         <?php include '../view/footer.php'; ?>
 
-        </form>
-    </body>  
+       

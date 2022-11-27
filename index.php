@@ -34,17 +34,62 @@
             </div>
             <!-- Manage Profile -->
             <div class = "profile-container">
+                <form action="./user_info/index.php" method='post'>
+                    <?php if($type == null) : ?>
+                    <input type='hidden' name='action' value='show_login'><!-- comment -->
+                    <?php else : ?>
+                    <input type='hidden' name='action' value='show_profile'><!-- comment -->
+                    <?php endif; ?>
+                    
                 <h3><b>Manage Profile</b></h3>
                 <h3>We're buddies aren't we? Check your profile and let's make sure to get the details right.</h3>
-               
+               <button type=button class="submit">Profile</button>
                                          
                 </form>
             </div>
             <!-- Start Budget -->
             <div class = "start-container">
-                <h3><b>Manage Budget</b></h3>
-                <h3>Would you like to manage your budget now? Let's get to it!</h3>
-                
+                 <form action="<?php if($type == null)
+                 {
+                     echo "./user_info/index.php";
+                 
+                 }
+                 else
+                 {
+                     echo "./budget_page/index.php";
+                 } ?>" 
+                 method='post'>
+                    <?php if($type == null) : ?>
+                    <input type='hidden' name='action' value='show_login'><!-- comment -->
+                    <?php else : ?>
+                    <input type='hidden' name='action' value='showBudget'><!-- comment -->
+                    <?php endif; ?>
+                 <h3><b>Manage Budget</b></h3>
+                 <h3>Would you like to manage your budget now? Let's get to it!</h3>
+                 <button type=button class="submit">Budget</button>
+               </form>
+            </div>
+            <!-- Support -->
+            <div class = "start-container">
+                 <form action="<?php if($type == null)
+                 {
+                     echo "./user_info/index.php";
+                 
+                 }
+                 else
+                 {
+                     echo "./customer_support/index.php";
+                 } ?>" 
+                 method='post'>
+                    <?php if($type == null) : ?>
+                    <input type='hidden' name='action' value='show_login'><!-- comment -->
+                    <?php else : ?>
+                    <input type='hidden' name='action' value='showS'><!-- comment -->
+                    <?php endif; ?>
+                <h3><b>Need Support?</b></h3>
+                <h3>Experiencing technical difficulties or have any questions? Take to a support Buddy.</h3>
+                <button type=button class="submit">Contact</button>
+                 </form>
             </div>
         </div>   
         <!-- Footer -->

@@ -10,7 +10,7 @@
         rel="stylesheet" />
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="BudgetrBuddy/bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" />
     </head>    
     <body>
         <form action="index.php" method='post'>
@@ -23,7 +23,7 @@
                 <!-- Welcome -->
                 <div class="welcome">
                     <h3>Your email has been sent! Please allow 3-5 business days for our support team to respond.</h3><br>
-                    <p>To go back to your budget click <a href="#">Budget</a></p>
+                    <p>To go back to your budget click <a href="ex_starts/BudgetBuddy/BudgetBuddy/index.php">Budget</a></p>
                 </div>
             </div>    
         </div>
