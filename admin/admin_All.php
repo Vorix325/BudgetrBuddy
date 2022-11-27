@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-        <title>Start Month Page</title>
+        <title>Admin All</title>
 
         <!-- Google Font link -->
         <link
@@ -23,7 +23,7 @@
         <!-- Header -->
         <?php include '../view/header.php'; ?>
 
-        <div class="wrapper">
+        <div class="wrapper2">
             <div class="container">
                 <!-- Welcome -->
                 <div class="welcome" id="welcome">
@@ -83,7 +83,7 @@
                                                                                      <input type='hidden' name='id' value='<?php echo $d['user_id']; ?>'>
                                                                                      <input type='hidden' name='month' value='<?php echo $d['SMonth']; ?>'>
                                                                                      <input type='hidden' name='year' value='<?php echo $d['SYear']; ?>'>
-                                                                                      <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
+                                                                                      <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                                                                                     </form></td>
 						             <?php endforeach; ?>
 							</tr>
@@ -92,7 +92,7 @@
                                                 <form action ="./index.php" method="post">
                                                     <input type='hidden' name='action' value='showAddBudget'><!-- comment -->
                                                     
-                                                    <input type='submit' value="Start Month"ad>
+                                                    <button class=submit type=submit value="Submit"ad>Submit</button>
                                                 </form>
                                         
 						<br>
