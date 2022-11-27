@@ -30,7 +30,7 @@ class category_db
   {
       $db = database::getDB();
     $query = 'SELECT * FROM Category_BBudget
-              WHERE user_id = :userId , SMonth = :m, $Year = :y';
+              WHERE user_id = :userId AND SMonth = :m AND SYear = :y';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->bindValue(':m',$month);

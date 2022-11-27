@@ -80,7 +80,7 @@
                                                                         </form></td>
                                                                                 <td><form action='./index.php' method='post'>
                                                                                      <input type='hidden' name='action' value='report'>
-                                                                                     <input type='hidden' name='month' value='<?php echo $d['user_id']; ?>'>
+                                                                                     <input type='hidden' name='id' value='<?php echo $d['user_id']; ?>'>
                                                                                      <input type='hidden' name='month' value='<?php echo $d['SMonth']; ?>'>
                                                                                      <input type='hidden' name='year' value='<?php echo $d['SYear']; ?>'>
                                                                                       <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
@@ -92,7 +92,7 @@
                                                 <form action ="./index.php" method="post">
                                                     <input type='hidden' name='action' value='showAddBudget'><!-- comment -->
                                                     
-                                                    <input type='submit'>
+                                                    <input type='submit' value="Start Month"ad>
                                                 </form>
                                         
 						<br>

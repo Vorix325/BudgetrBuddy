@@ -36,13 +36,15 @@
             <div class = "profile-container">
                 <h3><b>Manage Profile</b></h3>
                 <h3>We're buddies aren't we? Check your profile and let's make sure to get the details right.</h3>
-                <button type=button class="submit">Profile</button>
+               
+                                         
+                </form>
             </div>
             <!-- Start Budget -->
             <div class = "start-container">
                 <h3><b>Manage Budget</b></h3>
                 <h3>Would you like to manage your budget now? Let's get to it!</h3>
-                <button type=button class="submit">Budget</button>
+                
             </div>
         </div>   
         <!-- Footer -->

@@ -85,7 +85,7 @@ switch($action)
         $currentM = $dateTime->format('F');
         $currentY = $dateTime->format('Y'); 
         $budget = $budgetDB->getBudget($userId[0], $currentM, $year);
-        $budgets = $budget[0];
+        
         $array = $spendingDB->getSpendTime($currentM,$year);
         $categories = $categoryDB->getCategory($userId[0]);
         if( $array == null || $categories == null)
@@ -100,6 +100,7 @@ switch($action)
         }
         else
         {
+            $budgets = $budget[0];
             $total = 0;
              foreach($array as $a)
              {

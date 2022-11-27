@@ -106,4 +106,7 @@ switch($action)
       $datas = $categoryDB->getReport($userId, $month, $year);
       $c90 = $categoryDB->get90($userId);
       include("../admin/report.php");
+      
+      
+     
 }
