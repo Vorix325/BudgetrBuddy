@@ -5,10 +5,12 @@ require('../model/category_db.php');
 require('../model/budget_db.php');
 require('../model/user.php');
 require('../model/userInfo_db.php');
+require('../model/email.php');
 
 $userInfo = new userInfo_db;      
 $budgetDB = new budget_db();
 $categoryDB = new category_db();
+$emailS = new emailSend();
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -68,7 +70,10 @@ switch($action)
         $amount = filter_input(INPUT_POST, 'amount');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
-        //include '../errors/test.php';
+        $userC = $userInfo->getCurrent();
+        $emailS->sent($userId, 1);
+        $stl = $userInfo->getEmail($userC[0]);
+        $emailS->addNext($user_id, $stl['user_name'],$stl['email'], $monthS, $yearS);
         $budgetDB->addBudget($amount, $userId, $month, $year);
         $caName = array('food','cloth','utility','transportation','medical','entertainment');
         for($i = 0; $i < count($caName); $i+= 1)

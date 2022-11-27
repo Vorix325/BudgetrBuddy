@@ -74,6 +74,19 @@ CREATE TABLE Spending_Bbudget
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
+
+CREATE TABLE EMAIL
+(
+    pr_id      INT         NOT NULL AUTO_INCREMENT,
+    user_id    INT,
+    adminN      VARCHAR(30),
+    email      VARCHAR(30),
+    editStatus BIT(1),
+    monthS     VARCHAR(30),
+    yearS      VARCHAR(30),
+    PRIMARY KEY (pr_id),
+
+);
 -- INSERT Current User
 INSERT INTO currentq VALUES
 (1, 0, 'regular');

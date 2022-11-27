@@ -233,6 +233,18 @@ class userInfo_db
        $statement->closeCursor();
        return $users;
    }
-      
+   function getEmail($id)
+   {
+    $db = database::getDB();
+    $query = 'SELECT user_name, email FROM users_bbudget
+              WHERE user_id = :id';
+               
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+    $data = $statement->fetch();
+    $statement->closeCursor();
+    return $data;
+   }
  }
 
