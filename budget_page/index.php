@@ -260,7 +260,7 @@ switch($action)
     case 'updateSpending':
         $spendId = filter_input(INPUT_POST, 'spend_id');
         $userId = filter_input(INPUT_POST, 'userId');
-        $old = filter_input(INPUT_POST, 'amount');
+        $old = filter_input(INPUT_POST, 'old');
         $amount = filter_input(INPUT_POST, 'amount');
         $name = filter_input(INPUT_POST, 'name');
         $categoryId = filter_input(INPUT_POST,'categoryId');
@@ -272,7 +272,7 @@ switch($action)
         $check = $array['total'] + $amount - $old;
         if($array['limitS'] > $check)
         {
-             $spendingDB->updateSpend($spendId,$userId, $categoryId, $amount, $name, $date, $month, $year);
+             $spendingDB->updateSpend($spendId,$userId, $categoryId, $amount, $name, $date, $month, $year,$old);
              
              $s = ($check/$array['limitS'])*100;
              if($s >= 80)

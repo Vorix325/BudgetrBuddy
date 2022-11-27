@@ -13,7 +13,7 @@
       exit;
  }
  
-   global $db1;
+    
     $sql = "SELECT typeof_user FROM currentq WHERE queue = 1;";  
     $statement = $db1->prepare($sql);
     $statement->execute();

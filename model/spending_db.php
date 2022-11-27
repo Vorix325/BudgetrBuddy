@@ -26,7 +26,7 @@ class spending_db
      $statement->closeCursor();
      return $spending; 
     }
-    function deleteSpend($spend_id,$categoryId)
+    function deleteSpend($spend_id,$categoryId, $amount)
     {
        $db = database::getDB();
      $query = 'DELETE FROM spending_bbudget
@@ -36,7 +36,8 @@ class spending_db
      $statement->execute();
      $statement->closeCursor();
      $total = $this->getTotal($categoryId);
-     $this->countTotal($categoryId, $total);
+     $new = $total - $amount;
+     $this->countTotal($categoryId, $new);
     }
     function addSpend($userId,$categoryId,$amount, $name , $date, $month, $year)
     {
@@ -58,9 +59,10 @@ class spending_db
      $statement->execute();
      $statement->closeCursor(); 
      $total = $this->getTotal($categoryId);
-     $this->countTotal($categoryId, $total);
+     $new = $total + $amount;
+     $this->countTotal($categoryId, $new);
     }
-    function updateSpend($spendId,$userId,$categoryId,$amount, $name, $date, $month, $year)
+    function updateSpend($spendId,$userId,$categoryId,$amount, $name, $date, $month, $year, $old)
     {
      $db = database::getDB(); 
      $query = 'UPDATE spending_bbudget
@@ -72,7 +74,7 @@ class spending_db
      $statement->bindValue(':spendId',$spendId);
      $statement->bindValue(':userId',$userId);
      $statement->bindValue(':caId',$categoryId);
-     $statement-> bindValue(':amount', $amount);
+     $statement->bindValue(':amount', $amount);
      $statement->bindValue(':name', $name);
      $statement->bindValue(':date',$date);
      $statement->bindValue(':month',$month);
@@ -80,18 +82,16 @@ class spending_db
      $statement->execute();
      $statement->closeCursor();
      $total = $this->getTotal($categoryId);
-     $this->countTotal($categoryId, $total);
+     $new = $total[0] + $amount - $old;
+     $this->countTotal($categoryId, $new);
     }
     function countTotal($category_id, $total)
     {
-        
-     
+      
      $db = database::getDB(); 
      $query = 'UPDATE Category_bbudget
               SET
-                (total)
-              VALUE
-                 (:total)
+               total = :total
               WHERE category_id = :caId';
                
      $statement = $db->prepare($query);
@@ -103,7 +103,7 @@ class spending_db
     function getTotal($category_id)
     {
      $db = database::getDB(); 
-     $query = 'SELECT SUM(amount) FROM spending_bbudget
+     $query = 'SELECT  total FROM Category_bbudget
                WHERE category_id = :caId ';
                
      $statement = $db->prepare($query);
