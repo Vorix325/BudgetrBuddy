@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-        <title>Start Month Page</title>
+        <titleAdmin UserView</title>
 
         <!-- Google Font link -->
         <link
@@ -23,7 +23,7 @@
         <!-- Header -->
         <?php include '../view/header.php'; ?>
 
-        <div class="wrapper">
+        <div class="wrapper3">
             <div class="container">
                 <!-- Welcome -->
                 <div class="welcome" id="welcome">
@@ -40,17 +40,17 @@
                 <!-- Budget Category Table -->
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
-								<th>&emsp;&emsp;&ensp;&ensp;User Id&emsp;&emsp;&ensp;&ensp;</th>
-                                                                <th>&emsp;&emsp;&ensp;&ensp;User name&emsp;&emsp;&ensp;&ensp;</th>
-								<th>&ensp;&emsp;&emsp;First Name&ensp;&emsp;&emsp;</th>
-                                                                <th>&ensp;&emsp;&emsp;Last Name&ensp;&emsp;&emsp;</th>
-                                                                <th>&ensp;&emsp;&emsp;Email&ensp;&emsp;&emsp;</th>
-                                                                <th>&ensp;&emsp;&emsp;Phone&ensp;&emsp;&emsp;</th>
-                                                                <th>&ensp;&emsp;&emsp;Nick Name&ensp;&emsp;&emsp;</th><!-- comment -->
-                                                                <th>&ensp;&emsp;&emsp;Password&ensp;&emsp;&emsp;</th><!-- comment -->
-                                                                <th>&ensp;&emsp;&emsp;Type&ensp;&emsp;&emsp;</th>
-								<th>&emsp;Modify&emsp;</th>
-								<th>&emsp;Delete&emsp;</th>
+								<th>User Id</th>
+                                                                <th>User name</th>
+								<th>First Name</th>
+                                                                <th>Last Name</th>
+                                                                <th>Email</th>
+                                                                <th>Phone</th>
+                                                                <th>Nick Name</th>
+                                                                <th>Password</th>
+                                                                <th>Type</th>
+								<th>Modify</th>
+								<th>Delete</th>
 								
 							</tr>
 							
