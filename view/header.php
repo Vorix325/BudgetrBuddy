@@ -30,7 +30,7 @@
             rel="stylesheet"
         />
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="../bp-stylesheet.css" />
+        <link rel="stylesheet" href="../bp-stylesheet.css" >
 </head>   
 <body>
 <header><h1>Budget Buddy</h1></header>
