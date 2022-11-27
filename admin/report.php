@@ -29,7 +29,7 @@
                         <label>Top Spend Month:</label>
 
                         <?php foreach ($c90 as $c): ?>
-                        <p><?php echo $c->getCaName(); ?> <?php echo $c->getTotal(); ?></p>
+                        <p><?php echo $c->getCaName(); ?>  - $<?php echo $c->getTotal(); ?> - <?php echo $c->getMonth(); ?> - <?php echo $c->getYear(); ?></p>
                         <?php endforeach; ?>
                         <br>
                         <table border="1">

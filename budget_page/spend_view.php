@@ -53,16 +53,18 @@
     </script>
 
                 <nav>
-                    <ul class="spend-navigation">
+                    <table border =" 1">
+                        <tr>
                         <?php foreach($categories as $ca) : ?>
                         <?php if($ca->getMonth() == $currentM && $ca->getYear() == $currentY) : ?>
-                        <form action="./index.php" method ="post">
+                            <td><form action="./index.php" method ="post">
                         <input type ="hidden" name="current" value='<?php echo $ca->getCaID(); ?>'>
-                        <li><button tpye = 'submit'><?php echo $ca->getCaName(); ?></button></li>
-                        </form>
+                        <button tpye = 'submit'><?php echo $ca->getCaName(); ?></button>
+                              </form></td>
                         <?php endif; ?>
                         <?php endforeach; ?>
-                    </ul><!-- comment -->
+                        <tr>
+                    </table><!-- comment -->
                     <br>
                     <Table border = '1'>
                         <tr>
@@ -73,6 +75,7 @@
                             <th>Edit</th><!-- comment -->
                             <th>Delete</th>
                         </tr>
+                        
                         
                         
                     <?php foreach ($allSpend as $spend) : ?>
@@ -92,7 +95,7 @@
                                  <input type='hidden' name='date' value='<?php echo $spend['SDate']; ?>'></td>
                                  <input type='hidden' name='month' value='<?php echo $spend['SMonth']; ?>'></td><!-- comment -->
                                  <input type='hidden' name='year' value='<?php echo $spend['SYear']; ?>'></td>
-                                 <button type='submit' class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
+                                 <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                          </form></td>
 			<td><form action="./index.php" method='post'>
                               <input type='hidden' name='action' value='deleteSpend'><!-- comment -->
