@@ -74,6 +74,18 @@ body{
     max-width: 43.75em;
     margin: 1em auto;
 }
+.wrapper2 {
+    width: 90%;
+    font-size: 16px;
+    max-width: 60em;
+    margin: 1em auto;
+}
+.wrapper3 {
+    width: 90%;
+    font-size: 16px;
+    max-width: 70em;
+    margin: 1em auto;
+}
 .container {
     width: 100%
 }
