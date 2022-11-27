@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="../bp-stylesheet.css" />
 </head>   
 <body>
-<header><h1>Budge Buddy</h1></header>
+<header><h1>Budget Buddy</h1></header>
 
  <div class ="header">
             <div class="inner-header">
@@ -42,8 +42,10 @@
                 </div>
                 <ul class="navigation">
                     <a href='/ex_starts/BudgetBuddy/BudgetBuddy/index.php'><li>Home</li></a>
+                    <?php if($type == null) : ?>
                     <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_login'><li>Login</li></a>
                     <a href= '/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_reg'><li>Register</li></a>
+                    <?php endif; ?>
                     <?php 
                     if($type != null) : ?>
                       <a href='/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php?action=show_profile'><li>Profile</li></a>
