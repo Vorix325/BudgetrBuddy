@@ -84,7 +84,7 @@ CREATE TABLE EMAIL
     editStatus BIT(1),
     monthS     VARCHAR(30),
     yearS      VARCHAR(30),
-    PRIMARY KEY (pr_id),
+    PRIMARY KEY (pr_id)
 
 );
 -- INSERT Current User

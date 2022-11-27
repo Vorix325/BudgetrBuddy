@@ -50,8 +50,9 @@
                                                                 <th>&emsp;Report&emsp;</th>
 								
 							</tr>
-							<tr>
+							
                                                             <?php foreach($main as $d) : ?>
+                                                        <tr>
 								<td><?php echo $d['user_id'] ;?></td>
                                                                 <td><?php 
                                                                       
@@ -85,8 +86,9 @@
                                                                                      <input type='hidden' name='year' value='<?php echo $d['SYear']; ?>'>
                                                                                       <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                                                                                     </form></td>
+                                                                                    </tr>
 						             <?php endforeach; ?>
-							</tr>
+							
                                                         
 						</table>
                                                 <form action ="./index.php" method="post">
