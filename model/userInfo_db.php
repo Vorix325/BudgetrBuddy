@@ -1,5 +1,5 @@
 <?php
-
+require('../model/user.php');
 class userInfo_db
 {
  function checkLogin($username)

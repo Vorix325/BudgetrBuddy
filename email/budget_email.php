@@ -1,34 +1,44 @@
 <?php
+  require'../mailer/PHPMailer.php';
+  require'../mailer/SMTP.php';
+  require'../mailer/Exception.php';
+  
 
-  $template = './alert_template.php';
+ use PHPMailer\PHPMailer\PHPMailer;
+ use PHPMailer\PHPMailer\SMTP;
+ use PHPMailer\PHPMailer\Exception;
 
+  
+  $mail = new PHPMailer();
+  
+  $mail->isSMTP();
+  $mail->Host = "smtp.gmail.com";
+  $mail->SMTPAuth = 'true';
+  $mail->SMTPSecure = 'ssl';
+  $mail->Port = "465";
+  $mail->Username = "budgetbuddy75@gmail.com";
+  $mail->Password = "llwsedtbgtmgbgiv";
+  $mail->Subject = "Warning about your spending in " . $month;
+  $mail->setFrom("budgetbuddy75@gmail.com");
+  
+ $message = 
+    "Dear " . $userName . "<br>This is an automated notification to inform you that you have exceeded 80% of the total monthly budget of $"
+     .$budget. "<br>Please Review your current Spend and Budget on our Webpage <br>" .
+    
+    "Thank you and have a great day,\nThe BudgetBuddy team<br>".
+    "BudgetBuddy";
  
-  $subject = "Spending Warning";
+         
   
-  $swap_var = array(
-    "{USER}"  => $username,
-    "{BUDGET}" => $budget,
-    "{MONTH}"   => $month,
-  );
-  $header = "From BudgetBuddy <budgetbuddy@gmail.com";
-  $header .= "MIME-Version: 1.0\r\n";
-  $header .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
   
-  if(file_exists($template))
-  {
-      $message = file_get_contents($template);
-  }
- else 
+ 
+ 
+ $mail->Body = $message;
+ $mail->addAddress($emailTo);
+ $mail->isHTML(true);
+ if($mail->Send())
  {
-      die("Unable to locate template"); 
+     echo "Email Sent !";
  }
  
- foreach(array_keys($swap_var) as $key)
- {
-     if(strlen($key) > 2 && trim($key) != "")
-     {
-         $message = str_replace($key, $swap_var[$key], $smessage);
-     }
- }
- mail($emailTo, $subject, $message, $header);
- 
+ $mail->smtpClose();

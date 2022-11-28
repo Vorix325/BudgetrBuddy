@@ -1,6 +1,6 @@
 <?php
 require('../model/database.php');
-require('../model/user.php');
+
 require('../model/userInfo_db.php');
 
 $userInfo = new userInfo_db();
