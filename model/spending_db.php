@@ -36,7 +36,7 @@ class spending_db
      $statement->execute();
      $statement->closeCursor();
      $total = $this->getTotal($categoryId);
-     $new = $total - $amount;
+     $new = $total[0] - $amount;
      $this->countTotal($categoryId, $new);
     }
     function addSpend($userId,$categoryId,$amount, $name , $date, $month, $year)
@@ -59,7 +59,7 @@ class spending_db
      $statement->execute();
      $statement->closeCursor(); 
      $total = $this->getTotal($categoryId);
-     $new = $total + $amount;
+     $new = $total[0] + $amount;
      $this->countTotal($categoryId, $new);
     }
     function updateSpend($spendId,$userId,$categoryId,$amount, $name, $date, $month, $year, $old)

@@ -102,6 +102,7 @@
                               <input type='hidden' name='action' value='deleteSpend'><!-- comment -->
                               <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
                               <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
+                              <input type='hidden' name='amount' value='<?php echo $spend['Samount']; ?>'>
                               <button class="user-edit"><i class="fas fa-user-times" id="user-edit" onclick="return confirm('Are you sure?')" name="deleteSpend"></i></button>
                             </form></td>
                         <?php endif; ?>

@@ -97,7 +97,7 @@
                                                                     <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
                                                                     <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
                                                                     <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
-								    <button class=submit type=submit>Update</button>
+								    <button class='submit' type='submit'>Add Category</button>
           
                                                 </form> 
                 </form

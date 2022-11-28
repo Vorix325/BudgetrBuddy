@@ -137,6 +137,7 @@ switch($action)
         $limit = filter_input(INPUT_POST, 'Limit');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST,'year');
+        
         $r = $budgetDB->getBudget($userId, $month, $year);
         $s = $categoryDB->getCa($userId, $month, $year);
         $sM = $s + $limit;
@@ -193,7 +194,8 @@ switch($action)
     case 'deleteSpend' :
         $spend_id = filter_input(INPUT_POST, 'spend_id');
         $category_id = filter_input(INPUT_POST, 'category_id');
-        $spendingDB->deleteSpend($spend_id, $category_id);
+        $amount = filter_input(INPUT_POST, 'amount');
+        $spendingDB->deleteSpend($spend_id, $category_id,$amount);
         header('Location: .?action=showSpending');
         break;
     case 'showAddSpend':
@@ -242,7 +244,7 @@ switch($action)
             $error = "Your Spending exceed this category limit";
             header("Location: ../errors/error.php?error=$error");
         }
-        //header("Location: .?action=showSpending");
+        header("Location: .?action=showSpending");
         break;
     case 'showUpSpend':
         $userId = $userInfo->getCurrent();
