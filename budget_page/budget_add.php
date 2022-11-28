@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-        <title>Add Budget Page</title>
+        <title>Add Budget Category</title>
 
         <!-- Google Font link -->
         <link
@@ -21,16 +21,16 @@
 
         <div class="wrapper">
             <div class="container">
-                <!-- To Add Budget -->
+                <!-- To Add Budget Category -->
                 <div class="welcome">
-                    <h3>Hey Buddy, set your budget limit here so we can keep track of your finances.</h3>
+                    <h3>Add new budget category and set the expense limit here so we can keep track of your finances.</h3>
                 </div>
             </div>
 
-            <!-- Set Budget -->   
+            <!-- New Budget Catgory-->   
             <div class="category-container">
             <main>
-                <h1>Set Budget</h1>
+                <h1>Add New Budget Category</h1>
                 <form action="." method="post" id="addCategory">
                     <input type="hidden" name="action" value="addCategory">
                     <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
@@ -42,12 +42,13 @@
                     <label>Limit:</label>
                     <input type="text" name="Limit" placeholder="Enter Amount" />
                     <br>
-                    <input class="submit" type="submit" value="Set Budget" />
+                    <input class="submit" type="submit" value="Add Category" />
                     <br>
                 </form>
             </main>
             </div>
         </div>
+        <br><br><br><br><br><br><br><br><br><br><br>
         <!-- Footer -->
         <?php include '../view/footer.php'; ?>
     </body>
