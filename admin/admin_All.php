@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-        <title>Admin All</title>
+        <title>Monthly Budget</title>
 
         <!-- Google Font link -->
         <link
@@ -27,17 +27,17 @@
             <div class="container">
                 <!-- Welcome -->
                 <div class="welcome" id="welcome">
-                    <h3>Let's start the month and work on that Budget!</h3>
+                    <h3>Let's take a look at the monthly budget!</h3>
                 </div>    
 
                
-            <!-- Budget Cateogory List -->
+            <!-- Monthly Budget List -->
             <div class="list">
                 <h3>Budget Category List:</h3>
                 <div class="expense-list-container"
                      id="list">
                 </div>
-                <!-- Budget Category Table -->
+                <!-- Monthly Budget Table -->
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
 								<th>&emsp;&emsp;&ensp;UserId&emsp;&ensp;&ensp;</th>
@@ -101,6 +101,7 @@
                                                 
 						            </div>
         </div>
+	<br><br><br><br><br><br><br><br><br><br>
         <!-- Java Script -->
         <script src = "../budget_page/script.js"></script>
         <!-- Footer -->
