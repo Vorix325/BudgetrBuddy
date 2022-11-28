@@ -3,7 +3,6 @@ require('../model/database.php');
 require('../model/category.php');
 require('../model/category_db.php');
 require('../model/budget_db.php');
-require('../model/user.php');
 require('../model/userInfo_db.php');
 require('../model/email.php');
 

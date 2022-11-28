@@ -94,7 +94,7 @@
                                                 <form action ="./index.php" method="post">
                                                     <input type='hidden' name='action' value='showAddBudget'><!-- comment -->
                                                     
-                                                    <button class=submit type=submit value="Submit"ad>Submit</button>
+                                                    <button class=submit type=submit value="Submit"ad>Start Month</button>
                                                 </form>
                                         
 						<br>

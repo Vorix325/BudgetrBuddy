@@ -67,7 +67,7 @@
 							</tr>
                                                         <?php foreach($categories as $ca) :?>
 							<tr>
-                                                            <?php //if($ca->getMonth() == $month && $ca->getYear() == $year) : ?>
+                                                            <?php if($ca->getMonth() == $currentM && $ca->getYear() == $currentY) : ?>
                                                                 <td><?php echo $ca->getCaName(); ?></td>
 								<td><?php echo $ca->getLimit(); ?></td>
                                                                 <td><?php echo $ca->getTotal(); ?></td>
@@ -86,7 +86,7 @@
                                                                     <input type = 'hidden' name ='ca_id' value = '<?php echo $ca->getCaID(); ?>'><!-- comment -->
                                                                     <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                 </form></td>
-							    <?php //endif; ?>
+							    <?php endif; ?>
 							</tr>
                                                         <?php endforeach; ?>
 						</table>
