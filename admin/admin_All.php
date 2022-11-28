@@ -33,7 +33,7 @@
                
             <!-- Monthly Budget List -->
             <div class="list">
-                <h3>Budget Category List:</h3>
+                <h3>Monthly Budget:</h3>
                 <div class="expense-list-container"
                      id="list">
                 </div>
