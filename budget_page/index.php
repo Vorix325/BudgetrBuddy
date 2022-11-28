@@ -70,7 +70,7 @@ switch($action)
                 }
             }
             $currentShow = $categoryDB->getId($current);
-            $allSpend = $spendingDB->getSpend($currentShow);
+            $allSpend = $spendingDB->getSpend($current);
             
             include('../budget_page/spend_view.php');
             

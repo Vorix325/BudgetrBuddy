@@ -58,20 +58,20 @@
                         <?php foreach($categories as $ca) : ?>
                         <?php if($ca->getMonth() == $currentM && $ca->getYear() == $currentY) : ?>
                             <td><form action="./index.php" method ="post">
-                        <input type ="hidden" name="current" value='<?php echo $ca->getCaID(); ?>'>
-                        <button tpye = 'submit'><?php echo $ca->getCaName(); ?></button>
+                                <input type ="hidden" name="current" value='<?php echo $ca->getCaID(); ?>'>
+                                <button tpye = 'submit'><?php echo $ca->getCaName(); ?></button>
                               </form></td>
                         <?php endif; ?>
                         <?php endforeach; ?>
                         <tr>
                     </table><!-- comment -->
                     <br>
-                    <Table border = '1'>
+                    <table border = '1'>
                         <tr>
                             <th>Spend Id</th><!-- comment -->
                             <th>Cost Name</th><!-- comment -->
                             <th>Amount</th>
-                            <th>Date</th><!-- comment -->
+                            <th>Date Spent</th><!-- comment -->
                             <th>Edit</th><!-- comment -->
                             <th>Delete</th>
                         </tr>
@@ -80,6 +80,7 @@
                         
                     <?php foreach ($allSpend as $spend) : ?>
                         <tr>
+                           
                       <?php if($spend['category_id'] == $current) : ?>
                         <?php if( $spend['SMonth'] == $currentM && $spend['SYear'] = $currentY) : ?>
                         <td><input type='text' name='spend_id' value='<?php echo $spend['spending_id']; ?>'></td>
@@ -92,9 +93,9 @@
                                  <input type='hidden' name='name' value='<?php echo $spend['costName']; ?>'>
                                  <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
                                  <input type='hidden' name='amount' value='<?php echo $spend['Samount']; ?>'>
-                                 <input type='hidden' name='date' value='<?php echo $spend['SDate']; ?>'></td>
-                                 <input type='hidden' name='month' value='<?php echo $spend['SMonth']; ?>'></td><!-- comment -->
-                                 <input type='hidden' name='year' value='<?php echo $spend['SYear']; ?>'></td>
+                                 <input type='hidden' name='date' value='<?php echo $spend['SDate']; ?>'>
+                                 <input type='hidden' name='month' value='<?php echo $spend['SMonth']; ?>'>
+                                 <input type='hidden' name='year' value='<?php echo $spend['SYear']; ?>'>
                                  <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                          </form></td>
 			<td><form action="./index.php" method='post'>
@@ -115,7 +116,7 @@
                           <input type='hidden' name='spend_id' value='<?php echo $spend['spending_id']; ?>'>
                           <input type='hidden' name='spending_Name' value='<?php echo $spend['costName']; ?>'>
                           <input type='hidden' name='category_id' value='<?php echo $spend['category_id']; ?>'>
-                          <button type='submit' value='Add New Spending'>
+                           <button type='submit' class="submit">Add new Spending</button>
                     </form>
                 </nav>
                 </div>

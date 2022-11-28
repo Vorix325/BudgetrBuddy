@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="bp-stylesheet.css" />
     </head>    
     <body>
-        <form action="index.php" method='post'>
+        
 
         <!-- Header -->
         <?php include 'view/header.php'; ?>
@@ -36,15 +36,14 @@
             <div class = "profile-container">
                 <form action="./user_info/index.php" method='post'>
                     <?php if($type == null) : ?>
-                    <input type='hidden' name='action' value='show_login'><!-- comment -->
+                    <input type='hidden' name='action' value='show_login'>
                     <?php else : ?>
-                    <input type='hidden' name='action' value='show_profile'><!-- comment -->
+                    <input type='hidden' name='action' value='show_profile'>
                     <?php endif; ?>
                     
-                <h3><b>Manage Profile</b></h3>
-                <h3>We're buddies aren't we? Check your profile and let's make sure to get the details right.</h3>
-               <button type=button class="submit">Profile</button>
-                                         
+                 <h3><b>Manage Profile</b></h3>
+                 <h3>We're buddies aren't we? Check your profile and let's make sure to get the details right.</h3>
+                 <button type='submit' class="submit">Profile</button>                      
                 </form>
             </div>
             <!-- Start Budget -->
@@ -66,7 +65,7 @@
                     <?php endif; ?>
                  <h3><b>Manage Budget</b></h3>
                  <h3>Would you like to manage your budget now? Let's get to it!</h3>
-                 <button type=button class="submit">Budget</button>
+                 <button type='submit' class="submit">Budget</button>
                </form>
             </div>
             <!-- Support -->
@@ -88,7 +87,7 @@
                     <?php endif; ?>
                 <h3><b>Need Support?</b></h3>
                 <h3>Experiencing technical difficulties or have any questions? Take to a support Buddy.</h3>
-                <button type=button class="submit">Contact</button>
+                <button type='submit' class="submit">Contact</button>
                  </form>
             </div>
         </div>   
