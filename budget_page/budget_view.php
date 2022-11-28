@@ -56,13 +56,13 @@
                 </div>
                 <!-- Budget Category Table -->
        
-						<table border="1" id="category-info" class="category-container" style="display: block; margin: 0 auto;">
+						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
-								<th>&emsp;&nbsp;&nbsp;Category&emsp;&nbsp;&nbsp;</th>
-								<th>&emsp;Limit&emsp;</th>
-                                                                <th>&nbsp;Spending Cost&nbsp;</th>
-								<th>&ensp;Modify&ensp;</th>
-								<th>&ensp;Delete&ensp;</th>
+								<th>Category</th>
+								<th>Limit</th>
+                                                                <th>Spending Cost;</th>
+								<th>Modify</th>
+								<th>Delete</th>
 								
 							</tr>
                                                         <?php foreach($categories as $ca) :?>
