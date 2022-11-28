@@ -42,7 +42,7 @@ switch($action)
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
-        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
+        $phone = filter_input(INPUT_POST, 'phone');
         $nick = filter_input(INPUT_POST, 'nick');
         $typeKL = filter_input(INPUT_POST, 'type');
         $userId = filter_input(INPUT_POST, 'userId');
