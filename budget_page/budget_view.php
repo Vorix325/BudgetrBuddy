@@ -56,7 +56,7 @@
                 </div>
                 <!-- Budget Category Table -->
        
-						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
+						<table border="1" id="category-info" class="category-container" style="display: block; margin: 0 auto;">
 							<tr>
 								<th>&emsp;&nbsp;&nbsp;Category&emsp;&nbsp;&nbsp;</th>
 								<th>&emsp;Limit&emsp;</th>
@@ -97,11 +97,13 @@
                                                                     <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
                                                                     <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
                                                                     <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
-                                                                    <button class="user-edit"><i class="fas fa-user-edit" id="user-edit" name="Add Budget"></i></button>
+								    <button class=submit type=submit>Update</button>
+          
                                                 </form> 
                 </form
             </div>
         </div>
+	    <br><br><br><br><br><br><br><br><br><br><br><br><br>
         <!-- Java Script -->
         <script src = "script.js"></script>
         <!-- Footer -->
