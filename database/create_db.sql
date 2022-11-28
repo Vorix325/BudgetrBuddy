@@ -106,9 +106,12 @@ INSERT INTO Budget_bbudget VALUES
 (0,  1000, 0, 'November', '2022' );
 
 INSERT INTO Spending_Bbudget VALUES
-(0,0,'McDonald',0,20,'2022-11-12','November','2022'),
-(1,0,'Uniqlo',1,40,'2022-11-12','November','2022'),
-(2,0,'Saving',2,70,'2022-11-12','November','2022');
+(0,0,'McDonald',0,20,'12','November','2022'),
+(1,0,'Uniqlo',1,40,'12','November','2022'),
+(2,0,'Saving',2,70,'12','November','2022');
+
+INSERT INTO EMAIL VALUES
+(0,0,'testAdmin','fftpnhan2246@gmail.com',0,'November', '2022');
 -- create the users
 CREATE USER IF NOT EXISTS mgs_user@localhost 
 IDENTIFIED BY 'pa55word';

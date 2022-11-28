@@ -231,9 +231,9 @@ switch($action)
                  $userName = $user->getUser();
                  $emailTo = $user->getEmail();
                  
-                 include '../errors/test.php';
-                 //include('../email/budget_email.php');
-                 //header("Location: .?action=showSpending");
+                
+                 include('../email/budget_email.php');
+                 header("Location: .?action=showSpending");
              }
         }
         else 
@@ -270,7 +270,7 @@ switch($action)
         $name = filter_input(INPUT_POST, 'name');
         $categoryId = filter_input(INPUT_POST,'categoryId');
         $time = strtotime($_POST['time']);
-        $date = date('d',$time);
+        $dateS = date('d',$time);
         $month = date('F', $time);
         $year = date('Y', $time);
         $array = $categoryDB->checkTotal($userId);
@@ -278,7 +278,7 @@ switch($action)
         $budget = $array['limitS'];
         if($array['limitS'] > $check)
         {
-             $spendingDB->updateSpend($spendId,$userId, $categoryId, $amount, $name, $date, $month, $year,$old);
+             $spendingDB->updateSpend($spendId,$userId, $categoryId, $amount, $name, $dateS, $month, $year,$old);
              
              $s = ($check/$array['limitS'])*100;
              if($s >= 80)
@@ -286,7 +286,7 @@ switch($action)
                  $user = $userInfo->getUserInfo($userId);
                  $userName = $user->getUser();
                  $emailTo = $user->getEmail();
-                 include('../email/budget_email.php');
+                 
                  header("Location: .?action=showSpending");
              }
         }

@@ -35,7 +35,7 @@
                         <input type='hidden' name='action' value='send'>
                         <input type='hidden' name='id' value='<?php echo $userId; ?>'>
                         <textarea id="message" placeholder="Message" name='mess' cols="100" rows="10"></textarea>
-                        <button type="button" class="submit" id="submit">Send</button>  
+                        <button type="submit" class="submit" id="submit">Send</button>  
 
                     </form> 
                 </div>

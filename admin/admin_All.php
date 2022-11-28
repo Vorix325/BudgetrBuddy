@@ -40,8 +40,8 @@
                 <!-- Budget Category Table -->
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
-								<th>&emsp;&emsp;&ensp;&ensp;User Id&emsp;&emsp;&ensp;&ensp;</th>
-                                                                <th>&emsp;&emsp;&ensp;&ensp;User name&emsp;&emsp;&ensp;&ensp;</th>
+								<th>&emsp;&emsp;&ensp;UserId&emsp;&ensp;&ensp;</th>
+                                                                <th>&emsp;&emsp;&ensp;Username&emsp;&ensp;&ensp;</th>
 								<th>&ensp;&emsp;&emsp;Budget&ensp;&emsp;&emsp;</th>
                                                                 <th>&ensp;&emsp;&emsp;Month&ensp;&emsp;&emsp;</th>
                                                                 <th>&ensp;&emsp;&emsp;Year&ensp;&emsp;&emsp;</th>
