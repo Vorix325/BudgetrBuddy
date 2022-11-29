@@ -69,10 +69,16 @@ switch($action)
         $amount = filter_input(INPUT_POST, 'amount');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
+        $nmonth = date("m", strtotime($month));
+        $t = $year."-".$nmonth."-1";
+        $time = strtotime('+1 month', strtotime($t));
+        
+        $monthS = date('F',$time);
+        $yearS = date('Y',$time);
         $userC = $userInfo->getCurrent();
-        $emailS->sent($userId, 1);
+        $emailS->sent($month,$year, 1);
         $stl = $userInfo->getEmail($userC[0]);
-        $emailS->addNext($userId, $stl[0],$stl[1], $month, $year);
+        $emailS->addNext($userId, $stl[0],$stl[1], $monthS, $yearS);
         $budgetDB->addBudget($amount, $userId, $month, $year);
         $caName = array('food','cloth','utility','transportation','medical','entertainment');
         for($i = 0; $i < count($caName); $i+= 1)

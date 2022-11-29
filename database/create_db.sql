@@ -81,7 +81,7 @@ CREATE TABLE EMAIL
     user_id    INT,
     adminN      VARCHAR(30),
     email      VARCHAR(30),
-    editStatus BIT(1),
+    editStatus INT,
     monthS     VARCHAR(30),
     yearS      VARCHAR(30),
     PRIMARY KEY (pr_id)

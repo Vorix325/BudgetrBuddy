@@ -13,17 +13,18 @@ class emailSend
      $statement->closeCursor();
      return $info; 
     }
-    function sent($id, $status)
+    function sent($month,$year, $status)
     {
      $db = database::getDB();
      $query = 'UPDATE EMAIL
                SET
                  editStatus = :status
                WHERE 
-                 pr_id = :id
+                 monthS = :month AND yearS = :year
               ';
      $statement = $db->prepare($query);
-     $statement->bindValue(':id',$id);
+     $statement->bindValue(':month',$month);
+     $statement->bindValue(':year',$year);
      $statement->bindValue(':status', $status);
      $statement->execute();
      $statement->closeCursor();
