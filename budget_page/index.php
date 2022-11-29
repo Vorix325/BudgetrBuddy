@@ -261,7 +261,7 @@ switch($action)
         $year = filter_input(INPUT_POST, 'year');
         $time = mktime(0, 0, 0, $nmonth, $date, $year);
         $times = date('Y-m-d',$time);
-        $category_id = filter_input(INPUT_POST, 'categoryID');
+        $category_id = filter_input(INPUT_POST, 'category_id');
         include('../budget_page/spend_edit.php');
         break;
     case 'updateSpending':

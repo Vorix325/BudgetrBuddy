@@ -48,7 +48,8 @@ class budget_db
     {
      $db = database::getDB();
      $query = 'UPDATE Budget_Bbudget
-              user_id = :userId, amount = :amount, SMonth = :month, SYear = :year
+               SET
+               user_id = :userId, amount = :amount, SMonth = :month, SYear = :year
               WHERE budget_id = :budgetId';
      $statement = $db->prepare($query);
      $statement->bindValue(':userId',$userId);
@@ -59,6 +60,16 @@ class budget_db
      $statement->execute();
      $statement->closeCursor();
         
+    }
+    function deleteBudget($budgetId)
+    {
+     $db = database::getDB();
+     $query = 'DELETE FROM Budget_Bbudget
+               WHERE budget_id = :budgetId';
+     $statement = $db->prepare($query);  
+     $statement->bindValue(':budgetId',$budgetId);
+     $statement->execute();
+     $statement->closeCursor();
     }
 }
 

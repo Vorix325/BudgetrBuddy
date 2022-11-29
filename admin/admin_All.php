@@ -40,6 +40,7 @@
                 <!-- Monthly Budget Table -->
 						<table border="1" id="category-info" class="category-info" style="display: block; margin: 0 auto;">
 							<tr>
+                                                            
 								<th>&emsp;&emsp;&ensp;UserId&emsp;&ensp;&ensp;</th>
                                                                 <th>&emsp;&emsp;&ensp;Username&emsp;&ensp;&ensp;</th>
 								<th>&ensp;&emsp;&emsp;Budget&ensp;&emsp;&emsp;</th>
@@ -53,6 +54,7 @@
 							
                                                             <?php foreach($main as $d) : ?>
                                                         <tr>
+                                                            
 								<td><?php echo $d['user_id'] ;?></td>
                                                                 <td><?php 
                                                                       
@@ -76,7 +78,7 @@
                                                                     </form></td>
                                                                     <td><form action="./index.php" method ='post'>
                                                                          <input type='hidden' name='action' value='deleteBudget'>
-                                                                         <input type ='hidden' name ='budget_id' value ='<?php echo $d['budget_id']; ?>'>
+                                                                         <input type ='hidden' name ='budget_id' value='<?php echo $d['budget_id']; ?>'>
                                                                          <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                         </form></td>
                                                                                 <td><form action='./index.php' method='post'>

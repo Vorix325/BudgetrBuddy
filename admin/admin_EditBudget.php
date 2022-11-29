@@ -26,6 +26,7 @@
                 <form action="." method="post" id="start_month">
                     <input type="hidden" name="action" value="editBudget">
                     <br>
+                    <input type='hidden' name='budgetId' value='<?php echo $budgetId; ?>'>
                     <input type ="hidden" name='userId' value='<?php echo $userId; ?>'>
                     <label>User:</label>
                     <input type='text' value="<?php echo $userName; ?>" readonly>
@@ -34,9 +35,9 @@
                     <input type="text" name="amount" value="<?php echo $amount; ?>">
                     <br>
                     <label>Month: </label><!-- comment -->
-                    <input type='text' value="<?php echo $month; ?>" readonly>
+                    <input type='text' name='month' value="<?php echo $month; ?>" readonly>
                     <label>Year: </label>
-                    <input type='text' value="<?php echo $year; ?>" readonly>
+                    <input type='text' name='year' value="<?php echo $year; ?>" readonly>
                     <label>&nbsp;</label>
                     <button class=submit type=submit>Edit User Allowance</button>
                     <br>

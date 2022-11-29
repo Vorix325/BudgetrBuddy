@@ -72,7 +72,7 @@ switch($action)
         $userC = $userInfo->getCurrent();
         $emailS->sent($userId, 1);
         $stl = $userInfo->getEmail($userC[0]);
-        $emailS->addNext($user_id, $stl['user_name'],$stl['email'], $monthS, $yearS);
+        $emailS->addNext($userId, $stl[0],$stl[1], $month, $year);
         $budgetDB->addBudget($amount, $userId, $month, $year);
         $caName = array('food','cloth','utility','transportation','medical','entertainment');
         for($i = 0; $i < count($caName); $i+= 1)
@@ -82,6 +82,7 @@ switch($action)
         header('Location: .?action=showBudget');
         break;
     case 'showEditBudget' :
+        $budgetId = filter_input(INPUT_POST, 'budget_id');
         $userId = filter_input(INPUT_POST, 'id');
         $userName = filter_input(INPUT_POST, 'name');
         $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
@@ -92,10 +93,15 @@ switch($action)
     case 'editBudget' :
         $budgetId = filter_input(INPUT_POST, 'budgetId');
         $userId = filter_input(INPUT_POST, 'userId');
-        $amount = filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_FLOAT);
+        $amount = filter_input(INPUT_POST, 'amount');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST, 'year');
-        $budgetDB->updateBudget($amount, $userId, $month, $year);
+        $budgetDB->updateBudget($budgetId,$userId,$amount, $month, $year);
+        header('Location: .?action=showBudget');
+        break;
+    case 'deleteBudget' :
+        $budgetId = filter_input(INPUT_POST, 'budget_id');
+        $budgetDB->deleteBudget($budgetId);
         header('Location: .?action=showBudget');
         break;
     case 'report' :
