@@ -81,7 +81,7 @@ class category_db
   {
     $db = database::getDB();
     $query = 'SELECT SUM(total) AS totalS FROM Category_BBudget
-              WHERE user_id = :userId , SMonth = :m, $Year = :y';
+              WHERE user_id = :userId AND SMonth = :m AND SYear = :y';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->bindValue(':m',$month);
@@ -124,7 +124,7 @@ class category_db
     $db = database::getDB();
     $query = 'UPDATE category_bbudget
               SET
-               category_name = :categoryName, user_id = :userId, limitS = :limit , SMonth = :month, SYear = :year, budget_id = bid
+               category_name = :categoryName, user_id = :userId, limitS = :limit , SMonth = :month, SYear = :year, budget_id = :bid
               WHERE 
                category_id = :caId'
             ;

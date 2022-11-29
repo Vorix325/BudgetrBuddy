@@ -2,7 +2,8 @@
 <div id="main">
     <h1 class="top">Test</h1>
     <p>
-        <?php echo $emailTo.$bat.$userName; ?> 
+        <?php print_r($data); ?> 
+        <?php echo $userId.$month.$year; ?>
         
     </p>
 </div>

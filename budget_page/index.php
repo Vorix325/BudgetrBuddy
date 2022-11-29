@@ -182,10 +182,10 @@ switch($action)
         $r = $budgetDB->getBudget($userId, $month, $year);
         $s = $categoryDB->getCa($userId, $month, $year);
         $sM = $s + $limit-$old;
-        if($sm <= $r)
+        if($sM <= $r)
         {
             $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year,$bid);
-        header('Location: ../budget_page/index.php?action=showBudget');
+            header('Location: ../budget_page/index.php?action=showBudget');
         }
         else 
         {

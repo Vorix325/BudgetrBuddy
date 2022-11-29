@@ -34,11 +34,12 @@
                 <h1>Edit Budget</h1>
                 <form action="./index.php" method="post" id="updateCategory">
                     <input type="hidden" name="action" value="updateCategory">
+                    
                     <input type='hidden' name='bid' value='<?php echo $bid; ?>'>
                     <input type ="hidden" name="ca_id" Value="<?php echo $category_id; ?>">
                     <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
-                    <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
-                    <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
+                    <input type ="hidden" name="month" value="<?php echo $month; ?>"><!-- comment -->
+                    <input type ="hidden" name="year" value="<?php echo $year; ?>"><!-- comment -->
                     <label>Name:</label>
                      <input type="text" name="ca_name" value='<?php echo $name; ?>'/>
                     <br>
