@@ -8,6 +8,7 @@ class category
     private float $limit;
     private string $month;
     private string $year;
+    private int $budgetId;
             
     
      public function __construct() 
@@ -16,8 +17,17 @@ class category
         $this->categoryId = 0;
         $this->categoryName = '';
         $this->total = 0;
+        $this->budgetId = 0;
         $this->month = 'January';
         $this->year = '2022';
+     }
+     public function getBId()
+     {
+         return $this->budgetId;
+     }
+     public function setBId($budgetId)
+     {
+         $this->budgetId = $budgetId;
      }
      public function getMonth()
      {

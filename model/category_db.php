@@ -21,6 +21,7 @@ class category_db
      $category->setTotal($data['total']);
      $category->setMonth($data['SMonth']);
      $category->setYear($data['SYear']);
+     $category->setBId($data['budget_id']);
      $categories[] = $category;
     }
     $statement->closeCursor();
@@ -47,6 +48,7 @@ class category_db
      $category->setTotal($data['total']);
      $category->setMonth($data['SMonth']);
      $category->setYear($data['SYear']);
+     $category->setBId($data['budget_id']);
      $categories[] = $category;
     }
     return $categories;
@@ -70,6 +72,7 @@ class category_db
      $category->setTotal($data['total']);
      $category->setMonth($data['SMonth']);
      $category->setYear($data['SYear']);
+     $category->setBId($data['budget_id']);
      $categories[] = $category;
     }
     return $categories;
@@ -98,13 +101,13 @@ class category_db
     $statement->execute();
     $statement->closeCursor();
   }
-  function addCategory($userId,$categoryName,$limit, $month, $year)
+  function addCategory($userId,$categoryName,$limit, $month, $year,$bid)
   {
     $db = database::getDB();
     $query = 'INSERT INTO category_bbudget
-               (category_name, user_id, limitS , total, SMonth, SYear)
+               (category_name, user_id, limitS , total, SMonth, SYear, budget_id)
               VALUE
-               (:categoryName, :userId, :limit, 0, :month, :year )';
+               (:categoryName, :userId, :limit, 0, :month, :year, :bid )';
              
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
@@ -112,15 +115,16 @@ class category_db
     $statement->bindValue(':limit',$limit);
     $statement->bindValue(':month',$month);
     $statement->bindValue(':year', $year);
+    $statement->bindValue(':bid', $bid);
     $statement->execute();
     $statement->closeCursor(); 
   }
-  function updateCategory($categoryId, $userId,$categoryName,$limit, $month, $year)
+  function updateCategory($categoryId, $userId,$categoryName,$limit, $month, $year, $bid)
   {
     $db = database::getDB();
     $query = 'UPDATE category_bbudget
               SET
-               category_name = :categoryName, user_id = :userId, limitS = :limit , SMonth = :month, SYear = :year
+               category_name = :categoryName, user_id = :userId, limitS = :limit , SMonth = :month, SYear = :year, budget_id = bid
               WHERE 
                category_id = :caId'
             ;
@@ -129,6 +133,7 @@ class category_db
     $statement->bindValue(':caId',$categoryId);
     $statement->bindValue(':userId',$userId);
     $statement->bindValue(':categoryName',$categoryName);
+    $statement->bindValue(':bid', $bid);
     $statement->bindValue(':limit',$limit);
     $statement->bindValue(':month',$month);
     $statement->bindValue(':year', $year);

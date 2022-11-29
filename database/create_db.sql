@@ -34,9 +34,17 @@ CREATE TABLE Category_BBudget
     limitS         FLOAT,
     total         FLOAT, 
     SMonth        VARCHAR(30),
-    SYear         VARCHAR(30),                    
+    SYear         VARCHAR(30),   
+    budget_id    INT,                 
     PRIMARY KEY (category_id),
-    FOREIGN KEY (user_id) REFERENCES Users_Bbudget(user_id)
+    FOREIGN KEY (user_id) 
+     REFERENCES Users_Bbudget(user_id)
+     ON UPDATE CASCADE
+     ON DELETE CASCADE,
+FOREIGN KEY (budget_id) 
+     REFERENCES Budget_Bbudget(budget_id)
+     ON UPDATE CASCADE
+     ON DELETE CASCADE
         
 );
 
@@ -64,6 +72,7 @@ CREATE TABLE Spending_Bbudget
     SDate        VARCHAR(30),
     SMonth       VARCHAR(30),
     SYear        VARCHAR(30),
+    
     PRIMARY KEY (spending_id),
     FOREIGN KEY (category_id)
         REFERENCES Category_BBudget(category_id)
@@ -95,12 +104,12 @@ INSERT INTO Users_BBudget VALUES
 ('testUser','JK','LSO','test@gmail.com','135-246-9825','guestTest','reg','Test$abc',0),
  ('testAdmin','AD','STK','testAdmin@gmail.com','569-234-1235','admin','super','abcd',1);
 INSERT INTO Category_BBudget VALUES
-('food',           0, 0, 100 ,20, 'November', '2022'),
-('cloth',          1, 0, 100 ,40, 'November', '2022'),
-('ultility',       2, 0, 100 ,70, 'November', '2022'),
-('transportation', 3, 0, 100 ,0, 'November', '2022'),
-('medial',         4, 0, 100 ,0, 'November', '2022'),
-('entertaiment',   5, 0, 100 ,0, 'November', '2022');
+('food',           0, 0, 100 ,20, 'November', '2022',0),
+('cloth',          1, 0, 100 ,40, 'November', '2022',0),
+('ultility',       2, 0, 100 ,70, 'November', '2022',0),
+('transportation', 3, 0, 100 ,0, 'November', '2022',0),
+('medial',         4, 0, 100 ,0, 'November', '2022',0),
+('entertaiment',   5, 0, 100 ,0, 'November', '2022',0);
 
 INSERT INTO Budget_bbudget VALUES
 (0,  1000, 0, 'November', '2022' );

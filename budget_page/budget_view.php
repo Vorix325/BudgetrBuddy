@@ -78,6 +78,8 @@
                                                                     <input type ='hidden' name='name' value= '<?php echo $ca->getCaName(); ?>' readonly >
                                                                     <input type = 'hidden' name = 'ca_id' value = <?php echo $ca->getCaID(); ?>>
                                                                     <input type ='hidden' name='Limit' value= '<?php echo $ca->getLimit(); ?>' readonly >
+                                                                    <input type ='hidden' name='bid' value= '<?php echo $ca->getBId(); ?>' readonly >
+                                                                    
                                                                     <button class="user-edit"><i class="fas fa-user-times" id="user-edit"></i></button>
                                                                     
                                                                 </form></td>

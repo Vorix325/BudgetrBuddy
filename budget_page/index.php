@@ -127,7 +127,9 @@ switch($action)
         $dateTime = new DateTime();
         $month = $dateTime->format('F');
         $year = $dateTime->format('Y');
+        
         $userId = filter_input(INPUT_POST, 'userId');
+        $bid = $budgetDB->getId($month, $year, $userId);
         $categories = $categoryDB->getCategory($userId[0]);
         include('../budget_page/budget_add.php');
         break;
@@ -137,13 +139,13 @@ switch($action)
         $limit = filter_input(INPUT_POST, 'Limit');
         $month = filter_input(INPUT_POST, 'month');
         $year = filter_input(INPUT_POST,'year');
-        
+        $bid = filter_input(INPUT_POST,'bid');
         $r = $budgetDB->getBudget($userId, $month, $year);
         $s = $categoryDB->getCa($userId, $month, $year);
         $sM = $s + $limit;
         if($sm <= $r)
         {
-            $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year);
+            $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year,$bid);
             header('Location: .?action=showBudget');
         }
         else 
@@ -159,6 +161,7 @@ switch($action)
         $currentY = $dateTime->format('Y'); 
         $month = $dateTime->format('F');
         $year = $dateTime->format('Y');
+        $bid = filter_input(INPUT_POST,'bid');
         $userId = filter_input(INPUT_POST, 'userId');
         $name = filter_input(INPUT_POST, 'name');
         $category_id = filter_input(INPUT_POST, 'ca_id');
@@ -173,6 +176,7 @@ switch($action)
         $userId = filter_input(INPUT_POST, 'userId');
         $old = filter_input(INPUT_POST, 'old', FILTER_VALIDATE_FLOAT);
         $name = filter_input(INPUT_POST, 'ca_name');
+        $bid = filter_input(INPUT_POST,'bid');
         $category_id = filter_input(INPUT_POST, 'ca_id');
         $limit = filter_input(INPUT_POST, 'Limit', FILTER_VALIDATE_FLOAT);
         $r = $budgetDB->getBudget($userId, $month, $year);
@@ -180,7 +184,7 @@ switch($action)
         $sM = $s + $limit-$old;
         if($sm <= $r)
         {
-            $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year);
+            $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year,$bid);
         header('Location: ../budget_page/index.php?action=showBudget');
         }
         else 

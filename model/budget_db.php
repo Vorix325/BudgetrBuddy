@@ -29,6 +29,22 @@ class budget_db
     $statement->closeCursor();
     return $total;
     }
+    function getId($month,$year,$userId)
+    {
+     $db = database::getDB();
+     $query = 'SELECT budget_id FROM Budget_Bbudget
+               WHERE user_id = :userId
+               AND SMonth = :month
+               AND SYear = :year ';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':userId',$userId);
+    $statement->bindValue(':month',$month);
+    $statement->bindValue(':year',$year);
+    $statement->execute();
+    $id = $statement->fetch();
+    $statement->closeCursor();
+    return $id;
+    }
     function addBudget($amount, $userId, $month, $year)
     {
      $db = database::getDB();

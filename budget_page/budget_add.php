@@ -33,6 +33,7 @@
                 <h1>Add New Budget Category</h1>
                 <form action="." method="post" id="addCategory">
                     <input type="hidden" name="action" value="addCategory">
+                    <input type='hidden' name='bid' value='<?php echo $bid; ?>'>
                     <input type ="hidden" name="userId" Value="<?php echo $userId; ?>"><!-- comment -->
                     <input type ="hidden" name="month" Value="<?php echo $month; ?>"><!-- comment -->
                     <input type ="hidden" name="year" Value="<?php echo $year; ?>"><!-- comment -->
