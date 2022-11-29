@@ -66,12 +66,13 @@ switch($action)
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $fname = filter_input(INPUT_POST, 'fname');
         $lname = filter_input(INPUT_POST, 'lname');
-        $phone = filter_input(INPUT_POST, 'phone', FILTER_VALIDATE_INT);
+        $phone = filter_input(INPUT_POST, 'phone');
         $confirm = filter_input(INPUT_POST, 'confirm');
+       
         
         if($pass == $confirm)
         {
-            $userInfo->addUser($username, $password, $fname, $lname, $email, $phone);
+            $userInfo->addUser($userName, $pass, $fname, $lname, $email, $phone);
             header("Location: ../index.php");
         }
         else
