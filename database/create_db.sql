@@ -89,7 +89,7 @@ CREATE TABLE EMAIL
     pr_id      INT         NOT NULL AUTO_INCREMENT,
     user_id    INT,
     adminN      VARCHAR(30),
-    email      VARCHAR(30),
+    email     VARCHAR(30),
     editStatus INT,
     monthS     VARCHAR(30),
     yearS      VARCHAR(30),

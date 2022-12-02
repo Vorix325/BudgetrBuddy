@@ -80,10 +80,11 @@ switch($action)
         $stl = $userInfo->getEmail($userC[0]);
         $emailS->addNext($userId, $stl[0],$stl[1], $monthS, $yearS);
         $budgetDB->addBudget($amount, $userId, $month, $year);
+        $bid = $budgetDB->getId($month, $year, $userId);
         $caName = array('food','cloth','utility','transportation','medical','entertainment');
         for($i = 0; $i < count($caName); $i+= 1)
         {
-            $categoryDB->addCategory($userId, $caName[$i], 0, $month, $year);
+            $categoryDB->addCategory($userId, $caName[$i], 0, $month, $year, $bid);
         }
         header('Location: .?action=showBudget');
         break;
