@@ -31,6 +31,7 @@
                       <input type='hidden' name='userId'  value='<?php echo $userId; ?>'>
                      <label>User Name:</label>
                      <input type="text" name="userName" value='<?php echo $userName; ?>'/>
+                     <input type="hidden" name="old" value='<?php echo $userName; ?>'/>
                      <br>
                      <label>Password:</label>
                      <input type="text" name= "pass" value='<?php echo $pass; ?>'/>

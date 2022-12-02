@@ -1,10 +1,10 @@
 <?php
 require('../model/database.php');
-
+require('../model/email.php');
 require('../model/userInfo_db.php');
 
 $userInfo = new userInfo_db();
-
+$emailS = new emailSend();
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -106,6 +106,7 @@ switch($action)
     case 'editProfile' :
         $userId= filter_input(INPUT_POST, 'userId');
         $userName = filter_input(INPUT_POST, 'userName');
+         $old = filter_input(INPUT_POST, 'old');
         $pass = filter_input(INPUT_POST, 'pass');
         $email = filter_input(INPUT_POST, 'email');
         $fname = filter_input(INPUT_POST, 'fname');
@@ -113,7 +114,7 @@ switch($action)
         $phone = filter_input(INPUT_POST, 'phone');
         $nick = filter_input(INPUT_POST, 'nick');
         $userInfo->updateUser($userId,$userName,$pass, $fname, $lname, $email,$phone, $nick);
-        
+        $emailS->update($userName, $email, $old);
         header('Location: .?action=show_profile');
         break;
         

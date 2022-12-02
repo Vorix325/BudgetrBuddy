@@ -30,6 +30,22 @@ class emailSend
      $statement->closeCursor();
 
     }
+    function update($name, $email, $old)
+    {
+         $db = database::getDB();
+     $query = 'UPDATE EMAIL
+               SET
+                 adminN = :name, email = :email
+               WHERE 
+                 adminN = :old;
+              ';
+     $statement = $db->prepare($query);
+     $statement->bindValue(':name',$name);
+     $statement->bindValue(':email',$email);
+     $statement->bindValue(':old', $old);
+     $statement->execute();
+     $statement->closeCursor();
+    }
     function addNext($user_id, $aName, $email, $month, $year)
     {
      $status = 0;

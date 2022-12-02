@@ -38,6 +38,7 @@ switch($action)
         break;
     case 'editUser':
         $userName = filter_input(INPUT_POST, 'userName');
+        $old = filter_input(INPUT_POST, 'old');
         $pass = filter_input(INPUT_POST, 'pass');
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $fname = filter_input(INPUT_POST, 'fname');
@@ -47,6 +48,8 @@ switch($action)
         $typeKL = filter_input(INPUT_POST, 'type');
         $userId = filter_input(INPUT_POST, 'userId');
         $userInfo->updateAdmin($userId, $userName, $pass, $fname, $lname, $email, $phone, $nick, $typeKL);
+        $emailS->update($userName, $email, $old);
+        
         header('Location: .?action=showUser');
         break;
     case 'deleteUser':
