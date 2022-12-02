@@ -95,6 +95,7 @@ CREATE TABLE EMAIL
     yearS      VARCHAR(30),
     PRIMARY KEY (pr_id)
 
+
 );
 -- INSERT Current User
 INSERT INTO currentq VALUES
