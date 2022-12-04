@@ -99,11 +99,11 @@ CREATE TABLE EMAIL
 );
 -- INSERT Current User
 INSERT INTO currentq VALUES
-(1, 0, 'regular');
+(1, null, null);
 
 INSERT INTO Users_BBudget VALUES
-('testUser','JK','LSO','test@gmail.com','135-246-9825','guestTest','reg','Test$abc',0),
- ('testAdmin','AD','STK','testAdmin@gmail.com','569-234-1235','admin','super','abcd',1);
+('testUser','JK','LSO','budgetbuddy75@gmail.com','135-246-9825','guestTest','reg','1234',0),
+ ('testAdmin','AD','STK','budgetbuddy75@gmail.com','569-234-1235','admin','super','abcd',1);
 
 INSERT INTO Budget_bbudget VALUES
 (0,  1000, 0, 'November', '2022' );

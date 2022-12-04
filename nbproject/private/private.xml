@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/admin/admin_AddBudget.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/model/budget_db.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/email/Admin_email.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/index.php</file>
             <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/database/create_db.sql</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/user_info/edit-profile.php</file>
+            <file>file:/C:/xampp/htdocs/ex_starts/BudgetBuddy/BudgetBuddy/admin/index.php</file>
         </group>
     </open-files>
 </project-private>

@@ -74,7 +74,7 @@
                                                                     <input type='hidden' name='email' value='<?php echo $d ->getEmail(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='phone' value='<?php echo $d ->getPhone(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='nick' value='<?php echo $d ->getNick(); ?>'><!-- comment -->
-                                                                    <input type='hidden' name='pass' value='<?php echo $d ->getPass(); ?>l'><!-- comment -->
+                                                                    <input type='hidden' name='pass' value='<?php echo $d ->getPass(); ?>'><!-- comment -->
                                                                     <input type='hidden' name='type' value='<?php echo $d ->getType(); ?>'><!-- comment -->
                                                                     <button class="user-edit"><i class="fas fa-user-edit" id="user-edit"></i></button>
                                                                  </form></td>

@@ -93,7 +93,8 @@ switch($action)
         include('../user_info/profile.php');
         break;
     case 'showEdit' :
-        $userId= filter_input(INPUT_POST, 'userId');
+        $id = $userInfo->getCurrent();
+        $userId= $id[0];
         $userName = filter_input(INPUT_POST, 'userName');
         $pass = filter_input(INPUT_POST, 'pass');
         $email = filter_input(INPUT_POST, 'email');

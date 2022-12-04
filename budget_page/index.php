@@ -88,7 +88,8 @@ switch($action)
         
         $array = $spendingDB->getSpendTime($currentM,$year);
         $categories = $categoryDB->getCategory($userId[0]);
-        if( $array == null || $categories == null)
+        
+        if( $categories == null)
         {
             $budget = $month;
             $total = $year;
@@ -102,10 +103,18 @@ switch($action)
         {
             $budgets = $budget[0];
             $total = 0;
-             foreach($array as $a)
-             {
+            if($array == null)
+            {
+                $total = 0;
+            }
+            else 
+            {
+                 foreach($array as $a)
+                {
                  $total += $a['Samount'];
-             }
+                }
+            }
+            
            
              $balance = $budgets - $total;
              include('../budget_page/budget_view.php');

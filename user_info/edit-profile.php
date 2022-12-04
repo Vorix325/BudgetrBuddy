@@ -22,7 +22,7 @@
             <div class="container">
                 <!-- Welcome -->
                 <div class="welcome">
-                    <h3>Hey <?php echo $username;?>, edit your profile here.</h3>
+                    <h3>Hey <?php echo $userName;?>, edit your profile here.</h3>
                 </div>
                 <div class="info-container">
                     <h3>Profile</h3>

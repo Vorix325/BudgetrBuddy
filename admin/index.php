@@ -87,7 +87,7 @@ switch($action)
         $caName = array('food','cloth','utility','transportation','medical','entertainment');
         for($i = 0; $i < count($caName); $i+= 1)
         {
-            $categoryDB->addCategory($userId, $caName[$i], 0, $month, $year, $bid);
+            $categoryDB->addCategory($userId, $caName[$i], 0, $month, $year, $bid[0]);
         }
         header('Location: .?action=showBudget');
         break;

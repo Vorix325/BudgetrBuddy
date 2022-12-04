@@ -22,7 +22,7 @@
             <div class="container">
                 <!-- Welcome -->
                 <div class="welcome">
-                    <h3>Edit <?php echo $username;?>'s profile</h3>
+                    <h3>Edit <?php echo $userName;?>'s profile</h3>
                 </div>
                 <div class="info-container">
                     <h3>Profile</h3>
@@ -30,26 +30,26 @@
                       <input type='hidden' name='action'  value='editUser'>
                       <input type='hidden' name='userId'  value='<?php echo $userId; ?>'>
                      <label>User Name:</label>
-                     <input type="text" name="userName" value='<?php echo $userName; ?>'/>
-                     <input type="hidden" name="old" value='<?php echo $userName; ?>'/>
+                     <input type="text" name="userName" value='<?php echo $userName; ?>'>
+                     <input type="hidden" name="old" value='<?php echo $userName; ?>'>
                      <br>
                      <label>Password:</label>
-                     <input type="text" name= "pass" value='<?php echo $pass; ?>'/>
+                     <input type="text" name= "pass" value='<?php echo $pass; ?>'>
                      <br> 
                      <label>First Name:</label>
-                     <input type="text" name="fname" value='<?php echo $fname; ?>'/>
+                     <input type="text" name="fname" value='<?php echo $fname; ?>'>
                      <br>
                      <label>Last Name:</label>
-                     <input type="text" name="lname" value='<?php echo $lname; ?>'/>
+                     <input type="text" name="lname" value='<?php echo $lname; ?>'>
                      <br>     
                      <label>Email:</label>
-                     <input type="text" name="email" value='<?php echo $email; ?>'/>
+                     <input type="text" name="email" value='<?php echo $email; ?>'>
                      <br> 
                      <label>Phone:</label>
-                     <input type="text" name="phone" value='<?php echo $phone; ?>'/>
+                     <input type="text" name="phone" value='<?php echo $phone; ?>'>
                      <br> 
                      <label>Nick Name:</label>
-                     <input type="text" name="nick" value='<?php echo $nick; ?>'/>
+                     <input type="text" name="nick" value='<?php echo $nick; ?>'>
                      <br> 
                      <label>Type of User</label>
                      
