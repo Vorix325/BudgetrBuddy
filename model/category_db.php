@@ -2,13 +2,15 @@
 
 class category_db
 {
-  function getCategory($userId)
+  function getCategory($userId,$month,$year)
  {
     $db = database::getDB();
     $query = 'SELECT * FROM Category_BBudget
-              WHERE user_id = :userId ';
+              WHERE user_id = :userId, SMonth = :month, SYear = :year ';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
+    $statement->bindValue(':month',$month);
+    $statement->bindValue(':year',$year);
     $statement->execute();
     $datas = $statement->fetchAll();
     $categories = [];

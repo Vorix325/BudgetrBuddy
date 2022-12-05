@@ -21,10 +21,11 @@ if ($action == NULL) {
 switch($action)
 {
     case 'showSpending':
-        $userId = $userInfo->getCurrent();
-        
-        
-        $categories = $categoryDB->getCategory($userId[0]);
+        $userId = $userInfo->getCurrent(); 
+         $dateTime = new DateTime();
+         $currentM = $dateTime->format('F');
+         $currentY = $dateTime->format('Y'); 
+         $categories = $categoryDB->getCategory($userId[0],$currentM,$currentY);
         if($categories == null)
         {
             $errorName = "Empty Spending";
@@ -35,9 +36,7 @@ switch($action)
         else 
         {
             /* Send data to graph */
-            $dateTime = new DateTime();
-            $currentM = $dateTime->format('F');
-            $currentY = $dateTime->format('Y'); 
+           
             $caNames = [];
             $caTotals = [];
             $caId = [];
@@ -66,13 +65,18 @@ switch($action)
                 {
                     $error = 'Cant find the category ID ';
                     $errorName = 'Invalid data';
-                    header("Location: ../errors/error.php?error=$error?errorName=$errorName");
+                    include('../errors/error.php');
+                    //header("Location: ../errors/error.php?error=$error?errorName=$errorName");
                 }
             }
-            $currentShow = $categoryDB->getId($current);
-            $allSpend = $spendingDB->getSpend($current);
+            else
+            {
+                $currentShow = $categoryDB->getId($current);
+                $allSpend = $spendingDB->getSpend($current);
             
-            include('../budget_page/spend_view.php');
+                include('../budget_page/spend_view.php');
+            }
+            
             
             
         }   
@@ -87,7 +91,7 @@ switch($action)
         $budget = $budgetDB->getBudget($userId[0], $currentM, $year);
         
         $array = $spendingDB->getSpendTime($currentM,$year);
-        $categories = $categoryDB->getCategory($userId[0]);
+        $categories = $categoryDB->getCategory($userId[0],$currentM,$currentY);
         
         if( $categories == null)
         {
@@ -101,7 +105,17 @@ switch($action)
         }
         else
         {
-            $budgets = $budget[0];
+            
+            $budgets = 0;
+            if($budget == null)
+            {
+                $budgets = 0;
+            }
+            else 
+            {
+                $budgets = $budget[0];
+            }
+            
             $total = 0;
             if($array == null)
             {
