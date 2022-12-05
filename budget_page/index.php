@@ -25,7 +25,7 @@ switch($action)
          $dateTime = new DateTime();
          $currentM = $dateTime->format('F');
          $currentY = $dateTime->format('Y'); 
-         $categories = $categoryDB->getCategory($userId[0],$currentM,$currentY);
+         $categories = $categoryDB->getCategory($userId[0]);
         if($categories == null)
         {
             $errorName = "Empty Spending";
@@ -60,6 +60,10 @@ switch($action)
                 if($caId != null)
                 {
                     $current = $caId[0];
+                    $currentShow = $categoryDB->getId($current);
+                    $allSpend = $spendingDB->getSpend($current);
+            
+                   include('../budget_page/spend_view.php');
                 }
                 else 
                 {
@@ -68,14 +72,18 @@ switch($action)
                     include('../errors/error.php');
                     //header("Location: ../errors/error.php?error=$error?errorName=$errorName");
                 }
+                
             }
-            else
+            else 
             {
                 $currentShow = $categoryDB->getId($current);
                 $allSpend = $spendingDB->getSpend($current);
             
                 include('../budget_page/spend_view.php');
             }
+           
+               
+            
             
             
             
@@ -91,9 +99,9 @@ switch($action)
         $budget = $budgetDB->getBudget($userId[0], $currentM, $year);
         
         $array = $spendingDB->getSpendTime($currentM,$year);
-        $categories = $categoryDB->getCategory($userId[0],$currentM,$currentY);
+        $categories = $categoryDB->getCategory($userId[0]);
         
-        if( $categories == null)
+        if( $categories == null )
         {
             $budget = $month;
             $total = $year;
@@ -166,10 +174,15 @@ switch($action)
         $r = $budgetDB->getBudget($userId, $month, $year);
         $s = $categoryDB->getCa($userId, $month, $year);
         $sM = $s + $limit;
-        if($sm <= $r)
+        if($r == null)
+        {
+            $r[0] = 0;
+        }
+        if($sM <= $r[0])
         {
             $categoryDB->addCategory($userId, $categoryName, $limit, $month, $year,$bid);
             header('Location: .?action=showBudget');
+            
         }
         else 
         {
@@ -205,10 +218,12 @@ switch($action)
         $r = $budgetDB->getBudget($userId, $month, $year);
         $s = $categoryDB->getCa($userId, $month, $year);
         $sM = $s + $limit-$old;
-        if($sM <= $r)
+        
+        if($sM <= $r[0])
         {
             $categoryDB->updateCategory($category_id, $userId, $name, $limit, $month, $year,$bid);
             header('Location: ../budget_page/index.php?action=showBudget');
+            
         }
         else 
         {
@@ -244,7 +259,7 @@ switch($action)
         $amount = filter_input(INPUT_POST, 'spend');
         
         
-        $array = $categoryDB->checkTotal($userId);
+        $array = $categoryDB->checkTotal($categoryId);
         $check = $array['total'] + $amount;
         $budget = $array['limitS'];
         if($array['limitS'] > $check)
@@ -271,7 +286,7 @@ switch($action)
             $error = "Your Spending exceed this category limit";
             header("Location: ../errors/error.php?error=$error");
         }
-        header("Location: .?action=showSpending");
+        
         break;
     case 'showUpSpend':
         $userId = $userInfo->getCurrent();
@@ -302,9 +317,10 @@ switch($action)
         $dateS = date('d',$time);
         $month = date('F', $time);
         $year = date('Y', $time);
-        $array = $categoryDB->checkTotal($userId);
+        $array = $categoryDB->checkTotal($categoryId);
         $check = $array['total'] + $amount - $old;
         $budget = $array['limitS'];
+        
         if($array['limitS'] > $check)
         {
              $spendingDB->updateSpend($spendId,$userId, $categoryId, $amount, $name, $dateS, $month, $year,$old);
@@ -323,9 +339,9 @@ switch($action)
         {
             $errorName = "Over Limit";
             $error = "Your Spending exceed this category limit";
-            header("Location: ../errors/error.php?error=$error");
+            include("../errors/error.php");
         }
-        header('Location: .?action=showSpending');
+        
         break;
                 
 }

@@ -2,15 +2,13 @@
 
 class category_db
 {
-  function getCategory($userId,$month,$year)
+  function getCategory($userId)
  {
     $db = database::getDB();
     $query = 'SELECT * FROM Category_BBudget
-              WHERE user_id = :userId, SMonth = :month, SYear = :year ';
+              WHERE user_id = :userId ';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
-    $statement->bindValue(':month',$month);
-    $statement->bindValue(':year',$year);
     $statement->execute();
     $datas = $statement->fetchAll();
     $categories = [];
@@ -82,14 +80,14 @@ class category_db
   function getCa($userId, $month, $year)
   {
     $db = database::getDB();
-    $query = 'SELECT SUM(total) AS totalS FROM Category_BBudget
+    $query = 'SELECT SUM(limitS) AS totalS FROM Category_BBudget
               WHERE user_id = :userId AND SMonth = :m AND SYear = :y';
     $statement = $db->prepare($query);
     $statement->bindValue(':userId',$userId);
     $statement->bindValue(':m',$month);
     $statement->bindValue(':y',$year);
     $statement->execute();
-    $data = $statement->fetch(PDO::FETCH_ASSOC);
+    $data = $statement->fetch();
     $sum = $data['totalS'];
     return $sum;
   }
